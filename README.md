@@ -1,9 +1,5 @@
 # Technical Assignment
 
-## Introduction   
-
-This document contains the requirements for the technical assignment for the position of Senior iOS Developer. 
-
 ## Description   
 
 The test project will be a native iOS application that should be created as an Xcode project (version 12.3 or higher) and should also support both landscape and portrait device  orientations. The result of your work should be a buildable application able to run on an iOS  device (iPad or iPhone) with iOS 13.0 or higher.  
