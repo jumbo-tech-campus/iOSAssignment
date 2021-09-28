@@ -14,12 +14,12 @@ Create an iOS application for browsing the Jumbo list of available products. To 
 
 - The first screen of your application should display a start button that should navigate to list of products
 
-- The Products List screen should contain a table view displaying the following fields for each product:
--- Image
--- Name
--- Price
--- Quantity added to Cart
--- Add to Cart button
+- The Products List screen should contain a table view displaying the following fields for each product
+  - Image
+  - Name
+  - Price
+  - Quantity added to Cart
+  - Add to Cart button
 
 - When Add to Cart button is tapped, the product should be added to a local list of products with quantities (Cart).
 
