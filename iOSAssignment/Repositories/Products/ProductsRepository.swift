@@ -3,14 +3,14 @@ protocol ProductsRepositoryType {
     func fetchRawProducts() -> Products?
 }
 
-public struct ProductsRepository: ProductsRepositoryType {
+struct ProductsRepository: ProductsRepositoryType {
 
     func fetchRawProducts() -> Products? {
-        let jsonData = Data.init(fromJsonFile: "products")
-        do {
-            return try JSONDecoder().decode(Products.self, from: jsonData)
-        } catch {
-            return nil
-        }
+        guard
+            let jsonData = Data(fromJsonFile: "products"),
+            let list = try? JSONDecoder().decode(Products.self, from: jsonData)
+        else { return nil }
+
+        return list
     }
 }
