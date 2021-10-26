@@ -1,10 +1,11 @@
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // MARK: - Attributes
 
     var window: UIWindow?
+    private var coordinator: AppCoordinator?
 
     // MARK: - Life cycle
 
@@ -17,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.windowScene = windowScene
 
         self.window = window
+
+        coordinator = AppCoordinator(window: window)
+        coordinator?.start()
     }
 }
-
