@@ -2,6 +2,7 @@ platform :ios, '12.0'
 use_frameworks!
 
 def install_pods
+  pod 'Alamofire', '5.4'
   pod 'R.swift', '5.4.0'
 end
 

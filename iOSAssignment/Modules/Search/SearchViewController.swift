@@ -29,6 +29,7 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        viewModel.loadData()
     }
 
     // MARK: - Custom methods

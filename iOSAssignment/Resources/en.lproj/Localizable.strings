@@ -6,6 +6,11 @@
   
 */
 
+// MARK: - General
+
+"error.internal" = "Internal error";
+"error.noInternet" = "No internet";
+
 // MARK: - TabBar
 
 "tabBar.home.title" = "Home";
