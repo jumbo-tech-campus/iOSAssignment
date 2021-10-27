@@ -8,5 +8,5 @@
 import Foundation
 
 enum InitialFlow {
-    case splash, productList
+    case splash, mainApp
 }

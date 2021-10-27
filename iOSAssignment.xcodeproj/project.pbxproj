@@ -12,6 +12,13 @@
 		6B2A96B82728B73200A5D976 /* SplashScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96B72728B73200A5D976 /* SplashScreenCoordinator.swift */; };
 		6B2A96BC2728B7CB00A5D976 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96BB2728B7CB00A5D976 /* UIViewController+Extension.swift */; };
 		6B2A96C02728B83D00A5D976 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96BF2728B83D00A5D976 /* UIView+Extension.swift */; };
+		6B2A96C92728BE2C00A5D976 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96C82728BE2C00A5D976 /* TabBarViewController.swift */; };
+		6B2A96D02729793B00A5D976 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96CF2729793B00A5D976 /* SearchViewController.swift */; };
+		6B2A96D42729794C00A5D976 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96D32729794C00A5D976 /* SearchViewModel.swift */; };
+		6B2A96D82729795700A5D976 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96D72729795700A5D976 /* SearchCoordinator.swift */; };
+		6B2A96DC27297BFD00A5D976 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96DB27297BFD00A5D976 /* TabBarCoordinator.swift */; };
+		6B2A96E4272989B400A5D976 /* TabBarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96E3272989B400A5D976 /* TabBarPosition.swift */; };
+		6B2A96EA27298C0200A5D976 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A96E927298C0200A5D976 /* UIColor+Extension.swift */; };
 		6B67FD862726E88400C95AB3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6B67FD852726E88400C95AB3 /* README.md */; };
 		6B67FD8B2726E8C800C95AB3 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B67FD8A2726E8C800C95AB3 /* Products.swift */; };
 		6B67FD932726EDD300C95AB3 /* ProductUnitPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B67FD922726EDD300C95AB3 /* ProductUnitPrice.swift */; };
@@ -50,6 +57,13 @@
 		6B2A96B72728B73200A5D976 /* SplashScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenCoordinator.swift; sourceTree = "<group>"; };
 		6B2A96BB2728B7CB00A5D976 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		6B2A96BF2728B83D00A5D976 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		6B2A96C82728BE2C00A5D976 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		6B2A96CF2729793B00A5D976 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6B2A96D32729794C00A5D976 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		6B2A96D72729795700A5D976 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		6B2A96DB27297BFD00A5D976 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		6B2A96E3272989B400A5D976 /* TabBarPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPosition.swift; sourceTree = "<group>"; };
+		6B2A96E927298C0200A5D976 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		6B67FD852726E88400C95AB3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		6B67FD8A2726E8C800C95AB3 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		6B67FD922726EDD300C95AB3 /* ProductUnitPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUnitPrice.swift; sourceTree = "<group>"; };
@@ -103,6 +117,25 @@
 			path = SplashScreen;
 			sourceTree = "<group>";
 		};
+		6B2A96C72728BE1B00A5D976 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				6B2A96C82728BE2C00A5D976 /* TabBarViewController.swift */,
+				6B2A96DB27297BFD00A5D976 /* TabBarCoordinator.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		6B2A96CE2729792400A5D976 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6B2A96CF2729793B00A5D976 /* SearchViewController.swift */,
+				6B2A96D32729794C00A5D976 /* SearchViewModel.swift */,
+				6B2A96D72729795700A5D976 /* SearchCoordinator.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		6B67FD7D2726E72200C95AB3 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				6B67FD7D2726E72200C95AB3 /* App */,
+				6B2A96C72728BE1B00A5D976 /* TabBar */,
 				6B2A96AC2728B6DF00A5D976 /* SplashScreen */,
+				6B2A96CE2729792400A5D976 /* Search */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -125,8 +160,8 @@
 		6B67FDA22726EF3E00C95AB3 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				6B67FDA72726EF7900C95AB3 /* Enums */,
 				6B67FDA32726EF4800C95AB3 /* Coordinator.swift */,
+				6B67FDA72726EF7900C95AB3 /* Enums */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -135,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				6B67FDA82726EF8100C95AB3 /* InitialFlow.swift */,
+				6B2A96E3272989B400A5D976 /* TabBarPosition.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -211,6 +247,7 @@
 				6B67FD9A2726EE1900C95AB3 /* Array+Extension.swift */,
 				6B2A96BB2728B7CB00A5D976 /* UIViewController+Extension.swift */,
 				6B2A96BF2728B83D00A5D976 /* UIView+Extension.swift */,
+				6B2A96E927298C0200A5D976 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,7 +373,10 @@
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
 				6B67FDA42726EF4800C95AB3 /* Coordinator.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Extension.swift in Sources */,
+				6B2A96EA27298C0200A5D976 /* UIColor+Extension.swift in Sources */,
 				6B2A96AE2728B6F700A5D976 /* SplashScreenViewController.swift in Sources */,
+				6B2A96D82729795700A5D976 /* SearchCoordinator.swift in Sources */,
+				6B2A96C92728BE2C00A5D976 /* TabBarViewController.swift in Sources */,
 				AFF534942701ECBC00EEE4AE /* AppDelegate.swift in Sources */,
 				6B67FD932726EDD300C95AB3 /* ProductUnitPrice.swift in Sources */,
 				6B67FD972726EDE900C95AB3 /* ProductPrice.swift in Sources */,
@@ -344,10 +384,14 @@
 				6B67FD9F2726EF1300C95AB3 /* AppCoordinator.swift in Sources */,
 				AFF534C62701EE7300EEE4AE /* Product.swift in Sources */,
 				AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */,
+				6B2A96D02729793B00A5D976 /* SearchViewController.swift in Sources */,
 				AFF534CA2701F98300EEE4AE /* ProductImagesInfo.swift in Sources */,
+				6B2A96D42729794C00A5D976 /* SearchViewModel.swift in Sources */,
+				6B2A96E4272989B400A5D976 /* TabBarPosition.swift in Sources */,
 				6B67FD8B2726E8C800C95AB3 /* Products.swift in Sources */,
 				AFF534C82701F93100EEE4AE /* ProductPriceData.swift in Sources */,
 				6B2A96C02728B83D00A5D976 /* UIView+Extension.swift in Sources */,
+				6B2A96DC27297BFD00A5D976 /* TabBarCoordinator.swift in Sources */,
 				6B67FD9B2726EE1900C95AB3 /* Array+Extension.swift in Sources */,
 				6B67FDA92726EF8100C95AB3 /* InitialFlow.swift in Sources */,
 				AFF534D72702088800EEE4AE /* ImageDetail.swift in Sources */,

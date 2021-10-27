@@ -12,11 +12,11 @@ extension UIViewController {
     func configureNavigationBar(isHidden: Bool = false,
                                 isTranslucent: Bool = false) {
         navigationController?.isNavigationBarHidden = isHidden
-        navigationController?.navigationBar.barTintColor = .red
+        navigationController?.navigationBar.barTintColor = .clSecondary
         navigationController?.navigationBar.isTranslucent = isTranslucent
-        navigationController?.navigationBar.tintColor = isHidden ? .clear : .red
+        navigationController?.navigationBar.tintColor = isHidden ? .clear : .clSecondary
         navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: UIColor.red,
+            .foregroundColor: UIColor.clPrimary,
             .font: UIFont.systemFont(ofSize: 17)
         ]
     }

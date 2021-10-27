@@ -27,8 +27,8 @@ final class AppCoordinator: Coordinator {
         switch initialFlow {
             case .splash:
                 openSplashScreen()
-            case .productList:
-                openProductList()
+            case .mainApp:
+                openMainApp()
         }
     }
 
@@ -41,8 +41,10 @@ final class AppCoordinator: Coordinator {
         coodinator.start()
     }
 
-    private func openProductList() {
-        //TODO: handle it
+    private func openMainApp() {
+        guard let window = window else { return }
+        let coodinator = TabBarCoordinator(presenter: window)
+        coodinator.start()
     }
 }
 
@@ -51,6 +53,6 @@ final class AppCoordinator: Coordinator {
 extension AppCoordinator: SplashScreenCoordinatorDelegate {
 
     func didFinishSplashScreen() {
-        openProductList()
+        openMainApp()
     }
 }

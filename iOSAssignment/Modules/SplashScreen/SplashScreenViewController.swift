@@ -39,6 +39,7 @@ final class SplashScreenViewController: UIViewController {
     // MARK: - Custom methods
 
     private func setupUI() {
+        view.backgroundColor = .white
         configureNavigationBar(isHidden: true)
         createElements()
     }
