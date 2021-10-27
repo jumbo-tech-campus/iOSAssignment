@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Rswift
 
 final class TabBarViewController: UITabBarController {
 
@@ -62,7 +63,7 @@ final class TabBarViewController: UITabBarController {
         let navigation = UINavigationController()
 
         navigation.tabBarItem = UITabBarItem(
-            title: "Home",
+            title: R.string.localizable.tabBarHomeTitle(),
             image: nil,
             tag: TabBarPosition.home.rawValue)
 
@@ -75,8 +76,8 @@ final class TabBarViewController: UITabBarController {
         coordinator.start()
 
         navigation.tabBarItem = UITabBarItem(
-            title: "Search",
-            image: UIImage(named: "iconSearchTabBar"),
+            title: R.string.localizable.tabBarSearchTitle(),
+            image: R.image.iconSearchTabBar(),
             tag: TabBarPosition.search.rawValue)
 
         screens.append(navigation)
@@ -87,7 +88,7 @@ final class TabBarViewController: UITabBarController {
         let navigation = UINavigationController()
 
         navigation.tabBarItem = UITabBarItem(
-            title: "Recipes",
+            title: R.string.localizable.tabBarRecipesTitle(),
             image: nil,
             tag: TabBarPosition.recipes.rawValue)
 
@@ -99,7 +100,7 @@ final class TabBarViewController: UITabBarController {
         let navigation = UINavigationController()
 
         navigation.tabBarItem = UITabBarItem(
-            title: "Offers",
+            title: R.string.localizable.tabBarOffersTitle(),
             image: nil,
             tag: TabBarPosition.offers.rawValue)
 
@@ -111,8 +112,8 @@ final class TabBarViewController: UITabBarController {
         let navigation = UINavigationController()
 
         navigation.tabBarItem = UITabBarItem(
-            title: "Cart",
-            image: UIImage(named: "iconCartTabBar"),
+            title: R.string.localizable.tabBarCartTitle(),
+            image: R.image.iconCartTabBar(),
             tag: TabBarPosition.cart.rawValue)
 
         screens.append(navigation)

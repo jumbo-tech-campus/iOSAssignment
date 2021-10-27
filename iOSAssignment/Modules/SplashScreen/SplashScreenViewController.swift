@@ -15,7 +15,7 @@ final class SplashScreenViewController: UIViewController {
 
     // MARK: - Elements
 
-    private let logoImageView = UIImageView(image: UIImage(named: "logo"))
+    private let logoImageView = UIImageView(image: R.image.logo())
 
     // MARK: - Life cycle
 
