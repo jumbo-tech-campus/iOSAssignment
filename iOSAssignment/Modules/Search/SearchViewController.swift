@@ -29,7 +29,8 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-        viewModel.loadData()
+        bindData()
+        viewModel.loadProducts()
     }
 
     // MARK: - Custom methods
@@ -37,5 +38,42 @@ final class SearchViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
         configureNavigationBar()
+        populateStaticInfo()
+        createElements()
+    }
+
+    private func populateStaticInfo() {
+        title = viewModel.title
+    }
+
+    private func bindData() {
+        bindStatusLoader()
+        bindMessageData()
+    }
+}
+
+// MARK: - Bind data
+
+private extension SearchViewController {
+
+    func bindStatusLoader() {
+        viewModel.isLoading.bind { [weak self] isLoading in
+            isLoading ? self?.view.startLoader() : self?.view.stopLoader()
+        }
+    }
+
+    func bindMessageData() {
+        viewModel.messageData.bind { _ in
+            //TODO: Handle it
+        }
+    }
+}
+
+// MARK: - Create elements
+
+private extension SearchViewController {
+
+    func createElements() {
+        //TODO: Handle it
     }
 }

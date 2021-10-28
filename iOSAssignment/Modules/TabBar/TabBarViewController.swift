@@ -30,14 +30,17 @@ final class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupTabBarUI()
+        setupUI()
     }
 
     // MARK: - Custom methods
 
-    private func setupTabBarUI() {
-        let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
-        UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
+    private func setupUI() {
+        let fontAttributes = [NSAttributedString.Key.font: UIFont.detail]
+        UITabBarItem
+            .appearance()
+            .setTitleTextAttributes(fontAttributes, for: .normal)
+
         tabBar.unselectedItemTintColor = .lightGray
         tabBar.tintColor = .clPrimary
         tabBar.barTintColor = .white

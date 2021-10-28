@@ -28,7 +28,19 @@ final class ProductServices: ProductServicesProtocol {
     // MARK: - Requests
 
     func requestAllProducts(_ completion: @escaping CompletionProductList) {
-        let request = ProductResources.requestAllProducts
-        networkManager.makeRequest(requester: request, completion)
+        guard
+            let response = JSONResponse.getProductsResponse() else {
+            completion(.failure(error: .generic()))
+            return
+        }
+
+        completion(.success(response))
+
+        /*
+            TODO: Handle below when we'll have a real request
+
+            let request = ProductResources.requestAllProducts
+            networkManager.makeRequest(requester: request, completion)
+        */
     }
 }
