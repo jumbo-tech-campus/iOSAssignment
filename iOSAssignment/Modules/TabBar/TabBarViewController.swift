@@ -13,7 +13,7 @@ final class TabBarViewController: UITabBarController {
     // MARK: - Attributes
 
     private var screens: [UIViewController]
-    private let positionFirstScreen: TabBarPosition = .search
+    private let positionFirstScreen: TabBarPosition = .home
 
     // MARK: - Life cycle
 
@@ -36,7 +36,7 @@ final class TabBarViewController: UITabBarController {
     // MARK: - Custom methods
 
     private func setupUI() {
-        let fontAttributes = [NSAttributedString.Key.font: UIFont.detail]
+        let fontAttributes = [NSAttributedString.Key.font: UIFont.subDetail]
         UITabBarItem
             .appearance()
             .setTitleTextAttributes(fontAttributes, for: .normal)
@@ -64,10 +64,13 @@ final class TabBarViewController: UITabBarController {
     private func addHomeScreen() {
         //TODO: handle it
         let navigation = UINavigationController()
+        let coordinator = HomeCoordinator(presenter: navigation)
+        coordinator.start()
+        coordinator.delegate = self
 
         navigation.tabBarItem = UITabBarItem(
             title: R.string.localizable.tabBarHomeTitle(),
-            image: nil,
+            image: R.image.iconHomeTabBar(),
             tag: TabBarPosition.home.rawValue)
 
         screens.append(navigation)
@@ -92,7 +95,7 @@ final class TabBarViewController: UITabBarController {
 
         navigation.tabBarItem = UITabBarItem(
             title: R.string.localizable.tabBarRecipesTitle(),
-            image: nil,
+            image: R.image.iconRecipesTabBar(),
             tag: TabBarPosition.recipes.rawValue)
 
         screens.append(navigation)
@@ -104,7 +107,7 @@ final class TabBarViewController: UITabBarController {
 
         navigation.tabBarItem = UITabBarItem(
             title: R.string.localizable.tabBarOffersTitle(),
-            image: nil,
+            image: R.image.iconOffersTabBar(),
             tag: TabBarPosition.offers.rawValue)
 
         screens.append(navigation)
@@ -129,12 +132,21 @@ extension TabBarViewController: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         switch TabBarPosition(rawValue: tabBarController.tabBar.selectedItem?.tag ?? -1) {
-            case .home, .recipes, .offers:
+            case .recipes, .offers:
                 return false
-            case .search, .cart:
+            case .home, .search, .cart:
                 return true
             default:
                 return false
         }
+    }
+}
+
+// MARK: - Home delegate {
+
+extension TabBarViewController: HomeDelegate {
+
+    func openSearchDidPress() {
+        selectedIndex = TabBarPosition.search.rawValue
     }
 }

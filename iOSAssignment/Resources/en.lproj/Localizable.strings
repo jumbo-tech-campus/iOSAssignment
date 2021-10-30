@@ -19,6 +19,11 @@
 "tabBar.offers.title" = "Offers";
 "tabBar.cart.title" = "Cart";
 
+// MARK: - Home
+
+"home.navigation.title" = "Home";
+"home.openSearch.button" = "Open search";
+
 // MARK: - Search screen
 
 "search.navigation.title" = "Search";
