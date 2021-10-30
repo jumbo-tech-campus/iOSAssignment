@@ -15,7 +15,9 @@ final class SplashScreenViewController: UIViewController {
 
     // MARK: - Elements
 
-    private let logoImageView = UIImageView(image: R.image.logo())
+    private let logoImageView: UIImageView = create {
+        $0.image = R.image.logo()
+    }
 
     // MARK: - Life cycle
 
@@ -71,14 +73,12 @@ private extension SplashScreenViewController {
 
     func createElements() {
         view.addView(logoImageView)
-
         setupImageConstraints()
     }
 
     // MARK: - Create constraints
 
     private func setupImageConstraints() {
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoImageView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 40).isActive = true

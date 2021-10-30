@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SearchCoordinatorProtocol: Coordinator {
-    func openProductDetail()
+    //TODO: handle presentation actions
 }
 
 final class SearchCoordinator: SearchCoordinatorProtocol {
@@ -29,9 +29,5 @@ final class SearchCoordinator: SearchCoordinatorProtocol {
         let viewModel = SearchViewModel(coordinator: self)
         let viewController = SearchViewController(viewModel: viewModel)
         navigationController?.viewControllers = [viewController]
-    }
-
-    func openProductDetail() {
-        //TODO: handle it
     }
 }

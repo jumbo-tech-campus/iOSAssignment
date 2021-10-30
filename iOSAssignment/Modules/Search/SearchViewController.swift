@@ -13,6 +13,10 @@ final class SearchViewController: UIViewController {
 
     private let viewModel: SearchViewModelProtocol
 
+    // MARK: - Elements
+
+    private let content = SearchContent()
+
     // MARK: - Life cycle
 
     init(viewModel: SearchViewModelProtocol) {
@@ -33,13 +37,17 @@ final class SearchViewController: UIViewController {
         viewModel.loadProducts()
     }
 
+    override func loadView() {
+        view = content
+    }
+
     // MARK: - Custom methods
 
     private func setupUI() {
         view.backgroundColor = .white
         configureNavigationBar()
         populateStaticInfo()
-        createElements()
+        setupContent()
     }
 
     private func populateStaticInfo() {
@@ -50,6 +58,10 @@ final class SearchViewController: UIViewController {
         bindStatusLoader()
         bindMessageData()
     }
+
+    private func setupContent() {
+        content.viewModel = viewModel
+    }
 }
 
 // MARK: - Bind data
@@ -58,22 +70,14 @@ private extension SearchViewController {
 
     func bindStatusLoader() {
         viewModel.isLoading.bind { [weak self] isLoading in
-            isLoading ? self?.view.startLoader() : self?.view.stopLoader()
+            isLoading ? self?.content.render(with: .loading) : self?.content.render(with: .content)
         }
     }
 
     func bindMessageData() {
-        viewModel.messageData.bind { _ in
-            //TODO: Handle it
+        viewModel.messageData.bind { [weak self] data in
+            guard let data = data else { return }
+            self?.content.render(with: .error(message: data))
         }
-    }
-}
-
-// MARK: - Create elements
-
-private extension SearchViewController {
-
-    func createElements() {
-        //TODO: Handle it
     }
 }

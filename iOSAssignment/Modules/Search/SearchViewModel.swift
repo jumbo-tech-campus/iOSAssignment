@@ -5,15 +5,12 @@
 //  Created by Jader Nunes on 27/10/21.
 //
 
-protocol SearchViewModelProtocol {
-    var isLoading: Dynamic<Bool> { get }
+protocol SearchViewModelProtocol: SearchViewModelBaseProtocol {
     var messageData: Dynamic<MessageData?> { get }
     var title: String { get }
-    var countProducts: Int { get }
+    var isLoading: Dynamic<Bool> { get }
 
     func loadProducts()
-    func getProduct(from index: Int) -> Product?
-    func openProductDetail()
 }
 
 final class SearchViewModel: SearchViewModelProtocol {
@@ -27,7 +24,6 @@ final class SearchViewModel: SearchViewModelProtocol {
     let isLoading = Dynamic<Bool>(false)
     let messageData = Dynamic<MessageData?>(nil)
     var title: String { R.string.localizable.tabBarSearchTitle() }
-    var countProducts: Int { products.count }
 
     // MARK: - Life cycle
 
@@ -51,12 +47,18 @@ final class SearchViewModel: SearchViewModelProtocol {
             self?.isLoading.value = false
         }
     }
+}
 
-    func getProduct(from index: Int) -> Product? {
-        products[safe: index]
+// MARK: - SearchViewModel protocol
+
+extension SearchViewModel: SearchViewModelBaseProtocol {
+
+    func viewModel(for index: Int) -> SearchCellViewModelProtocol? {
+        guard let product = products[safe: index] else { return nil }
+        return SearchCellViewModel(product: product)
     }
 
-    func openProductDetail() {
-        coordinator?.openProductDetail()
+    func countItems(in section: Int) -> Int {
+        products.count
     }
 }
