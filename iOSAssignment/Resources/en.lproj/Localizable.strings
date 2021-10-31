@@ -27,3 +27,7 @@
 // MARK: - Search screen
 
 "search.navigation.title" = "Search";
+
+// MARK: - Cart screen
+
+"cart.navigation.title" = "Cart";

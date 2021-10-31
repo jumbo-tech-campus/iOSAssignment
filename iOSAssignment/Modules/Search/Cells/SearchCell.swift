@@ -11,6 +11,7 @@ final class SearchCell: UITableViewCell {
 
     // MARK: - Elements
 
+    private var viewModel: SearchCellViewModelProtocol?
     private let content: SearchCellContent = create()
 
     // MARK: - Life cycle
@@ -39,6 +40,8 @@ final class SearchCell: UITableViewCell {
     }
 
     func configure(with viewModel: SearchCellViewModelProtocol) {
+
+        self.viewModel = viewModel
         content.render(with: .content(viewModel: viewModel))
     }
 
@@ -53,7 +56,6 @@ extension SearchCell {
 
     private func defineSubviewsConstraints() {
         NSLayoutConstraint.activate([
-            content.heightAnchor.constraint(equalToConstant: 80),
             content.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
             content.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             content.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),

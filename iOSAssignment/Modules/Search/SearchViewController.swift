@@ -56,6 +56,7 @@ final class SearchViewController: UIViewController {
 
     private func bindData() {
         bindStatusLoader()
+        bindDataUpdated()
         bindMessageData()
     }
 
@@ -71,6 +72,12 @@ private extension SearchViewController {
     func bindStatusLoader() {
         viewModel.isLoading.bind { [weak self] isLoading in
             isLoading ? self?.content.render(with: .loading) : self?.content.render(with: .content)
+        }
+    }
+
+    func bindDataUpdated() {
+        viewModel.dataUpdated.bind { [weak self] _ in
+            self?.content.render(with: .update)
         }
     }
 

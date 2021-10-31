@@ -1,4 +1,4 @@
-struct Product: Codable {
+class Product: Codable {
     let id: String
     let title: String
     let prices: ProductPriceData?
@@ -8,4 +8,7 @@ struct Product: Codable {
     let topLevelCategory: String?
     let topLevelCategoryId: String?
     let quantity: String?
+
+    //local
+    var countOnCart: Int? = 0
 }

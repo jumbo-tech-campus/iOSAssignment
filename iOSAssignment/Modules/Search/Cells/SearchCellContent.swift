@@ -16,6 +16,11 @@ final class SearchCellContent: UIView {
     // MARK: - Elements
 
     private let priceContentView: UIView = create()
+    private let buttonsContentView: UIView = create()
+    private let countOnCartLabel: UILabel = create {
+        $0.font = .title
+        $0.textColor = .clPrimary
+    }
     private let descriptionLabel: UILabel = create {
         $0.numberOfLines = 2
         $0.font = .detail
@@ -38,8 +43,17 @@ final class SearchCellContent: UIView {
     private let addCartButton: UIButton = create {
         $0.setImage(R.image.iconPlus(), for: .normal)
         $0.backgroundColor = .clSecondary
-        $0.layer.cornerRadius = 20
+        $0.layer.cornerRadius = 12
         $0.clipsToBounds = false
+        $0.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        $0.addShadow()
+    }
+    private let removeCartButton: UIButton = create {
+        $0.setImage(R.image.iconMinus(), for: .normal)
+        $0.backgroundColor = .clSecondary
+        $0.layer.cornerRadius = 12
+        $0.clipsToBounds = false
+        $0.addTarget(self, action: #selector(removeButtonPressed), for: .touchUpInside)
         $0.addShadow()
     }
 
@@ -62,17 +76,31 @@ final class SearchCellContent: UIView {
         addView(productImageView)
         addView(descriptionLabel)
         addView(subDescriptionLabel)
+        buttonsContentView
+            .addView(addCartButton)
+            .addView(countOnCartLabel)
+            .addView(removeCartButton)
+        addView(buttonsContentView)
         priceContentView
             .addView(amountLabel)
             .addView(infoAmountLabel)
         addView(priceContentView)
-        addView(addCartButton)
     }
 
     private func setupUI() {
         backgroundColor = .clBeige
         layer.cornerRadius = 8
         addShadow()
+    }
+
+    // MARK: - Actions
+
+    @objc private func addButtonPressed() {
+        viewModel.addProduct()
+    }
+
+    @objc private func removeButtonPressed() {
+        viewModel.removeProduct()
     }
 }
 
@@ -119,6 +147,10 @@ extension SearchCellContent: Component {
 
         descriptionLabel.text = product.title
         subDescriptionLabel.text = product.quantity
+
+        let countOnCart = product.countOnCart ?? 0
+        removeCartButton.isHidden = countOnCart == 0
+        countOnCartLabel.text = countOnCart > 0 ? countOnCart.description : ""
     }
 }
 
@@ -128,7 +160,10 @@ extension SearchCellContent {
 
     private func defineSubviewsConstraints() {
         setupImageConstraints()
+        setupButtonsContent()
         setupAddButtonConstraints()
+        setupCountCartConstraints()
+        setupRemoveButtonConstraints()
         setupPriceContentConstraints()
         setupAmountConstraints()
         setupInfoAmountConstraints()
@@ -145,12 +180,39 @@ extension SearchCellContent {
         ])
     }
 
+    private func setupButtonsContent() {
+        NSLayoutConstraint.activate([
+            buttonsContentView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            buttonsContentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            buttonsContentView.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
+            buttonsContentView.widthAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+
     private func setupAddButtonConstraints() {
         NSLayoutConstraint.activate([
-            addCartButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
-            addCartButton.heightAnchor.constraint(equalToConstant: 40),
-            addCartButton.widthAnchor.constraint(equalToConstant: 40),
-            addCartButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+            addCartButton.topAnchor.constraint(equalTo: buttonsContentView.topAnchor),
+            addCartButton.centerXAnchor.constraint(equalTo: buttonsContentView.centerXAnchor),
+            addCartButton.heightAnchor.constraint(equalToConstant: 24),
+            addCartButton.widthAnchor.constraint(equalToConstant: 24),
+        ])
+    }
+
+    private func setupCountCartConstraints() {
+        NSLayoutConstraint.activate([
+            countOnCartLabel.topAnchor.constraint(greaterThanOrEqualTo: addCartButton.bottomAnchor, constant: 4),
+            countOnCartLabel.centerXAnchor.constraint(equalTo: buttonsContentView.centerXAnchor),
+            countOnCartLabel.centerYAnchor.constraint(equalTo: buttonsContentView.centerYAnchor)
+        ])
+    }
+
+    private func setupRemoveButtonConstraints() {
+        NSLayoutConstraint.activate([
+            removeCartButton.topAnchor.constraint(greaterThanOrEqualTo: countOnCartLabel.bottomAnchor, constant: 4),
+            removeCartButton.centerXAnchor.constraint(equalTo: buttonsContentView.centerXAnchor),
+            removeCartButton.heightAnchor.constraint(equalToConstant: 24),
+            removeCartButton.widthAnchor.constraint(equalToConstant: 24),
+            removeCartButton.bottomAnchor.constraint(equalTo: buttonsContentView.bottomAnchor)
         ])
     }
 
@@ -158,7 +220,7 @@ extension SearchCellContent {
         NSLayoutConstraint.activate([
             priceContentView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             priceContentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            priceContentView.rightAnchor.constraint(equalTo: addCartButton.leftAnchor, constant: -8),
+            priceContentView.rightAnchor.constraint(equalTo: buttonsContentView.leftAnchor, constant: -8),
             priceContentView.widthAnchor.constraint(equalToConstant: 70)
         ])
     }

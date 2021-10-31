@@ -55,6 +55,14 @@ final class SearchContent: UIView {
         addSubview(tableView)
         addSubview(errorView)
     }
+
+    private func reload() {
+        UIView.performWithoutAnimation {
+            self.tableView.reloadData()
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
+    }
 }
 
 // MARK: - Constraints
@@ -87,7 +95,7 @@ extension SearchContent: UITableViewDataSource {
 extension SearchContent: Component {
 
     enum Configuration {
-        case loading, content, error(message: MessageData)
+        case loading, content, error(message: MessageData), update
     }
 
     func render(with configuration: Configuration) {
@@ -101,7 +109,7 @@ extension SearchContent: Component {
                 stopLoader()
                 tableView.isHidden = false
                 errorView.isHidden = true
-                tableView.reloadData()
+                reload()
 
             case .error:
                 stopLoader()
@@ -110,6 +118,9 @@ extension SearchContent: Component {
 
                 tableView.isHidden = true
                 errorView.isHidden = false
+            case .update:
+                stopLoader()
+                reload()
         }
     }
 }
