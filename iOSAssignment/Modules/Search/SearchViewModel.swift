@@ -23,7 +23,9 @@ final class SearchViewModel: SearchViewModelProtocol {
     private let coordinator: SearchCoordinatorProtocol?
     private let service: ProductServicesProtocol
     private let cart: CartManagerProtocol
-    private var products = [Product]()
+    private var productsBase = [Product]()
+    private var productsShow = [Product]()
+    private var searchText = ""
 
     let isLoading = Dynamic<Bool>(false)
     let dataUpdated = Dynamic<Void?>(nil)
@@ -47,9 +49,8 @@ final class SearchViewModel: SearchViewModelProtocol {
         service.requestAllProducts { [weak self] response in
             switch response {
                 case .success(let result):
-                    self?.products = result.products
-                    self?.setupCountProducts()
-                    self?.sort()
+                    self?.productsBase = result.products
+                    self?.filterData()
                 case .failure(let error, _):
                     self?.messageData.value = .init(category: .error, message: error.message)
             }
@@ -57,13 +58,27 @@ final class SearchViewModel: SearchViewModelProtocol {
         }
     }
 
-    private func setupCountProducts() {
-        products.forEach { $0.countOnCart = cart.countProducts(id: $0.id) }
-        dataUpdated.fire()
+    func search(text: String) {
+        searchText = text
+        filterData()
     }
 
-    private func sort() {
-        products.sort(by: { $0.available && !$1.available })
+    private func filterData() {
+        productsShow = productsBase.filter {
+            var canReturn = true
+            if searchText.count > 0 {
+                canReturn = $0.title.lowercased().contains(searchText.lowercased())
+            }
+
+            return canReturn
+        }
+
+        setupCountProducts()
+    }
+
+    private func setupCountProducts() {
+        productsShow.forEach { $0.countOnCart = cart.countProducts(id: $0.id) }
+        dataUpdated.fire()
     }
 
     func addProduct(_ product: Product) {
@@ -81,21 +96,21 @@ final class SearchViewModel: SearchViewModelProtocol {
 
 extension SearchViewModel: SearchViewModelBaseProtocol {
 
-    func viewModel(for index: Int) -> SearchCellViewModelProtocol? {
-        guard let product = products[safe: index] else { return nil }
-        let cellViewModel = SearchCellViewModel(product: product)
+    func viewModel(for index: Int) -> ProductCellViewModelProtocol? {
+        guard let product = productsShow[safe: index] else { return nil }
+        let cellViewModel = ProductCellViewModel(product: product)
         cellViewModel.delegate = self
         return cellViewModel
     }
 
     func countItems(in section: Int) -> Int {
-        products.count
+        productsShow.count
     }
 }
 
 // MARK: - Search content delegate
 
-extension SearchViewModel: SearchCellContentDelegate {
+extension SearchViewModel: ProductCellContentDelegate {
 
     func addButtonPressed(product: Product) {
         addProduct(product)

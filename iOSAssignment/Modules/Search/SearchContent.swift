@@ -7,26 +7,29 @@
 
 import UIKit
 
-protocol SearchViewModelBaseProtocol: AnyObject {
-    func viewModel(for index: Int) -> SearchCellViewModelProtocol?
-    func countItems(in section: Int) -> Int
+protocol SearchViewModelBaseProtocol: ProductViewModelProtocol {
+    func search(text: String)
 }
 
 final class SearchContent: UIView {
 
     // MARK: - Attributes
 
-    unowned var viewModel: SearchViewModelBaseProtocol!
+    weak var viewModel: SearchViewModelBaseProtocol? {
+        didSet {
+            listProductsComponent.viewModel = viewModel
+        }
+    }
 
     // MARK: - Elements
 
     private let errorView: UIView = create()
-    private let tableView: UITableView = create {
-        $0.rowHeight = UITableView.automaticDimension
-        $0.estimatedRowHeight = 100
-        $0.backgroundColor = .clSecondary
-        $0.separatorStyle = .none
-        $0.registerClass(cellType: SearchCell.self)
+    private let listProductsComponent: ListProductsComponent = create()
+    private let searchBar: UISearchBar = create {
+        $0.searchBarStyle = .minimal
+    }
+    private let labelCountProducts: UILabel = create {
+        $0.font = .subDetail
     }
 
     // MARK: - Life cycle
@@ -36,7 +39,7 @@ final class SearchContent: UIView {
 
         defineSubviews()
         defineSubviewsConstraints()
-        setupTableViewProtocols()
+        setupProtocols()
     }
 
     @available(*, unavailable)
@@ -44,24 +47,35 @@ final class SearchContent: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+
+        endEditing(true)
+    }
+
     // MARK: - Custom methods
 
-    private func setupTableViewProtocols() {
-        tableView.dataSource = self
+    private func setupProtocols() {
+        searchBar.delegate = self
     }
 
     private func defineSubviews() {
         backgroundColor = .clSecondary
-        addSubview(tableView)
-        addSubview(errorView)
+
+        addView(labelCountProducts)
+        addView(searchBar)
+        addView(listProductsComponent)
+        addView(errorView)
     }
 
     private func reload() {
-        UIView.performWithoutAnimation {
-            self.tableView.reloadData()
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }
+        updateCounters()
+        listProductsComponent.render(with: .update)
+    }
+
+    private func updateCounters() {
+        let count = viewModel?.countItems(in: 0) ?? 0
+        labelCountProducts.text = "\(count.description) " + R.string.localizable.titleProducts()
     }
 }
 
@@ -70,23 +84,44 @@ final class SearchContent: UIView {
 extension SearchContent {
 
     private func defineSubviewsConstraints() {
-        tableView.pinToBounds(of: self)
+        setupSearchBarConstraints()
+        setupCountProductConstraints()
+        setupListProductsConstraints()
+    }
+
+    private func setupSearchBarConstraints() {
+        NSLayoutConstraint.activate([
+            searchBar.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+            searchBar.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
+            searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+        ])
+    }
+
+    private func setupCountProductConstraints() {
+        NSLayoutConstraint.activate([
+            labelCountProducts.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+            labelCountProducts.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8)
+        ])
+    }
+
+    private func setupListProductsConstraints() {
+        NSLayoutConstraint.activate([
+            listProductsComponent.leftAnchor.constraint(equalTo: leftAnchor),
+            listProductsComponent.rightAnchor.constraint(equalTo: rightAnchor),
+            listProductsComponent.topAnchor.constraint(equalTo: labelCountProducts.bottomAnchor, constant: 8),
+            listProductsComponent.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+        ])
     }
 }
 
-// MARK: - TableView dataSource
+extension SearchContent: UISearchBarDelegate {
 
-extension SearchContent: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.countItems(in: section)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel?.search(text: searchText)
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModelCell = viewModel.viewModel(for: indexPath.row) else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(with: SearchCell.self, for: indexPath)
-        cell.configure(with: viewModelCell)
-        return cell
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 
@@ -101,13 +136,13 @@ extension SearchContent: Component {
     func render(with configuration: Configuration) {
         switch configuration {
             case .loading:
-                tableView.isHidden = true
+                listProductsComponent.isHidden = true
                 errorView.isHidden = true
                 startLoader()
 
             case .content:
                 stopLoader()
-                tableView.isHidden = false
+                listProductsComponent.isHidden = false
                 errorView.isHidden = true
                 reload()
 
@@ -116,7 +151,7 @@ extension SearchContent: Component {
 
                 //TODO: handle error message
 
-                tableView.isHidden = true
+                listProductsComponent.isHidden = true
                 errorView.isHidden = false
             case .update:
                 stopLoader()

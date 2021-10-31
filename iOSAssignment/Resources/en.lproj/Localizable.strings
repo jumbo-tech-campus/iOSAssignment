@@ -10,6 +10,7 @@
 
 "error.internal" = "Internal error";
 "error.noInternet" = "No internet";
+"title.products" = "products";
 
 // MARK: - TabBar
 

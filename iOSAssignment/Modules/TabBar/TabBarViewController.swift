@@ -15,13 +15,17 @@ final class TabBarViewController: UITabBarController {
     private var screens: [UIViewController]
     private let positionFirstScreen: TabBarPosition = .home
     private let cart: CartManagerProtocol
+    private let notification: NotificationCenter
 
     // MARK: - Life cycle
 
     init(screens: [UIViewController] = [UIViewController](),
-         cart: CartManagerProtocol = CartManager()) {
+         cart: CartManagerProtocol = CartManager(),
+         notification: NotificationCenter = .default) {
         self.screens = screens
         self.cart = cart
+        self.notification = notification
+
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -65,10 +69,10 @@ final class TabBarViewController: UITabBarController {
     }
 
     private func subscripObersvers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateCountItemsCart),
-                                               name: NSNotification.Name(rawValue: .keyNotifyCartChanged),
-                                               object: nil)
+        notification.addObserver(self,
+                                 selector: #selector(updateCountItemsCart),
+                                 name: NSNotification.Name(rawValue: .keyNotifyCartChanged),
+                                 object: nil)
     }
 
     @objc private func updateCountItemsCart() {

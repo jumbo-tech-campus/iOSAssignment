@@ -1,5 +1,5 @@
 //
-//  SearchCellContent.swift
+//  ProductCellContent.swift
 //  iOSAssignment
 //
 //  Created by Jader Nunes on 28/10/21.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class SearchCellContent: UIView {
+final class ProductCellContent: UIView {
 
     // MARK: - Attributes
 
-    private unowned var viewModel: SearchCellViewModelProtocol!
+    private weak var viewModel: ProductCellViewModelProtocol?
 
     // MARK: - Elements
 
@@ -96,20 +96,20 @@ final class SearchCellContent: UIView {
     // MARK: - Actions
 
     @objc private func addButtonPressed() {
-        viewModel.addProduct()
+        viewModel?.addProduct()
     }
 
     @objc private func removeButtonPressed() {
-        viewModel.removeProduct()
+        viewModel?.removeProduct()
     }
 }
 
 // MARK: - Component
 
-extension SearchCellContent: Component {
+extension ProductCellContent: Component {
 
     enum Configuration {
-        case prepareForReuse, content(viewModel: SearchCellViewModelProtocol)
+        case prepareForReuse, content(viewModel: ProductCellViewModelProtocol)
     }
 
     func render(with configuration: Configuration) {
@@ -125,7 +125,7 @@ extension SearchCellContent: Component {
     }
 
     private func setupComponent() {
-        let product = viewModel.product
+        guard let product = viewModel?.product else { return }
 
         //Check and disable product when unavailable
         alpha = product.available ? 1.0 : 0.3
@@ -156,7 +156,7 @@ extension SearchCellContent: Component {
 
 // MARK: - Constraints
 
-extension SearchCellContent {
+extension ProductCellContent {
 
     private func defineSubviewsConstraints() {
         setupImageConstraints()

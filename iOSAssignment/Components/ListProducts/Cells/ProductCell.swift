@@ -1,5 +1,5 @@
 //
-//  SearchCell.swift
+//  ProductCell.swift
 //  iOSAssignment
 //
 //  Created by Jader Nunes on 28/10/21.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class SearchCell: UITableViewCell {
+final class ProductCell: UITableViewCell {
 
     // MARK: - Elements
 
-    private var viewModel: SearchCellViewModelProtocol?
-    private let content: SearchCellContent = create()
+    private var viewModel: ProductCellViewModelProtocol?
+    private let content: ProductCellContent = create()
 
     // MARK: - Life cycle
 
@@ -39,7 +39,7 @@ final class SearchCell: UITableViewCell {
         content.render(with: .prepareForReuse)
     }
 
-    func configure(with viewModel: SearchCellViewModelProtocol) {
+    func configure(with viewModel: ProductCellViewModelProtocol) {
 
         self.viewModel = viewModel
         content.render(with: .content(viewModel: viewModel))
@@ -52,7 +52,7 @@ final class SearchCell: UITableViewCell {
 
 // MARK: - Constraints
 
-extension SearchCell {
+extension ProductCell {
 
     private func defineSubviewsConstraints() {
         NSLayoutConstraint.activate([

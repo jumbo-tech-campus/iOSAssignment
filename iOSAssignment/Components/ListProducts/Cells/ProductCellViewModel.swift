@@ -1,29 +1,29 @@
 //
-//  SearchCellViewModel.swift
+//  ProductCellViewModel.swift
 //  iOSAssignment
 //
 //  Created by Jader Nunes on 28/10/21.
 //
 
-protocol SearchCellContentDelegate: AnyObject {
+protocol ProductCellContentDelegate: AnyObject {
     func addButtonPressed(product: Product)
     func removeButtonPressed(product: Product)
 }
 
-protocol SearchCellViewModelProtocol: AnyObject {
+protocol ProductCellViewModelProtocol: AnyObject {
     var product: Product { get }
-    var delegate: SearchCellContentDelegate? { get }
+    var delegate: ProductCellContentDelegate? { get }
 
     func addProduct()
     func removeProduct()
 }
 
-final class SearchCellViewModel: SearchCellViewModelProtocol {
+final class ProductCellViewModel: ProductCellViewModelProtocol {
 
     // MARK: - Attributes
 
     private(set) var product: Product
-    weak var delegate: SearchCellContentDelegate?
+    weak var delegate: ProductCellContentDelegate?
 
     // MARK: - Life cycle
 

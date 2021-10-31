@@ -11,7 +11,7 @@ final class HomeContent: UIView {
 
     // MARK: - Attributes
 
-    unowned var viewModel: HomeViewModelProtocol!
+    weak var viewModel: HomeViewModelProtocol?
 
     // MARK: - Elements
 
@@ -46,7 +46,7 @@ final class HomeContent: UIView {
     }
 
     @objc private func buttonOpenSearchPressed() {
-        viewModel.openSearch()
+        viewModel?.openSearch()
     }
 }
 

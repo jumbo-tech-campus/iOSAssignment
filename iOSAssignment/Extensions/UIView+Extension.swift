@@ -62,20 +62,6 @@ func create<T: UIView>(configure: ((T) -> Void)? = nil) -> T {
 // MARK: - Constraints
 
 extension UIView {
-
-    @discardableResult func pinToBounds(of view: UIView,
-                     topConstant: CGFloat = 0,
-                     leadingConstant: CGFloat = 0,
-                     bottomConstant: CGFloat = 0,
-                     trailingConstant: CGFloat = 0) -> UIView {
-        NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: view.topAnchor, constant: topConstant),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingConstant),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottomConstant),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailingConstant)
-        ])
-        return self
-    }
     
     @discardableResult func centerInSuperview() -> UIView {
         translatesAutoresizingMaskIntoConstraints = false

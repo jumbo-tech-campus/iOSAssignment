@@ -45,7 +45,7 @@ final class SearchViewController: UIViewController {
 
     private func setupUI() {
         view.backgroundColor = .white
-        configureNavigationBar(isHidden: true)
+        configureNavigationBar()
         populateStaticInfo()
         setupContent()
     }
