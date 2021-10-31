@@ -77,7 +77,7 @@ Following the same concept we created a components that could be used everywhere
 
 | Video |
 | ------------- |
-| ![iPhone4](/screenshots/iphone/movie..gif?raw=true) |
+| ![iPhone4](/screenshots/iphone/movie.gif?raw=true) |
 
 
 ### iPad
