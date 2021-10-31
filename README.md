@@ -42,8 +42,12 @@ Following the same concept we created a components that could be used everywhere
 * Create helper functions to work around constraint avoiding boilerplates.
 
 ## Dependencies
-* Cocoapods 1.10.2.
-* Alamofire: *We choose it because a bunch of developers are working around this every day and following that is easiest to find a issue if it's come up. On this library they've frequency of updates, solve bugs very fast. But for sure there's no a silver bullet, if we already have in our compay a network library used for long time it also could be a good choise.*
+* [Cocoapods](https://guides.cocoapods.org/using/getting-started.html) 1.10.2.
+* [R.swift](https://github.com/mac-cain13/R.swift) (5.4.0): It makes the code that uses resources:
+    * **Fully typed**, less casting and guessing what a method will return.
+    * **Compile time checked**, no more incorrect strings that make the app crash at runtime.
+    * **Autocompleted**, help us to don't guess that image name again.
+* [Alamofire](https://github.com/Alamofire/Alamofire) (5.4.x): *We choose it because a bunch of developers are working around this every day and following that is easiest to find a issue if it's come up. On this library they've frequency of updates, solve bugs very fast. But for sure there's no a silver bullet, if we already have in our compay a network library used for long time it also could be a good choise.*
 
 ## Requirements
 * iOS 13.0+.
@@ -51,7 +55,7 @@ Following the same concept we created a components that could be used everywhere
 * Swift 5.0.
 
 ## Installation
-* Make sure we've been installed [Cocoapods](https://guides.cocoapods.org/using/getting-started.html).
+* Make sure we've been installed [Cocoapods](https://guides.cocoapods.org/using/getting-started.html) 1.10.2.
 * Open the *Terminal*.
 * Go to the project's root folder where sould've the **Podfile**.
 * Run this command: ```pod install```.
@@ -67,18 +71,13 @@ Following the same concept we created a components that could be used everywhere
 | ![iPhone1](/screenshots/iphone/img1.png?raw=true) | ![iPhone2](/screenshots/iphone/img2.png?raw=true) |
 
 
-| Cart  |
-| ------------- |
-| ![iPhone3](/screenshots/iphone/img3.png?raw=true) |
+| Cart  | Video |
+| ------------- | ------------- | 
+| ![iPhone3](/screenshots/iphone/img3.png?raw=true) | ![iPhone5](/screenshots/iphone/movie.gif?raw=true) |
 
 | Cart landscape |
 | ------------- |
 | ![iPhone4](/screenshots/iphone/img4.png?raw=true) |
-
-| Video |
-| ------------- |
-| ![iPhone4](/screenshots/iphone/movie.gif?raw=true) |
-
 
 ### iPad
 

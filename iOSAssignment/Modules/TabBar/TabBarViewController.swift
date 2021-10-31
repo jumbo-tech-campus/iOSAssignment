@@ -85,7 +85,6 @@ final class TabBarViewController: UITabBarController {
     // MARK: - Create screen
 
     private func addHomeScreen() {
-        //TODO: handle it
         let navigation = UINavigationController()
         let coordinator = HomeCoordinator(presenter: navigation)
         coordinator.start()

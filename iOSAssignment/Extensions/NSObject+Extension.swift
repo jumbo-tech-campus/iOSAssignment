@@ -14,11 +14,11 @@ protocol ClassNameProtocol {
 
 extension ClassNameProtocol {
 
-    public static var className: String {
+    static var className: String {
         String(describing: self)
     }
 
-    public var className: String {
+    var className: String {
         type(of: self).className
     }
 }

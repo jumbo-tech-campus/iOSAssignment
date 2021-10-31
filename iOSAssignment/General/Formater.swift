@@ -18,7 +18,7 @@ final class Formater {
 
     /// Used to set a default formatter in a whole application. Default value is: autoupdatingCurrent.
     /// - Parameter locale: It's an optional.
-    public init(locale: Locale = Locale.autoupdatingCurrent) {
+    init(locale: Locale = Locale.autoupdatingCurrent) {
         localeDefault = locale
     }
 
