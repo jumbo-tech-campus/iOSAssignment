@@ -11,7 +11,7 @@ private let storageImage = NSCache<NSString, UIImage>()
 
 extension UIImageView {
 
-    func addImage(path: String) {
+    func addImage(path: String, placeholder: UIImage? = R.image.iconNoImage()) {
         guard
             let localImage = storageImage.object(forKey: path as NSString)
         else {
@@ -21,7 +21,7 @@ extension UIImageView {
 
                 let downloadedImage = self?.downloadImage(from: path)
                 DispatchQueue.main.async {
-                    self?.image = downloadedImage
+                    self?.image = downloadedImage ?? placeholder
                     self?.stopLoader()
                 }
             }

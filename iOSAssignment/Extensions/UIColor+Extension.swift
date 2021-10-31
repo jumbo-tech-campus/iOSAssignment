@@ -15,6 +15,7 @@ extension UIColor {
     static let clSecondary = white
     static let clSeparator = lightGray
     static let clNoData = lightGray.withAlphaComponent(0.3)
+    static let clBlack = black
 
     /// HEX: #F8C432
     static let clPrimary = UIColor(named: "primary") ?? white
@@ -22,6 +23,6 @@ extension UIColor {
     /// HEX: #FFFAF5
     static let clBeige = UIColor(named: "beige") ?? white
 
-    /// HEX: #9B392B
+    /// HEX: #FFF5EE
     static let customRed = UIColor(named: "red") ?? white
 }

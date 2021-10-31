@@ -17,7 +17,7 @@ final class HomeContent: UIView {
 
     private let buttonOpenSearch: UIButton = create {
         $0.backgroundColor = .clPrimary
-        $0.setTitleColor(.clSecondary, for: .normal)
+        $0.setTitleColor(.clBlack, for: .normal)
         $0.setTitle(R.string.localizable.homeOpenSearchButton(), for: .normal)
         $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
