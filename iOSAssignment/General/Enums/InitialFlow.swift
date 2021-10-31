@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum InitialFlow {
+enum InitialFlow: CaseIterable {
     case splash, mainApp
 }

@@ -5,6 +5,6 @@
 //  Created by Jader Nunes on 27/10/21.
 //
 
-enum MessageCategory {
+enum MessageCategory: CaseIterable {
     case error, success
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Symbol: String {
+enum Symbol: String, CaseIterable {
     case euro = "EUR", unowned
 
     init(value: String) {
@@ -18,7 +18,6 @@ enum Symbol: String {
         switch self {
             case .euro: return "€"
             case .unowned: return ""
-
         }
     }
 }

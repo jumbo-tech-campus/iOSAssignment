@@ -13,4 +13,28 @@ final class HomeScreenTests: XCTestCase {
         let viewModel = HomeViewModel()
         XCTAssertEqual(viewModel.title, R.string.localizable.homeNavigationTitle())
     }
+
+    func testHomeOpenSearchScreen() {
+        let navigationSpy = SplashScreenNavigationSpy()
+
+        let navigation = UINavigationController()
+        let coordinator = HomeCoordinator(presenter: navigation)
+        coordinator.delegate = navigationSpy
+
+        let viewModel = HomeViewModel(coordinator: coordinator)
+        viewModel.openSearch()
+
+        XCTAssertEqual(navigationSpy.isSearchOpened, true)
+    }
+}
+
+// MARK: - Home delegate
+
+private final class SplashScreenNavigationSpy: HomeDelegate {
+
+    var isSearchOpened = false
+
+    func openSearchDidPress() {
+        isSearchOpened = true
+    }
 }

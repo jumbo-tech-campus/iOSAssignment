@@ -23,6 +23,8 @@ final class Cart: ObjectRepresentable, CartProtocol {
 
     // MARK: - Life cycle
 
+    init() {}
+
     init(product: Product) {
         products = [CartProduct(product: product)]
     }
