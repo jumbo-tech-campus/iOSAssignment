@@ -56,11 +56,7 @@ final class ListProductsComponent: UIView {
     }
 
     private func reload() {
-        UIView.performWithoutAnimation {
-            self.tableView.reloadData()
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }
+        tableView.reloadData()
     }
 }
 
@@ -90,10 +86,10 @@ extension ListProductsComponent {
 
     private func setupTableConstraints() {
         NSLayoutConstraint.activate([
-            tableView.leftAnchor.constraint(equalTo: leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: rightAnchor),
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }

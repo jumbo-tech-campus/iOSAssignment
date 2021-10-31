@@ -137,8 +137,9 @@ final class TabBarViewController: UITabBarController {
     }
 
     private func addCartScreen() {
-        //TODO: handle it
         let navigation = UINavigationController()
+        let coordinator = CartCoordinator(presenter: navigation)
+        coordinator.start()
 
         navigation.tabBarItem = UITabBarItem(
             title: R.string.localizable.tabBarCartTitle(),

@@ -32,3 +32,6 @@
 // MARK: - Cart screen
 
 "cart.navigation.title" = "Cart";
+"cart.summary.title" = "Summary";
+"cart.summary.countProducts.title" = "Products";
+"cart.summary.total.title" = "Total";

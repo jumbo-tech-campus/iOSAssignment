@@ -30,6 +30,7 @@ final class SearchContent: UIView {
     }
     private let labelCountProducts: UILabel = create {
         $0.font = .subDetail
+        $0.textAlignment = .left
     }
 
     // MARK: - Life cycle
@@ -91,25 +92,25 @@ extension SearchContent {
 
     private func setupSearchBarConstraints() {
         NSLayoutConstraint.activate([
-            searchBar.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-            searchBar.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
+            searchBar.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+            searchBar.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16),
             searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
         ])
     }
 
     private func setupCountProductConstraints() {
         NSLayoutConstraint.activate([
-            labelCountProducts.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+            labelCountProducts.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
             labelCountProducts.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8)
         ])
     }
 
     private func setupListProductsConstraints() {
         NSLayoutConstraint.activate([
-            listProductsComponent.leftAnchor.constraint(equalTo: leftAnchor),
-            listProductsComponent.rightAnchor.constraint(equalTo: rightAnchor),
+            listProductsComponent.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
+            listProductsComponent.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
             listProductsComponent.topAnchor.constraint(equalTo: labelCountProducts.bottomAnchor, constant: 8),
-            listProductsComponent.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            listProductsComponent.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8),
         ])
     }
 }

@@ -30,7 +30,7 @@ final class SearchViewModel: SearchViewModelProtocol {
     let isLoading = Dynamic<Bool>(false)
     let dataUpdated = Dynamic<Void?>(nil)
     let messageData = Dynamic<MessageData?>(nil)
-    var title: String { R.string.localizable.tabBarSearchTitle() }
+    var title: String { R.string.localizable.searchNavigationTitle() }
 
     // MARK: - Life cycle
 
@@ -108,7 +108,7 @@ extension SearchViewModel: SearchViewModelBaseProtocol {
     }
 }
 
-// MARK: - Search content delegate
+// MARK: - ProductCell content delegate
 
 extension SearchViewModel: ProductCellContentDelegate {
 

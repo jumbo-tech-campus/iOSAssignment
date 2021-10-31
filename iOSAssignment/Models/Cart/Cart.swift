@@ -10,7 +10,7 @@ import Foundation
 protocol CartProtocol {
     func addProduct(_ product: Product)
     func removeProduct(_ product: Product)
-    func calcSubTotal() -> Int
+    func calcTotal() -> Int
     func countProducts(id: String) -> Int
 }
 
@@ -53,7 +53,7 @@ final class Cart: ObjectRepresentable, CartProtocol {
         }
     }
 
-    func calcSubTotal() -> Int {
+    func calcTotal() -> Int {
         products
             .map { $0.calcSubTotal() }
             .reduce(0) { $0 + $1 }

@@ -1,25 +1,25 @@
 //
-//  SearchViewController.swift
+//  CartViewController.swift
 //  iOSAssignment
 //
-//  Created by Jader Nunes on 27/10/21.
+//  Created by Jader Nunes on 31/10/21.
 //
 
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class CartViewController: UIViewController {
 
     // MARK: - Attributes
 
-    private let viewModel: SearchViewModelProtocol
+    private let viewModel: CartViewModelProtocol
 
     // MARK: - Elements
 
-    private let content = SearchContent()
+    private let content = CartContent()
 
     // MARK: - Life cycle
 
-    init(viewModel: SearchViewModelProtocol) {
+    init(viewModel: CartViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -72,7 +72,7 @@ final class SearchViewController: UIViewController {
 
 // MARK: - Bind data
 
-private extension SearchViewController {
+private extension CartViewController {
 
     func bindStatusLoader() {
         viewModel.isLoading.bind { [weak self] isLoading in

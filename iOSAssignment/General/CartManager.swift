@@ -13,6 +13,7 @@ protocol CartManagerProtocol {
     func loadProducts() -> [CartProduct]
     func countProducts(id: String) -> Int
     func countAll() -> Int
+    func total() -> Int
 }
 
 final class CartManager: CartManagerProtocol {
@@ -85,5 +86,9 @@ final class CartManager: CartManagerProtocol {
         return cart.products
             .map { $0.count }
             .reduce(0) { $0 + $1 }
+    }
+
+    func total() -> Int {
+        getCart()?.calcTotal() ?? 0
     }
 }
