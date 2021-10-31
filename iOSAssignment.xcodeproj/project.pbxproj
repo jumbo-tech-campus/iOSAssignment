@@ -757,6 +757,7 @@
 			buildPhases = (
 				34330007969B8A01E944848B /* [CP] Check Pods Manifest.lock */,
 				6B2A96F72729972B00A5D976 /* R.swift */,
+				6B9948ED272F2A1A005EB0BD /* Search_TODO_FIXE_ERROR */,
 				AFF5348C2701ECBC00EEE4AE /* Sources */,
 				AFF5348D2701ECBC00EEE4AE /* Frameworks */,
 				AFF5348E2701ECBC00EEE4AE /* Resources */,
@@ -936,6 +937,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ $ACTION != \"indexbuild\" ]; then\n  \"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\nfi\n";
+		};
+		6B9948ED272F2A1A005EB0BD /* Search_TODO_FIXE_ERROR */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Search_TODO_FIXE_ERROR;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n\n";
 		};
 		CE6989284149FD49DD835D51 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

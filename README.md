@@ -1,36 +1,87 @@
-# Technical Assignment
+# iProduct
 
-## Description   
+## Description
+This project will show a list of products to add in the cart to by in the future.
 
-The test project will be a native iOS application that should be created as an Xcode project (version 12.3 or higher) and should also support both landscape and portrait device  orientations. The result of your work should be a buildable application able to run on an iOS  device (iPad or iPhone) with iOS 13.0 or higher.  
+## Topics
+* [Architecture](#architecture)
+* [Concepts covered](#concepts_covered)
+* [In this version](#in_this_version)
+* [Future items](#future_items)
+* [Dependencies](#dependencies)
+* [Requirements](#requirements)
+* [Installation](#installation)
 
-Create an iOS application for browsing the Jumbo list of available products. To achieve this you are going to use a provided local JSON list with 10 products.
+## Architecture
+For this application was used **MVVM-C** where C is Coordinator to manage all the presentations for each flow.
+Using this pattern also allow us to manage all the business logic inside the ViewModels, given a good point when we're looking at an application with Scalability, Readability and Maintainability.
+Following the same concept we created a components that could be used everywhere inside.
 
+## Concepts covered
+* SOLID.
+* Inheritance.
+* Encapsulation.
+* Maintainability.
+* Scalability.
+* Readability.
+* Testability.
+* Components.
 
-### Usage example
-`ProductsRepository().fetchRawProducts()`
+### In this version
+* Unit tests.
+* Internationalization.
+* TODO search: *every build the project will show a warnning on each TODO tag we keeped.*
+
+## Future items
+* Add .frameworks: *Create custom frameworks  to allow to grow scalable in a different teams*
+* UI tests, tesing screens and the elements in itself.
+* Handle erros with a custom alert component.
+* Support both Dark and Light mode.
+* Add Crashlytics framework to traking all issues.
+* Create NO DATA component to improve the user experience.
+* Create helper functions to work around constraint avoiding boilerplates.
+
+## Dependencies
+* Cocoapods 1.10.2.
+* Alamofire: *We choose it because a bunch of developers are working around this every day and following that is easiest to find a issue if it's come up. On this library they've frequency of updates, solve bugs very fast. But for sure there's no a silver bullet, if we already have in our compay a network library used for long time it also could be a good choise.*
 
 ## Requirements
+* iOS 13.0+.
+* Xcode 12.x.
+* Swift 5.0.
 
-- The first screen of your application should display a start button that should navigate to list of products
+## Installation
+* Make sure we've been installed [Cocoapods](https://guides.cocoapods.org/using/getting-started.html).
+* Open the *Terminal*.
+* Go to the project's root folder where sould've the **Podfile**.
+* Run this command: ```pod install```.
 
-- The Products List screen should contain a table view displaying the following fields for each product
-  - Image
-  - Name
-  - Price
-  - Quantity added to Cart
-  - Add to Cart button
 
-- When Add to Cart button is tapped, the product should be added to a local list of products with quantities (Cart).
+## Screenshots
+------------
 
-- _OPTIONAL_: Save Cart locally on the device
-- _OPTIONAL_: Load Cart back from the device when entering the product list screen
-- _OPTIONAL_: Cart list accessible on the application level
+### iPhone
 
-## Hints 
+| Home  | Search |
+| ------------- | ------------- |
+| ![iPhone1](/screenshots/iphone/img1.png?raw=true) | ![iPhone2](/screenshots/iphone/img2.png?raw=true) |
 
-- Attached designs could be a style guide, feel free to innovate. 
-- Write your code in production quality, in a reusable way
 
-![Simulator Screen Shot - iPhone 8 - 2021-09-28 at 16 19 08](https://user-images.githubusercontent.com/55485534/135105894-52b5d465-eec1-4a40-80ee-8f63eed45915.png)
+| Cart  |
+| ------------- |
+| ![iPhone3](/screenshots/iphone/img3.png?raw=true) |
 
+| Cart landscape |
+| ------------- |
+| ![iPhone4](/screenshots/iphone/img4.png?raw=true) |
+
+| Video |
+| ------------- |
+| ![iPhone4](/screenshots/iphone/movie..gif?raw=true) |
+
+
+### iPad
+
+| Search | Cart |
+| ------------- | ------------- |
+| ![iPad1](/screenshots/ipad/img1.png?raw=true) | ![iPad2](/screenshots/ipad/img1.png?raw=true) |
