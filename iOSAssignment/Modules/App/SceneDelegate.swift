@@ -9,6 +9,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // MARK: - Life cycle
 
+    convenience init(window: UIWindow) {
+        self.init()
+        self.window = window
+    }
+
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {

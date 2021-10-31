@@ -6,7 +6,7 @@
 //
 
 enum JSONFiles: String {
-    case productsResult
+    case productsResult, productsResultError
 }
 
 struct JSONResponse {
@@ -23,5 +23,9 @@ struct JSONResponse {
 
     static func getProductsResponse() -> Products? {
         decoder.decode(resource: .productsResult)
+    }
+
+    static func getProductsResponseError() -> Products? {
+        decoder.decode(resource: .productsResultError)
     }
 }

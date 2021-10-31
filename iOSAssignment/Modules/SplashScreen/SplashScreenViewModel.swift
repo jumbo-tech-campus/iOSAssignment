@@ -6,7 +6,7 @@
 //
 
 protocol SplashScreenViewModelProtocol {
-    func openProductList()
+    func openMainApp()
 }
 
 final class SplashScreenViewModel: SplashScreenViewModelProtocol {
@@ -23,7 +23,7 @@ final class SplashScreenViewModel: SplashScreenViewModelProtocol {
 
     // MARK: - Custom methods
 
-    func openProductList() {
-        coordinator?.openProductList()
+    func openMainApp() {
+        coordinator?.openMainApp()
     }
 }

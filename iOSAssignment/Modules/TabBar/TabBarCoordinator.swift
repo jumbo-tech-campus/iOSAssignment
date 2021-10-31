@@ -7,23 +7,35 @@
 
 import UIKit
 
-final class TabBarCoordinator: Coordinator {
+protocol TabBarCoordinatorProtocol: Coordinator {
+    func openSearch()
+}
+
+final class TabBarCoordinator: TabBarCoordinatorProtocol {
 
     // MARK: - Attributes
 
+    private let firstScreen: TabBarPosition
     private var tabBarController: UITabBarController?
     private let window: UIWindow
 
     // MARK: - Life cycle
 
-    init(presenter window: UIWindow) {
+    init(presenter window: UIWindow, firstScreen: TabBarPosition = .home) {
         self.window = window
+        self.firstScreen = firstScreen
     }
 
     func start() {
-        tabBarController = TabBarViewController()
+        let viewModel = TabBarViewModel(coordinator: self)
+        tabBarController = TabBarViewController(viewModel: viewModel)
         tabBarController?.hidesBottomBarWhenPushed = true
+        tabBarController?.selectedIndex = firstScreen.rawValue
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
+    }
+
+    func openSearch() {
+        tabBarController?.selectedIndex = TabBarPosition.search.rawValue
     }
 }

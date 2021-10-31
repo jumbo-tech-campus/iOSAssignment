@@ -12,7 +12,7 @@ protocol SplashScreenCoordinatorDelegate: AnyObject {
 }
 
 protocol SplashScreenCoordinatorProtocol: Coordinator {
-    func openProductList()
+    func openMainApp()
 }
 
 final class SplashScreenCoordinator: SplashScreenCoordinatorProtocol {
@@ -37,7 +37,7 @@ final class SplashScreenCoordinator: SplashScreenCoordinatorProtocol {
         presenter?.makeKeyAndVisible()
     }
 
-    func openProductList() {
+    func openMainApp() {
         delegate?.didFinishSplashScreen()
     }
 }

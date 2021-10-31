@@ -51,7 +51,7 @@ final class SplashScreenViewController: UIViewController {
             UIView.animate(withDuration: 0.2) {
                 self.logoImageView.alpha = 0.0
             } completion: { _ in
-                self.viewModel.openProductList()
+                self.viewModel.openMainApp()
             }
             return
         }

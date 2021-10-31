@@ -13,15 +13,17 @@ final class TabBarViewController: UITabBarController {
     // MARK: - Attributes
 
     private var screens: [UIViewController]
-    private let positionFirstScreen: TabBarPosition = .home
     private let cart: CartManagerProtocol
     private let notification: NotificationCenter
+    private let viewModel: TabBarViewModelProtocol
 
     // MARK: - Life cycle
 
-    init(screens: [UIViewController] = [UIViewController](),
+    init(viewModel: TabBarViewModelProtocol,
+         screens: [UIViewController] = [UIViewController](),
          cart: CartManagerProtocol = CartManager(),
          notification: NotificationCenter = .default) {
+        self.viewModel = viewModel
         self.screens = screens
         self.cart = cart
         self.notification = notification
@@ -65,7 +67,6 @@ final class TabBarViewController: UITabBarController {
         }
 
         viewControllers = screens
-        selectedIndex = positionFirstScreen.rawValue
     }
 
     private func subscripObersvers() {
@@ -76,10 +77,9 @@ final class TabBarViewController: UITabBarController {
     }
 
     @objc private func updateCountItemsCart() {
-        let countProducts = cart.countAll()
         screens[TabBarPosition.cart.rawValue]
             .tabBarItem
-            .badgeValue = countProducts > 0 ? countProducts.description : nil
+            .badgeValue = viewModel.badgeValue
     }
 
     // MARK: - Create screen
@@ -89,7 +89,7 @@ final class TabBarViewController: UITabBarController {
         let navigation = UINavigationController()
         let coordinator = HomeCoordinator(presenter: navigation)
         coordinator.start()
-        coordinator.delegate = self
+        coordinator.delegate = viewModel
 
         navigation.tabBarItem = UITabBarItem(
             title: R.string.localizable.tabBarHomeTitle(),
@@ -164,14 +164,5 @@ extension TabBarViewController: UITabBarControllerDelegate {
             default:
                 return false
         }
-    }
-}
-
-// MARK: - Home delegate {
-
-extension TabBarViewController: HomeDelegate {
-
-    func openSearchDidPress() {
-        selectedIndex = TabBarPosition.search.rawValue
     }
 }

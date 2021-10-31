@@ -13,7 +13,7 @@ protocol ProductServicesProtocol: AnyObject {
     func requestAllProducts(_ completion: @escaping CompletionProductList)
 }
 
-final class ProductServices: ProductServicesProtocol {
+class ProductServices: ProductServicesProtocol {
 
     // MARK: - Attributes
 
