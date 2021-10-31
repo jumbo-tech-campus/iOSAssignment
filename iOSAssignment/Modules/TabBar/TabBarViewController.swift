@@ -14,11 +14,14 @@ final class TabBarViewController: UITabBarController {
 
     private var screens: [UIViewController]
     private let positionFirstScreen: TabBarPosition = .home
+    private let cart: CartManagerProtocol
 
     // MARK: - Life cycle
 
-    init(screens: [UIViewController] = [UIViewController]()) {
+    init(screens: [UIViewController] = [UIViewController](),
+         cart: CartManagerProtocol = CartManager()) {
         self.screens = screens
+        self.cart = cart
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -31,6 +34,8 @@ final class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         setupUI()
+        updateCountItemsCart()
+        subscripObersvers()
     }
 
     // MARK: - Custom methods
@@ -57,6 +62,20 @@ final class TabBarViewController: UITabBarController {
 
         viewControllers = screens
         selectedIndex = positionFirstScreen.rawValue
+    }
+
+    private func subscripObersvers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateCountItemsCart),
+                                               name: NSNotification.Name(rawValue: .keyNotifyCartChanged),
+                                               object: nil)
+    }
+
+    @objc private func updateCountItemsCart() {
+        let countProducts = cart.countAll()
+        screens[TabBarPosition.cart.rawValue]
+            .tabBarItem
+            .badgeValue = countProducts > 0 ? countProducts.description : nil
     }
 
     // MARK: - Create screen
@@ -121,6 +140,7 @@ final class TabBarViewController: UITabBarController {
             title: R.string.localizable.tabBarCartTitle(),
             image: R.image.iconCartTabBar(),
             tag: TabBarPosition.cart.rawValue)
+        navigation.tabBarItem.badgeColor = .customRed
 
         screens.append(navigation)
     }

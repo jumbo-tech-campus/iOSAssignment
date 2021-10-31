@@ -21,4 +21,7 @@ extension UIColor {
 
     /// HEX: #FFFAF5
     static let clBeige = UIColor(named: "beige") ?? white
+
+    /// HEX: #9B392B
+    static let customRed = UIColor(named: "red") ?? white
 }

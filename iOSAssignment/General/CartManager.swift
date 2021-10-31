@@ -12,6 +12,7 @@ protocol CartManagerProtocol {
     func removeProduct(_ product: Product)
     func loadProducts() -> [CartProduct]
     func countProducts(id: String) -> Int
+    func countAll() -> Int
 }
 
 final class CartManager: CartManagerProtocol {
@@ -19,14 +20,21 @@ final class CartManager: CartManagerProtocol {
     // MARK: - Attributes
 
     private let database: DatabaseProtocol
+    private let notification: NotificationCenter
 
     // MARK: - Life cycle
 
-    init(database: DatabaseProtocol = DatabaseManager()) {
+    init(database: DatabaseProtocol = DatabaseManager(),
+         notification: NotificationCenter = .default) {
         self.database = database
+        self.notification = notification
     }
 
     // MARK: - Custom methods
+
+    private func notifyCartChanged() {
+        notification.post(name: NSNotification.Name(rawValue: .keyNotifyCartChanged), object: nil)
+    }
 
     private func getCart() -> Cart? {
         do {
@@ -44,6 +52,8 @@ final class CartManager: CartManagerProtocol {
             } else {
                 try database.save(model: Cart(product: product))
             }
+
+            notifyCartChanged()
         } catch {
             //TODO: handle error
         }
@@ -54,6 +64,7 @@ final class CartManager: CartManagerProtocol {
             if let cart = getCart() {
                 cart.removeProduct(product)
                 try database.save(model: cart)
+                notifyCartChanged()
             }
         } catch {
             //TODO: handle error
@@ -67,5 +78,12 @@ final class CartManager: CartManagerProtocol {
     func countProducts(id: String) -> Int {
         guard let cart = getCart() else { return 0 }
         return cart.countProducts(id: id)
+    }
+
+    func countAll() -> Int {
+        guard let cart = getCart() else { return 0 }
+        return cart.products
+            .map { $0.count }
+            .reduce(0) { $0 + $1 }
     }
 }
