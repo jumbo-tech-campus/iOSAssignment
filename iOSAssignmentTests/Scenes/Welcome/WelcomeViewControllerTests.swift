@@ -44,39 +44,20 @@ class WelcomeViewControllerTests: XCTestCase {
         RunLoop.current.run(until: Date())
     }
   
-    // MARK: Test doubles
-  
-    class WelcomeBusinessLogicSpy: WelcomeBusinessLogic {
-        var doSomethingCalled = false
-    
-        func doSomething(request: Welcome.Something.Request) {
-            doSomethingCalled = true
-        }
-    }
-  
     // MARK: Tests
   
-    func testShouldDoSomethingWhenViewIsLoaded() {
-        // Given
-        let spy = WelcomeBusinessLogicSpy()
-        sut.interactor = spy
-    
-        // When
+    func testWelcomeViewAndViewLoadedAreEqual() {
         loadView()
-    
-        // Then
-        XCTAssertTrue(spy.doSomethingCalled, "viewDidLoad() should ask the interactor to do something")
+        
+        XCTAssertTrue(sut.view is WelcomeView, "Welcome View is from class WelcomeView")
+        XCTAssertEqual(sut.welcomeView, sut.view, "View Loaded should be Welcome View")
     }
   
-    func testDisplaySomething() {
-        // Given
-        let viewModel = Welcome.Something.ViewModel()
-    
-        // When
+    func testGoToListButtonExists() {
+        
         loadView()
-        sut.displaySomething(viewModel: viewModel)
-    
-        // Then
-        //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
+        
+        XCTAssertTrue(sut.welcomeView.subviews.contains(sut.welcomeView.goToProductListButton), "Go to product list button should be in the view hierarchy")
+        XCTAssertEqual(sut.welcomeView.goToProductListButton.isHidden, false, "Go to product list button should be visible")
     }
 }

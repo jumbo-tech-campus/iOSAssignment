@@ -9,7 +9,12 @@ import UIKit
 
 class WelcomeView: UIView {
     
+    let goToProductListButton: UIButton
+    
     override init(frame: CGRect) {
+        
+        goToProductListButton = UIButton(type: .custom)
+        
         super.init(frame: frame)
         
         setupComponents()

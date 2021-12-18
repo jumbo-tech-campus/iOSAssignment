@@ -7,16 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AADF2B98276E07FF00E6AF47 /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B92276E07FF00E6AF47 /* WelcomePresenter.swift */; };
-		AADF2B99276E07FF00E6AF47 /* WelcomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B93276E07FF00E6AF47 /* WelcomeWorker.swift */; };
+		AA4301CC276E221E00D1DC28 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301CB276E221E00D1DC28 /* UIView.swift */; };
 		AADF2B9A276E07FF00E6AF47 /* WelcomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */; };
-		AADF2B9B276E07FF00E6AF47 /* WelcomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B95276E07FF00E6AF47 /* WelcomeModels.swift */; };
 		AADF2B9C276E07FF00E6AF47 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */; };
-		AADF2B9D276E07FF00E6AF47 /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B97276E07FF00E6AF47 /* WelcomeInteractor.swift */; };
 		AADF2BA4276E09DD00E6AF47 /* WelcomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */; };
-		AADF2BA5276E09DD00E6AF47 /* WelcomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA1276E09DD00E6AF47 /* WelcomeInteractorTests.swift */; };
-		AADF2BA6276E09DD00E6AF47 /* WelcomeWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA2276E09DD00E6AF47 /* WelcomeWorkerTests.swift */; };
-		AADF2BA7276E09DD00E6AF47 /* WelcomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA3276E09DD00E6AF47 /* WelcomePresenterTests.swift */; };
 		AADF2BAE276E0A0F00E6AF47 /* ProductListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA8276E0A0F00E6AF47 /* ProductListRouter.swift */; };
 		AADF2BAF276E0A0F00E6AF47 /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA9276E0A0F00E6AF47 /* ProductListPresenter.swift */; };
 		AADF2BB0276E0A0F00E6AF47 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BAA276E0A0F00E6AF47 /* ProductListViewController.swift */; };
@@ -53,16 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AADF2B92276E07FF00E6AF47 /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
-		AADF2B93276E07FF00E6AF47 /* WelcomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWorker.swift; sourceTree = "<group>"; };
+		AA4301CB276E221E00D1DC28 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
-		AADF2B95276E07FF00E6AF47 /* WelcomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeModels.swift; sourceTree = "<group>"; };
 		AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		AADF2B97276E07FF00E6AF47 /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
 		AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewControllerTests.swift; sourceTree = "<group>"; };
-		AADF2BA1276E09DD00E6AF47 /* WelcomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractorTests.swift; sourceTree = "<group>"; };
-		AADF2BA2276E09DD00E6AF47 /* WelcomeWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWorkerTests.swift; sourceTree = "<group>"; };
-		AADF2BA3276E09DD00E6AF47 /* WelcomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenterTests.swift; sourceTree = "<group>"; };
 		AADF2BA8276E0A0F00E6AF47 /* ProductListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListRouter.swift; sourceTree = "<group>"; };
 		AADF2BA9276E0A0F00E6AF47 /* ProductListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
 		AADF2BAA276E0A0F00E6AF47 /* ProductListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +97,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA4301C9276E220600D1DC28 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AA4301CA276E221100D1DC28 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AA4301CA276E221100D1DC28 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA4301CB276E221E00D1DC28 /* UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AADF2B8F276E07DF00E6AF47 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,12 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				AADF2BBD276E0DB200E6AF47 /* Views */,
-				AADF2B92276E07FF00E6AF47 /* WelcomePresenter.swift */,
-				AADF2B93276E07FF00E6AF47 /* WelcomeWorker.swift */,
 				AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */,
-				AADF2B95276E07FF00E6AF47 /* WelcomeModels.swift */,
 				AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */,
-				AADF2B97276E07FF00E6AF47 /* WelcomeInteractor.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -158,9 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */,
-				AADF2BA1276E09DD00E6AF47 /* WelcomeInteractorTests.swift */,
-				AADF2BA2276E09DD00E6AF47 /* WelcomeWorkerTests.swift */,
-				AADF2BA3276E09DD00E6AF47 /* WelcomePresenterTests.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -205,8 +202,9 @@
 		AFF534922701ECBC00EEE4AE /* iOSAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				AADF2B8F276E07DF00E6AF47 /* Scenes */,
+				AA4301C9276E220600D1DC28 /* Common */,
 				AFF534C32701EE5400EEE4AE /* Jumbo */,
+				AADF2B8F276E07DF00E6AF47 /* Scenes */,
 				AFF534932701ECBC00EEE4AE /* AppDelegate.swift */,
 				AFF534952701ECBC00EEE4AE /* SceneDelegate.swift */,
 				AFF5349C2701ECBF00EEE4AE /* Assets.xcassets */,
@@ -382,17 +380,13 @@
 			files = (
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
 				AADF2BB0276E0A0F00E6AF47 /* ProductListViewController.swift in Sources */,
-				AADF2B98276E07FF00E6AF47 /* WelcomePresenter.swift in Sources */,
-				AADF2B9B276E07FF00E6AF47 /* WelcomeModels.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */,
 				AADF2BAE276E0A0F00E6AF47 /* ProductListRouter.swift in Sources */,
 				AFF534942701ECBC00EEE4AE /* AppDelegate.swift in Sources */,
-				AADF2B99276E07FF00E6AF47 /* WelcomeWorker.swift in Sources */,
 				AADF2B9C276E07FF00E6AF47 /* WelcomeViewController.swift in Sources */,
 				AFF534C62701EE7300EEE4AE /* ProductRaw.swift in Sources */,
 				AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */,
 				AADF2BAF276E0A0F00E6AF47 /* ProductListPresenter.swift in Sources */,
-				AADF2B9D276E07FF00E6AF47 /* WelcomeInteractor.swift in Sources */,
 				AADF2B9A276E07FF00E6AF47 /* WelcomeRouter.swift in Sources */,
 				AADF2BB1276E0A0F00E6AF47 /* ProductListInteractor.swift in Sources */,
 				AFF534CA2701F98300EEE4AE /* ProductImagesInfoRaw.swift in Sources */,
@@ -400,6 +394,7 @@
 				AADF2BB2276E0A0F00E6AF47 /* ProductListWorker.swift in Sources */,
 				AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */,
 				AFF534D72702088800EEE4AE /* ImageDetailRaw.swift in Sources */,
+				AA4301CC276E221E00D1DC28 /* UIView.swift in Sources */,
 				AADF2BB3276E0A0F00E6AF47 /* ProductListModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,10 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AADF2BA6276E09DD00E6AF47 /* WelcomeWorkerTests.swift in Sources */,
-				AADF2BA7276E09DD00E6AF47 /* WelcomePresenterTests.swift in Sources */,
 				AADF2BBA276E0C1A00E6AF47 /* ProductListWorkerTests.swift in Sources */,
-				AADF2BA5276E09DD00E6AF47 /* WelcomeInteractorTests.swift in Sources */,
 				AADF2BBB276E0C1A00E6AF47 /* ProductListInteractorTests.swift in Sources */,
 				AADF2BBC276E0C1A00E6AF47 /* ProductListPresenterTests.swift in Sources */,
 				AADF2BA4276E09DD00E6AF47 /* WelcomeViewControllerTests.swift in Sources */,
@@ -620,7 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -644,7 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

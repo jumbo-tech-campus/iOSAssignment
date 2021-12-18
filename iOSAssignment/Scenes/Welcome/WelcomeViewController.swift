@@ -12,13 +12,8 @@
 
 import UIKit
 
-protocol WelcomeDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Welcome.Something.ViewModel)
-}
-
-class WelcomeViewController: UIViewController, WelcomeDisplayLogic {
+class WelcomeViewController: UIViewController {
   
-    var interactor: WelcomeBusinessLogic?
     var router: (NSObjectProtocol & WelcomeRoutingLogic & WelcomeDataPassing)?
     let welcomeView = WelcomeView(frame: .zero)
 
@@ -41,34 +36,14 @@ class WelcomeViewController: UIViewController, WelcomeDisplayLogic {
     
     private func setup() {
         let viewController = self
-        let interactor = WelcomeInteractor()
-        let presenter = WelcomePresenter()
         let router = WelcomeRouter()
-        viewController.interactor = interactor
         viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
     }
   
     // MARK: View lifecycle
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
-    }
-  
-    // MARK: Do something
-  
-    //@IBOutlet weak var nameTextField: UITextField!
-  
-    func doSomething() {
-        let request = Welcome.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: Welcome.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
     }
 }

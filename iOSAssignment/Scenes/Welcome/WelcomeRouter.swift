@@ -13,15 +13,18 @@
 import UIKit
 
 @objc protocol WelcomeRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToProductList()
 }
 
 protocol WelcomeDataPassing { }
 
 class WelcomeRouter: NSObject, WelcomeRoutingLogic, WelcomeDataPassing {
     weak var viewController: WelcomeViewController?
-    var dataStore: WelcomeDataStore?
   
+    
+    func routeToProductList() {
+        
+    }
 //    // MARK: Routing
 //    func routeToSomewhere(segue: UIStoryboardSegue?) {
 //        if let segue = segue {
