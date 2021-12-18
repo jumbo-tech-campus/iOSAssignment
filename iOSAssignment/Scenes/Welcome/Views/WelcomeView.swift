@@ -26,8 +26,23 @@ class WelcomeView: UIView {
     }
     
     func setupComponents() {
-        backgroundColor = .gray
+        backgroundColor = .white
+        
+        goToProductListButton.setTitle("Go to Product List", for: .normal)
+        goToProductListButton.backgroundColor = .jumboYellow
+        
+        goToProductListButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 30, bottom: 10, right: 30)
+        goToProductListButton.layer.cornerRadius = 8
+        
+        addSubviewForAutolayout(goToProductListButton)
     }
     
-    func setupConstraints() {}
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            goToProductListButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            goToProductListButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            goToProductListButton.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 16),
+            goToProductListButton.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -16),
+        ])
+    }
 }

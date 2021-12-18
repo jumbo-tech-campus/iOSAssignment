@@ -45,5 +45,11 @@ class WelcomeViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        welcomeView.goToProductListButton.addTarget(self, action: #selector(didTapOnGoToProductListButton), for: .touchUpInside)
+    }
+    
+    @objc func didTapOnGoToProductListButton(sender: UIButton) {
+        router?.routeToProductList()
     }
 }

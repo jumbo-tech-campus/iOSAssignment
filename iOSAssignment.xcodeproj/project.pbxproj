@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AA4301CC276E221E00D1DC28 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301CB276E221E00D1DC28 /* UIView.swift */; };
+		AA4301CE276E28D800D1DC28 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301CD276E28D800D1DC28 /* UIColor.swift */; };
+		AA4301D0276E2BF700D1DC28 /* WelcomeRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301CF276E2BF700D1DC28 /* WelcomeRouterTests.swift */; };
 		AADF2B9A276E07FF00E6AF47 /* WelcomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */; };
 		AADF2B9C276E07FF00E6AF47 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */; };
 		AADF2BA4276E09DD00E6AF47 /* WelcomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		AA4301CB276E221E00D1DC28 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		AA4301CD276E28D800D1DC28 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		AA4301CF276E2BF700D1DC28 /* WelcomeRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouterTests.swift; sourceTree = "<group>"; };
 		AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
 		AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewControllerTests.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				AA4301CB276E221E00D1DC28 /* UIView.swift */,
+				AA4301CD276E28D800D1DC28 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -126,8 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				AADF2BBD276E0DB200E6AF47 /* Views */,
-				AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */,
 				AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */,
+				AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */,
+				AA4301CF276E2BF700D1DC28 /* WelcomeRouterTests.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -386,6 +392,7 @@
 				AADF2B9C276E07FF00E6AF47 /* WelcomeViewController.swift in Sources */,
 				AFF534C62701EE7300EEE4AE /* ProductRaw.swift in Sources */,
 				AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */,
+				AA4301CE276E28D800D1DC28 /* UIColor.swift in Sources */,
 				AADF2BAF276E0A0F00E6AF47 /* ProductListPresenter.swift in Sources */,
 				AADF2B9A276E07FF00E6AF47 /* WelcomeRouter.swift in Sources */,
 				AADF2BB1276E0A0F00E6AF47 /* ProductListInteractor.swift in Sources */,
@@ -404,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AADF2BBA276E0C1A00E6AF47 /* ProductListWorkerTests.swift in Sources */,
+				AA4301D0276E2BF700D1DC28 /* WelcomeRouterTests.swift in Sources */,
 				AADF2BBB276E0C1A00E6AF47 /* ProductListInteractorTests.swift in Sources */,
 				AADF2BBC276E0C1A00E6AF47 /* ProductListPresenterTests.swift in Sources */,
 				AADF2BA4276E09DD00E6AF47 /* WelcomeViewControllerTests.swift in Sources */,

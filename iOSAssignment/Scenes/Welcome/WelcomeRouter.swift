@@ -23,7 +23,7 @@ class WelcomeRouter: NSObject, WelcomeRoutingLogic, WelcomeDataPassing {
   
     
     func routeToProductList() {
-        
+        viewController?.navigationController?.pushViewController(ProductListViewController(), animated: true)
     }
 //    // MARK: Routing
 //    func routeToSomewhere(segue: UIStoryboardSegue?) {

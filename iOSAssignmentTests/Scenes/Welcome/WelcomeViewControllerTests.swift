@@ -34,6 +34,13 @@ class WelcomeViewControllerTests: XCTestCase {
     }
   
     // MARK: Test setup
+    
+    class WelcomeRouterSpy: WelcomeRouter {
+        var didRouteToProductList = false
+        override func routeToProductList() {
+            didRouteToProductList = true
+        }
+    }
   
     func setupWelcomeViewController() {
         sut = WelcomeViewController()
@@ -59,5 +66,25 @@ class WelcomeViewControllerTests: XCTestCase {
         
         XCTAssertTrue(sut.welcomeView.subviews.contains(sut.welcomeView.goToProductListButton), "Go to product list button should be in the view hierarchy")
         XCTAssertEqual(sut.welcomeView.goToProductListButton.isHidden, false, "Go to product list button should be visible")
+    }
+    
+    func testGoToListButtonHasTitle() {
+        loadView()
+        
+        XCTAssertEqual(sut.welcomeView.goToProductListButton.title(for: .normal), "Go to Product List", "\"Go To Product List\" should the button title")
+    }
+    
+    func testTapOnButtonGoesToProductList() {
+        
+        let spy = WelcomeRouterSpy()
+        spy.viewController = sut
+        sut.router = spy
+        
+        loadView()
+        sut.welcomeView.goToProductListButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertTrue(spy.didRouteToProductList, "Touch Up Inside in button should trigger routing to product list")
+        
+        
     }
 }
