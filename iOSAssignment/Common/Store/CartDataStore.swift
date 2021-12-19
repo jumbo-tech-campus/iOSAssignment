@@ -8,26 +8,34 @@
 import Foundation
 
 protocol CartDataStoreInterface {
-    func getProducts() -> [CartProduct]
-    func addProduct(product: ProductRaw)
-    func removeProduct(product: ProductRaw)
+    var cartProducts: [CartProduct] { get set }
 }
 
 // Working with ProductRaw instead of ids because
 // products may dissapear from the app at some point in the future
 // and we should be able to have at least some metadata
 // to show to the user
-struct CartDataStore: CartDataStoreInterface {
+class CartDataStore: CartDataStoreInterface {
     
-    func getProducts() -> [CartProduct] {
-        return [CartProduct]()
+    var cartProducts: [CartProduct] {
+        didSet {
+            saveCart()
+        }
     }
     
-    func addProduct(product: ProductRaw) {
-        
+    init() {
+        if let data = UserDefaults.standard.data(forKey: "cart"), let decoded = try? JSONDecoder().decode([CartProduct].self, from: data) {
+            cartProducts = decoded
+        } else {
+            cartProducts = [CartProduct]()
+        }
     }
     
-    func removeProduct(product: ProductRaw) {
+    func saveCart() {
+        guard let data = try? JSONEncoder().encode(cartProducts) else {
+            return
+        }
         
+        UserDefaults.standard.set(data, forKey: "cart")
     }
 }

@@ -2,6 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TheSans-B2ExtraLight.otf</string>
+		<string>TheSans-B5Plain.otf</string>
+		<string>TheSans-B6SemiBold.otf</string>
+		<string>TheSans-B6SemiBoldItalic.otf</string>
+		<string>TheSans-B7Bold.otf</string>
+		<string>TheSans-B7BoldItalic.otf</string>
+		<string>TheSans-B8ExtraBoldItalic.otf</string>
+		<string>TheSans-B9Black.otf</string>
+		<string>TheSans-B9BlackItalic.otf</string>
+		<string>TheSans-Caps.otf</string>
+		<string>TheSans-CapsItalic.otf</string>
+		<string>TheSans-ExpertItalic.otf</string>
+		<string>TheSans-Italic.otf</string>
+		<string>TheSans-Plain.otf</string>
+		<string>TheSansBlack-Caps.otf</string>
+		<string>TheSansBlack-Expert.otf</string>
+		<string>TheSansBlack-ExpertItalic.otf</string>
+		<string>TheSansBlack-Plain.otf</string>
+		<string>TheSansBold-Caps.otf</string>
+		<string>TheSansBold-CapsItalic.otf</string>
+		<string>TheSansBold-Expert.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -19,5 +43,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 </dict>
 </plist>

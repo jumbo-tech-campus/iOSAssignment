@@ -28,27 +28,6 @@ class CartWorkerTests: XCTestCase {
     }
   
     // MARK: Test setup
-    
-    class CartDataStoreSpy: CartDataStoreInterface {
-        
-        var addProductCalled = false
-        var getProductsCalled = false
-        var removeProductCalled = false
-        let products = [CartProduct]()
-        
-        func getProducts() -> [CartProduct] {
-            getProductsCalled = true
-            return products
-        }
-        
-        func addProduct(product: ProductRaw) {
-            addProductCalled = true
-        }
-        
-        func removeProduct(product: ProductRaw) {
-            removeProductCalled = true
-        }
-    }
   
     func setupProductListWorker() {
         sut = CartWorker()
@@ -60,7 +39,7 @@ class CartWorkerTests: XCTestCase {
   
     func testAddProductToCart() {
         // Given
-        let spy = CartDataStoreSpy()
+        let spy = CartDataStore()
         sut.dataStore = spy
     
         // When
@@ -69,19 +48,21 @@ class CartWorkerTests: XCTestCase {
         sut.addProductToCart(product: testProduct)
         
         // Then
-        XCTAssertTrue(spy.addProductCalled, "Add Product on the Data Store should have been called")
+        XCTAssertEqual(spy.cartProducts.count, 1, "The amount of products in the cart after calling addProductToCart should be 1")
     }
     
     func testRemoveProductToCart() {
         // Given
-        let spy = CartDataStoreSpy()
+        let spy = CartDataStore()
         sut.dataStore = spy
     
         // When
         let testProduct = Product.create(withId: "123")
+        sut.addProductToCart(product: testProduct)
+        sut.addProductToCart(product: testProduct)
         sut.removeProductFromCart(product: testProduct)
         
         // Then
-        XCTAssertTrue(spy.removeProductCalled, "Remove Product on the Data Store should have been called")
+        XCTAssertEqual(spy.cartProducts.count, 1, "The amount of products in the cart after calling removeProductFromCart should be 1")
     }
 }

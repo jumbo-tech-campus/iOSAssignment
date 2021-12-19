@@ -47,7 +47,7 @@ class ProductListWorkerTests: XCTestCase {
             case .undefined:
                 return nil
             case .filled:
-                return Products(products: Array(0...100).map({ Product.create(withId: "\($0)") }))
+                return Products(products: Array(0..<100).map({ Product.create(withId: "\($0)") }))
             }
         }
     }
@@ -65,10 +65,81 @@ class ProductListWorkerTests: XCTestCase {
         let spy = ProductRepositorySpy()
         spy.possibility = .filled
         sut.productRepository = spy
+        
         // When
-        let productsReturned = sut.getProducts(start: 0, end: 10)
+        var products: Products?
+        let expectation = self.expectation(description: "Waiting to fetch products")
+        sut.getProducts(start: 0, amount: 10) { p in
+            products = p
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        
         // Then
-        XCTAssertEqual(productsReturned.products.count, 10, "There should only be 10 products returned")
+        XCTAssertEqual(products?.products.count, 10, "There should only be 10 products returned")
+        XCTAssertEqual(products?.products.first?.id, "0", "The first item should have id 0")
+        XCTAssertEqual(products?.products.last?.id, "9", "The last item should have id 9")
+    }
+    
+    func testGetMoreProductsWithRange() {
+        // Given
+        let spy = ProductRepositorySpy()
+        spy.possibility = .filled
+        sut.productRepository = spy
+        
+        // When
+        var products: Products?
+        let expectation = self.expectation(description: "Waiting to fetch products")
+        sut.getProducts(start: 10, amount: 20) { p in
+            products = p
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        // Then
+        XCTAssertEqual(products?.products.count, 20, "There should only be 20 products returned")
+        XCTAssertEqual(products?.products.first?.id, "10", "The first item should have id 10")
+        XCTAssertEqual(products?.products.last?.id, "29", "The last item should have id 29")
+    }
+    
+    func testGetProductsWithRangeExceeding() {
+        // Given
+        let spy = ProductRepositorySpy()
+        spy.possibility = .filled
+        sut.productRepository = spy
+        
+        // When
+        var products: Products?
+        let expectation = self.expectation(description: "Waiting to fetch products")
+        sut.getProducts(start: 90, amount: 15) { p in
+            products = p
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        // Then
+        XCTAssertEqual(products?.products.count, 10, "There should only be 10 products returned")
+        XCTAssertEqual(products?.products.first?.id, "90", "The first item should have id 90")
+        XCTAssertEqual(products?.products.last?.id, "99", "The last item should have id 99")
+    }
+    
+    func testGetProductsWithImpossibleRange() {
+        // Given
+        let spy = ProductRepositorySpy()
+        spy.possibility = .filled
+        sut.productRepository = spy
+        
+        // When
+        var products: Products?
+        let expectation = self.expectation(description: "Waiting to fetch products")
+        sut.getProducts(start: 105, amount: 10) { p in
+            products = p
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        // Then
+        XCTAssertTrue(products?.products.isEmpty ?? false, "There should not be products returned")
     }
     
     func testGetProductsWhenNoProductsAvailable() {
@@ -77,9 +148,15 @@ class ProductListWorkerTests: XCTestCase {
         spy.possibility = .empty
         sut.productRepository = spy
         // When
-        let productsReturned = sut.getProducts(start: 0, end: 10)
+        var products: Products?
+        let expectation = self.expectation(description: "Waiting to fetch products")
+        sut.getProducts(start: 0, amount: 10) { p in
+            products = p
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
         // Then
-        XCTAssertEqual(productsReturned.products.count, 0, "There should not be products returned")
+        XCTAssertTrue(products?.products.isEmpty ?? false, "There should not be products returned")
     }
     
     func testGetProductsWhenProductFailToBeReturned() {
@@ -88,8 +165,14 @@ class ProductListWorkerTests: XCTestCase {
         spy.possibility = .undefined
         sut.productRepository = spy
         // When
-        let productsReturned = sut.getProducts(start: 0, end: 10)
+        var products: Products?
+        let expectation = self.expectation(description: "Waiting to fetch products")
+        sut.getProducts(start: 0, amount: 10) { p in
+            products = p
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
         // Then
-        XCTAssertEqual(productsReturned.products.count, 0, "There should not be products returned")
+        XCTAssertTrue(products?.products.isEmpty ?? false, "There should not be products returned")
     }
 }

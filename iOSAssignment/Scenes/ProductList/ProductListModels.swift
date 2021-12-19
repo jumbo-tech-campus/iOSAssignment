@@ -19,9 +19,15 @@ enum ProductList {
     }
     
     enum CartUpdate {
+        
+        enum UpdateType {
+            case add
+            case remove
+        }
+        
         struct Request {
             let productIndex: Int
-            let delta: Int
+            let type: UpdateType
         }
     }
     
@@ -56,7 +62,7 @@ enum ProductList {
     enum ListProducts {
         
         struct Response {
-            let products: Products
+            let products: [ProductRaw]
             let cartProducts: [CartProduct]
         }
         

@@ -18,6 +18,36 @@
 		AA4301E3276F344D00D1DC28 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301E2276F344D00D1DC28 /* Product.swift */; };
 		AA4301E6276F506300D1DC28 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301E5276F506300D1DC28 /* ProductListView.swift */; };
 		AA4301E8276F511400D1DC28 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301E7276F511400D1DC28 /* ProductCell.swift */; };
+		AA4301EA276F5ED400D1DC28 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301E9276F5ED400D1DC28 /* UITableViewCell.swift */; };
+		AA4301EE276F5F6200D1DC28 /* ProductCellDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301ED276F5F6200D1DC28 /* ProductCellDecorator.swift */; };
+		AA4301F1276F609A00D1DC28 /* ProductCellDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301F0276F609A00D1DC28 /* ProductCellDecoratorTests.swift */; };
+		AA5A5DD2276FB23800D150EA /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = AA5A5DD1276FB23800D150EA /* AlamofireImage */; };
+		AA5A5DD6276FB4C300D150EA /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A5DD5276FB4C300D150EA /* PriceView.swift */; };
+		AA5A5DD8276FB4D500D150EA /* AddCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A5DD7276FB4D500D150EA /* AddCartButton.swift */; };
+		AA5A5DDA276FB50100D150EA /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A5DD9276FB50100D150EA /* ProductView.swift */; };
+		AA5FE706276FBF08003D5F80 /* TheSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F1276FBF08003D5F80 /* TheSans-Italic.otf */; };
+		AA5FE707276FBF08003D5F80 /* TheSansBlack-Plain.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F2276FBF08003D5F80 /* TheSansBlack-Plain.otf */; };
+		AA5FE708276FBF08003D5F80 /* TheSansBold-Expert.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F3276FBF08003D5F80 /* TheSansBold-Expert.otf */; };
+		AA5FE709276FBF08003D5F80 /* TheSans-B7Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F4276FBF08003D5F80 /* TheSans-B7Bold.otf */; };
+		AA5FE70A276FBF08003D5F80 /* TheSans-B5Plain.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F5276FBF08003D5F80 /* TheSans-B5Plain.otf */; };
+		AA5FE70B276FBF08003D5F80 /* TheSans-Caps.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F6276FBF08003D5F80 /* TheSans-Caps.otf */; };
+		AA5FE70C276FBF08003D5F80 /* TheSans-B6SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F7276FBF08003D5F80 /* TheSans-B6SemiBold.otf */; };
+		AA5FE70D276FBF08003D5F80 /* TheSans-ExpertItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F8276FBF08003D5F80 /* TheSans-ExpertItalic.otf */; };
+		AA5FE70E276FBF08003D5F80 /* TheSans-B7BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6F9276FBF08003D5F80 /* TheSans-B7BoldItalic.otf */; };
+		AA5FE70F276FBF08003D5F80 /* TheSans-B9BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6FA276FBF08003D5F80 /* TheSans-B9BlackItalic.otf */; };
+		AA5FE710276FBF08003D5F80 /* TheSans-B2ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6FB276FBF08003D5F80 /* TheSans-B2ExtraLight.otf */; };
+		AA5FE711276FBF08003D5F80 /* TheSansBlack-ExpertItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6FC276FBF08003D5F80 /* TheSansBlack-ExpertItalic.otf */; };
+		AA5FE712276FBF08003D5F80 /* TheSansBold-Caps.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6FD276FBF08003D5F80 /* TheSansBold-Caps.otf */; };
+		AA5FE713276FBF08003D5F80 /* TheSansBold-CapsItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6FE276FBF08003D5F80 /* TheSansBold-CapsItalic.otf */; };
+		AA5FE714276FBF08003D5F80 /* TheSansBlack-Expert.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE6FF276FBF08003D5F80 /* TheSansBlack-Expert.otf */; };
+		AA5FE715276FBF08003D5F80 /* TheSans-B9Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE700276FBF08003D5F80 /* TheSans-B9Black.otf */; };
+		AA5FE716276FBF08003D5F80 /* TheSansBlack-Caps.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE701276FBF08003D5F80 /* TheSansBlack-Caps.otf */; };
+		AA5FE717276FBF08003D5F80 /* TheSans-B8ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE702276FBF08003D5F80 /* TheSans-B8ExtraBoldItalic.otf */; };
+		AA5FE718276FBF08003D5F80 /* TheSans-CapsItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE703276FBF08003D5F80 /* TheSans-CapsItalic.otf */; };
+		AA5FE719276FBF08003D5F80 /* TheSans-B6SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE704276FBF08003D5F80 /* TheSans-B6SemiBoldItalic.otf */; };
+		AA5FE71A276FBF08003D5F80 /* TheSans-Plain.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE705276FBF08003D5F80 /* TheSans-Plain.otf */; };
+		AA5FE71C276FC01D003D5F80 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5FE71B276FC01D003D5F80 /* UIFont.swift */; };
+		AA5FE720276FCFDB003D5F80 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE71F276FCFDB003D5F80 /* Launch Screen.storyboard */; };
 		AADF2B9A276E07FF00E6AF47 /* WelcomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */; };
 		AADF2B9C276E07FF00E6AF47 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */; };
 		AADF2BA4276E09DD00E6AF47 /* WelcomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */; };
@@ -35,7 +65,6 @@
 		AFF534942701ECBC00EEE4AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF534932701ECBC00EEE4AE /* AppDelegate.swift */; };
 		AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF534952701ECBC00EEE4AE /* SceneDelegate.swift */; };
 		AFF5349D2701ECBF00EEE4AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF5349C2701ECBF00EEE4AE /* Assets.xcassets */; };
-		AFF534A02701ECBF00EEE4AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF5349E2701ECBF00EEE4AE /* LaunchScreen.storyboard */; };
 		AFF534AB2701ECBF00EEE4AE /* iOSAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF534AA2701ECBF00EEE4AE /* iOSAssignmentTests.swift */; };
 		AFF534C62701EE7300EEE4AE /* ProductRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF534C52701EE7300EEE4AE /* ProductRaw.swift */; };
 		AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF534C72701F93100EEE4AE /* ProductPriceDataRaw.swift */; };
@@ -68,6 +97,35 @@
 		AA4301E2276F344D00D1DC28 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		AA4301E5276F506300D1DC28 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		AA4301E7276F511400D1DC28 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		AA4301E9276F5ED400D1DC28 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		AA4301ED276F5F6200D1DC28 /* ProductCellDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellDecorator.swift; sourceTree = "<group>"; };
+		AA4301F0276F609A00D1DC28 /* ProductCellDecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellDecoratorTests.swift; sourceTree = "<group>"; };
+		AA5A5DD5276FB4C300D150EA /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
+		AA5A5DD7276FB4D500D150EA /* AddCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartButton.swift; sourceTree = "<group>"; };
+		AA5A5DD9276FB50100D150EA /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		AA5FE6F1276FBF08003D5F80 /* TheSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-Italic.otf"; sourceTree = "<group>"; };
+		AA5FE6F2276FBF08003D5F80 /* TheSansBlack-Plain.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSansBlack-Plain.otf"; sourceTree = "<group>"; };
+		AA5FE6F3276FBF08003D5F80 /* TheSansBold-Expert.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSansBold-Expert.otf"; sourceTree = "<group>"; };
+		AA5FE6F4276FBF08003D5F80 /* TheSans-B7Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B7Bold.otf"; sourceTree = "<group>"; };
+		AA5FE6F5276FBF08003D5F80 /* TheSans-B5Plain.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B5Plain.otf"; sourceTree = "<group>"; };
+		AA5FE6F6276FBF08003D5F80 /* TheSans-Caps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-Caps.otf"; sourceTree = "<group>"; };
+		AA5FE6F7276FBF08003D5F80 /* TheSans-B6SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B6SemiBold.otf"; sourceTree = "<group>"; };
+		AA5FE6F8276FBF08003D5F80 /* TheSans-ExpertItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-ExpertItalic.otf"; sourceTree = "<group>"; };
+		AA5FE6F9276FBF08003D5F80 /* TheSans-B7BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B7BoldItalic.otf"; sourceTree = "<group>"; };
+		AA5FE6FA276FBF08003D5F80 /* TheSans-B9BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B9BlackItalic.otf"; sourceTree = "<group>"; };
+		AA5FE6FB276FBF08003D5F80 /* TheSans-B2ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B2ExtraLight.otf"; sourceTree = "<group>"; };
+		AA5FE6FC276FBF08003D5F80 /* TheSansBlack-ExpertItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSansBlack-ExpertItalic.otf"; sourceTree = "<group>"; };
+		AA5FE6FD276FBF08003D5F80 /* TheSansBold-Caps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSansBold-Caps.otf"; sourceTree = "<group>"; };
+		AA5FE6FE276FBF08003D5F80 /* TheSansBold-CapsItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSansBold-CapsItalic.otf"; sourceTree = "<group>"; };
+		AA5FE6FF276FBF08003D5F80 /* TheSansBlack-Expert.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSansBlack-Expert.otf"; sourceTree = "<group>"; };
+		AA5FE700276FBF08003D5F80 /* TheSans-B9Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B9Black.otf"; sourceTree = "<group>"; };
+		AA5FE701276FBF08003D5F80 /* TheSansBlack-Caps.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSansBlack-Caps.otf"; sourceTree = "<group>"; };
+		AA5FE702276FBF08003D5F80 /* TheSans-B8ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B8ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		AA5FE703276FBF08003D5F80 /* TheSans-CapsItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-CapsItalic.otf"; sourceTree = "<group>"; };
+		AA5FE704276FBF08003D5F80 /* TheSans-B6SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-B6SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		AA5FE705276FBF08003D5F80 /* TheSans-Plain.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-Plain.otf"; sourceTree = "<group>"; };
+		AA5FE71B276FC01D003D5F80 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		AA5FE71F276FCFDB003D5F80 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
 		AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewControllerTests.swift; sourceTree = "<group>"; };
@@ -86,7 +144,6 @@
 		AFF534932701ECBC00EEE4AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFF534952701ECBC00EEE4AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AFF5349C2701ECBF00EEE4AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AFF5349F2701ECBF00EEE4AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFF534A12701ECBF00EEE4AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF534A62701ECBF00EEE4AE /* iOSAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF534AA2701ECBF00EEE4AE /* iOSAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAssignmentTests.swift; sourceTree = "<group>"; };
@@ -104,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5A5DD2276FB23800D150EA /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +191,8 @@
 			children = (
 				AA4301CB276E221E00D1DC28 /* UIView.swift */,
 				AA4301CD276E28D800D1DC28 /* UIColor.swift */,
+				AA4301E9276F5ED400D1DC28 /* UITableViewCell.swift */,
+				AA5FE71B276FC01D003D5F80 /* UIFont.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -188,10 +248,73 @@
 		AA4301E4276F505B00D1DC28 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA5A5DD4276FB49C00D150EA /* ProductCellViews */,
 				AA4301E5276F506300D1DC28 /* ProductListView.swift */,
 				AA4301E7276F511400D1DC28 /* ProductCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AA4301EB276F5F4A00D1DC28 /* Decorator */ = {
+			isa = PBXGroup;
+			children = (
+				AA4301ED276F5F6200D1DC28 /* ProductCellDecorator.swift */,
+			);
+			path = Decorator;
+			sourceTree = "<group>";
+		};
+		AA4301EF276F608C00D1DC28 /* Decorators */ = {
+			isa = PBXGroup;
+			children = (
+				AA4301F0276F609A00D1DC28 /* ProductCellDecoratorTests.swift */,
+			);
+			path = Decorators;
+			sourceTree = "<group>";
+		};
+		AA5A5DD4276FB49C00D150EA /* ProductCellViews */ = {
+			isa = PBXGroup;
+			children = (
+				AA5A5DD5276FB4C300D150EA /* PriceView.swift */,
+				AA5A5DD7276FB4D500D150EA /* AddCartButton.swift */,
+				AA5A5DD9276FB50100D150EA /* ProductView.swift */,
+			);
+			path = ProductCellViews;
+			sourceTree = "<group>";
+		};
+		AA5FE6EF276FBEF4003D5F80 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AA5FE6F0276FBEF9003D5F80 /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		AA5FE6F0276FBEF9003D5F80 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AA5FE6FB276FBF08003D5F80 /* TheSans-B2ExtraLight.otf */,
+				AA5FE6F5276FBF08003D5F80 /* TheSans-B5Plain.otf */,
+				AA5FE6F7276FBF08003D5F80 /* TheSans-B6SemiBold.otf */,
+				AA5FE704276FBF08003D5F80 /* TheSans-B6SemiBoldItalic.otf */,
+				AA5FE6F4276FBF08003D5F80 /* TheSans-B7Bold.otf */,
+				AA5FE6F9276FBF08003D5F80 /* TheSans-B7BoldItalic.otf */,
+				AA5FE702276FBF08003D5F80 /* TheSans-B8ExtraBoldItalic.otf */,
+				AA5FE700276FBF08003D5F80 /* TheSans-B9Black.otf */,
+				AA5FE6FA276FBF08003D5F80 /* TheSans-B9BlackItalic.otf */,
+				AA5FE6F6276FBF08003D5F80 /* TheSans-Caps.otf */,
+				AA5FE703276FBF08003D5F80 /* TheSans-CapsItalic.otf */,
+				AA5FE6F8276FBF08003D5F80 /* TheSans-ExpertItalic.otf */,
+				AA5FE6F1276FBF08003D5F80 /* TheSans-Italic.otf */,
+				AA5FE705276FBF08003D5F80 /* TheSans-Plain.otf */,
+				AA5FE701276FBF08003D5F80 /* TheSansBlack-Caps.otf */,
+				AA5FE6FF276FBF08003D5F80 /* TheSansBlack-Expert.otf */,
+				AA5FE6FC276FBF08003D5F80 /* TheSansBlack-ExpertItalic.otf */,
+				AA5FE6F2276FBF08003D5F80 /* TheSansBlack-Plain.otf */,
+				AA5FE6FD276FBF08003D5F80 /* TheSansBold-Caps.otf */,
+				AA5FE6FE276FBF08003D5F80 /* TheSansBold-CapsItalic.otf */,
+				AA5FE6F3276FBF08003D5F80 /* TheSansBold-Expert.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		AADF2B8F276E07DF00E6AF47 /* Scenes */ = {
@@ -216,6 +339,7 @@
 		AADF2B91276E07EB00E6AF47 /* ProductList */ = {
 			isa = PBXGroup;
 			children = (
+				AA4301EB276F5F4A00D1DC28 /* Decorator */,
 				AA4301E4276F505B00D1DC28 /* Views */,
 				AADF2BAB276E0A0F00E6AF47 /* ProductListInteractor.swift */,
 				AADF2BAD276E0A0F00E6AF47 /* ProductListModels.swift */,
@@ -248,6 +372,7 @@
 		AADF2BB4276E0A3A00E6AF47 /* ProductList */ = {
 			isa = PBXGroup;
 			children = (
+				AA4301EF276F608C00D1DC28 /* Decorators */,
 				AADF2BB7276E0C1A00E6AF47 /* ProductListInteractorTests.swift */,
 				AADF2BB8276E0C1A00E6AF47 /* ProductListPresenterTests.swift */,
 				AADF2BB5276E0C1A00E6AF47 /* ProductListViewControllerTests.swift */,
@@ -286,14 +411,15 @@
 		AFF534922701ECBC00EEE4AE /* iOSAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				AA5FE6EF276FBEF4003D5F80 /* Assets */,
 				AA4301C9276E220600D1DC28 /* Common */,
 				AFF534C32701EE5400EEE4AE /* Jumbo */,
 				AADF2B8F276E07DF00E6AF47 /* Scenes */,
 				AFF534932701ECBC00EEE4AE /* AppDelegate.swift */,
 				AFF534952701ECBC00EEE4AE /* SceneDelegate.swift */,
 				AFF5349C2701ECBF00EEE4AE /* Assets.xcassets */,
-				AFF5349E2701ECBF00EEE4AE /* LaunchScreen.storyboard */,
 				AFF534A12701ECBF00EEE4AE /* Info.plist */,
+				AA5FE71F276FCFDB003D5F80 /* Launch Screen.storyboard */,
 			);
 			path = iOSAssignment;
 			sourceTree = "<group>";
@@ -379,6 +505,9 @@
 			dependencies = (
 			);
 			name = iOSAssignment;
+			packageProductDependencies = (
+				AA5A5DD1276FB23800D150EA /* AlamofireImage */,
+			);
 			productName = iOSAssignment;
 			productReference = AFF534902701ECBC00EEE4AE /* iOSAssignment.app */;
 			productType = "com.apple.product-type.application";
@@ -429,6 +558,9 @@
 				Base,
 			);
 			mainGroup = AFF534872701ECBC00EEE4AE;
+			packageReferences = (
+				AA5A5DD0276FB23800D150EA /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = AFF534912701ECBC00EEE4AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -444,9 +576,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFF534A02701ECBF00EEE4AE /* LaunchScreen.storyboard in Resources */,
+				AA5FE710276FBF08003D5F80 /* TheSans-B2ExtraLight.otf in Resources */,
+				AA5FE70A276FBF08003D5F80 /* TheSans-B5Plain.otf in Resources */,
+				AA5FE70F276FBF08003D5F80 /* TheSans-B9BlackItalic.otf in Resources */,
+				AA5FE716276FBF08003D5F80 /* TheSansBlack-Caps.otf in Resources */,
+				AA5FE717276FBF08003D5F80 /* TheSans-B8ExtraBoldItalic.otf in Resources */,
+				AA5FE718276FBF08003D5F80 /* TheSans-CapsItalic.otf in Resources */,
+				AA5FE70E276FBF08003D5F80 /* TheSans-B7BoldItalic.otf in Resources */,
 				AFF534D02702007000EEE4AE /* products.json in Resources */,
+				AA5FE714276FBF08003D5F80 /* TheSansBlack-Expert.otf in Resources */,
+				AA5FE713276FBF08003D5F80 /* TheSansBold-CapsItalic.otf in Resources */,
+				AA5FE712276FBF08003D5F80 /* TheSansBold-Caps.otf in Resources */,
+				AA5FE709276FBF08003D5F80 /* TheSans-B7Bold.otf in Resources */,
+				AA5FE70D276FBF08003D5F80 /* TheSans-ExpertItalic.otf in Resources */,
+				AA5FE707276FBF08003D5F80 /* TheSansBlack-Plain.otf in Resources */,
+				AA5FE706276FBF08003D5F80 /* TheSans-Italic.otf in Resources */,
+				AA5FE711276FBF08003D5F80 /* TheSansBlack-ExpertItalic.otf in Resources */,
 				AFF5349D2701ECBF00EEE4AE /* Assets.xcassets in Resources */,
+				AA5FE70B276FBF08003D5F80 /* TheSans-Caps.otf in Resources */,
+				AA5FE720276FCFDB003D5F80 /* Launch Screen.storyboard in Resources */,
+				AA5FE715276FBF08003D5F80 /* TheSans-B9Black.otf in Resources */,
+				AA5FE708276FBF08003D5F80 /* TheSansBold-Expert.otf in Resources */,
+				AA5FE70C276FBF08003D5F80 /* TheSans-B6SemiBold.otf in Resources */,
+				AA5FE719276FBF08003D5F80 /* TheSans-B6SemiBoldItalic.otf in Resources */,
+				AA5FE71A276FBF08003D5F80 /* TheSans-Plain.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,15 +618,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
+				AA5A5DDA276FB50100D150EA /* ProductView.swift in Sources */,
 				AADF2BB0276E0A0F00E6AF47 /* ProductListViewController.swift in Sources */,
 				AA4301DC276F24CA00D1DC28 /* CartDataStore.swift in Sources */,
+				AA4301EE276F5F6200D1DC28 /* ProductCellDecorator.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */,
+				AA5A5DD8276FB4D500D150EA /* AddCartButton.swift in Sources */,
+				AA5A5DD6276FB4C300D150EA /* PriceView.swift in Sources */,
+				AA5FE71C276FC01D003D5F80 /* UIFont.swift in Sources */,
 				AA4301D5276E44BF00D1DC28 /* CartWorker.swift in Sources */,
 				AADF2BAE276E0A0F00E6AF47 /* ProductListRouter.swift in Sources */,
 				AFF534942701ECBC00EEE4AE /* AppDelegate.swift in Sources */,
 				AADF2B9C276E07FF00E6AF47 /* WelcomeViewController.swift in Sources */,
 				AFF534C62701EE7300EEE4AE /* ProductRaw.swift in Sources */,
 				AA4301E0276F294300D1DC28 /* CartProduct.swift in Sources */,
+				AA4301EA276F5ED400D1DC28 /* UITableViewCell.swift in Sources */,
 				AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */,
 				AA4301CE276E28D800D1DC28 /* UIColor.swift in Sources */,
 				AADF2BAF276E0A0F00E6AF47 /* ProductListPresenter.swift in Sources */,
@@ -497,6 +656,7 @@
 			files = (
 				AA4301D2276E3F4C00D1DC28 /* ProductListRouterTests.swift in Sources */,
 				AADF2BBA276E0C1A00E6AF47 /* ProductListWorkerTests.swift in Sources */,
+				AA4301F1276F609A00D1DC28 /* ProductCellDecoratorTests.swift in Sources */,
 				AA4301D0276E2BF700D1DC28 /* WelcomeRouterTests.swift in Sources */,
 				AADF2BBB276E0C1A00E6AF47 /* ProductListInteractorTests.swift in Sources */,
 				AADF2BBC276E0C1A00E6AF47 /* ProductListPresenterTests.swift in Sources */,
@@ -517,17 +677,6 @@
 			targetProxy = AFF534A72701ECBF00EEE4AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		AFF5349E2701ECBF00EEE4AE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AFF5349F2701ECBF00EEE4AE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AFF534B82701ECBF00EEE4AE /* Debug */ = {
@@ -779,6 +928,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA5A5DD0276FB23800D150EA /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA5A5DD1276FB23800D150EA /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA5A5DD0276FB23800D150EA /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AFF534882701ECBC00EEE4AE /* Project object */;
 }

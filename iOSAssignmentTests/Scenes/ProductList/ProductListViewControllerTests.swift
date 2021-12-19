@@ -49,20 +49,17 @@ class ProductListViewControllerTests: XCTestCase {
     class ProductListBusinessLogicSpy: ProductListBusinessLogic {
         
         var initialLoadCalled = false
-        var addProductToCartCalled = false
-        var removeProductFromCartCalled = false
+        var updateCartCalled = false
         var startProductInteractionCalled = false
+        var cartUpdateType: ProductList.CartUpdate.UpdateType = .add
         
         func initialLoad(request: ProductList.InitialLoad.Request) {
             initialLoadCalled = true
         }
         
         func updateCart(request: ProductList.CartUpdate.Request) {
-            addProductToCartCalled = true
-        }
-        
-        func removeProductFromCart(request: ProductList.CartUpdate.Request) {
-            removeProductFromCartCalled = true
+            updateCartCalled = true
+            cartUpdateType = request.type
         }
         
         func startProductInteraction(request: ProductList.ProductInteraction.Request) {
@@ -151,7 +148,8 @@ class ProductListViewControllerTests: XCTestCase {
         sut.addProductToCart(index: 0)
         
         // Then
-        XCTAssertTrue(spy.addProductToCartCalled, "addProductToCart(index:) should call the addProductToCart method on the interactor")
+        XCTAssertTrue(spy.updateCartCalled, "addProductToCart(index:) should call the updateCart method on the interactor")
+        XCTAssertEqual(spy.cartUpdateType, .add, "addProductToCart(index:) should send the type .add for the cart update")
     }
     
     func testRemoveProductToCart() {
@@ -164,6 +162,7 @@ class ProductListViewControllerTests: XCTestCase {
         sut.removeProductFromCart(index: 0)
         
         // Then
-        XCTAssertTrue(spy.removeProductFromCartCalled, "removeProductFromCart(index:) should call the removeProductFromCart method on the interactor")
+        XCTAssertTrue(spy.updateCartCalled, "removeProductFromCart(index:) should call the updateCart method on the interactor")
+        XCTAssertEqual(spy.cartUpdateType, .remove, "removeProductFromCart(index:) should send the type .remove for the cart update")
     }
 }

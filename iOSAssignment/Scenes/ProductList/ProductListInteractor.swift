@@ -26,7 +26,7 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore {
     
     var presenter: ProductListPresentationLogic?
     
-    var products = [CartProduct]()
+    var products = [ProductRaw]()
     
     lazy var productListWorker: ProductListWorkerInterface = {
         return ProductListWorker()
@@ -35,18 +35,46 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore {
     lazy var cartWorker: CartWorkerInterface = {
         return CartWorker()
     }()
+    
+    var isLoading = false
   
     // MARK: Do something
   
     func initialLoad(request: ProductList.InitialLoad.Request) {
         
+        isLoading = true
+        
+        productListWorker.getProducts(start: products.count, amount: 10) { [weak self] products in
+            self?.products.append(contentsOf: products.products)
+            self?.isLoading = false
+            self?.listProducts()
+        }
     }
     
     func updateCart(request: ProductList.CartUpdate.Request) {
         
+        guard request.productIndex < products.count else {
+            return
+        }
+        
+        let product = products[request.productIndex]
+        
+        switch request.type {
+        case .add:
+            cartWorker.addProductToCart(product: product)
+        case .remove:
+            cartWorker.removeProductFromCart(product: product)
+        }
+        
+        listProducts()
     }
     
     func startProductInteraction(request: ProductList.ProductInteraction.Request) {
         
+    }
+    
+    private func listProducts() {
+        let response = ProductList.ListProducts.Response(products: products, cartProducts: cartWorker.cartProducts)
+        presenter?.listProducts(response: response)
     }
 }

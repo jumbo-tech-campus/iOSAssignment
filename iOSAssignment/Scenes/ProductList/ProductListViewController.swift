@@ -61,17 +61,32 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        productListView.tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.identifier)
+        productListView.tableView.dataSource = self
+        
         loadData()
     }
   
     // MARK: Do something
     
-    func loadData() {}
-    @objc func addProductToCart(index: Int) {}
-    @objc func removeProductFromCart(index: Int) {}
+    func loadData() {
+        let request = ProductList.InitialLoad.Request()
+        interactor?.initialLoad(request: request)
+    }
+    
+    @objc func addProductToCart(index: Int) {
+        let request = ProductList.CartUpdate.Request(productIndex: index, type: .add)
+        interactor?.updateCart(request: request)
+    }
+    
+    @objc func removeProductFromCart(index: Int) {
+        let request = ProductList.CartUpdate.Request(productIndex: index, type: .remove)
+        interactor?.updateCart(request: request)
+    }
     
     func listProducts(viewModel: ProductList.ListProducts.ViewModel) {
-        
+        products = viewModel.products
     }
     
     func startProductInteraction(viewModel: ProductList.StartProductInteraction.ViewModel) {
@@ -80,5 +95,21 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
     
     func finishProductInteraction(viewModel: ProductList.FinishProductInteraction.ViewModel) {
         
+    }
+}
+
+extension ProductListViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = ProductCellDecorator.dequeueProductCell(tableView: tableView, indexPath: indexPath) else {
+            return UITableViewCell()
+        }
+        let product = products[indexPath.row]
+        ProductCellDecorator.setupProductCell(cell: cell, product: product)
+        return cell
     }
 }

@@ -24,14 +24,33 @@ class ProductListPresenter: ProductListPresentationLogic {
   
     // MARK: Implementation
     func listProducts(response: ProductList.ListProducts.Response) {
+        let products = response.products
+        let cartProducts = response.cartProducts
         
+        let newProducts = products.map { prod -> CartProduct in
+            
+            let cartProductFound = cartProducts.first(where: { cartProd in
+                cartProd.product.id == prod.id
+            })
+            
+            if let product = cartProductFound {
+                return CartProduct(product: prod, amount: product.amount)
+            } else {
+                return CartProduct(product: prod, amount: 0)
+            }
+        }
+        
+        let viewModel = ProductList.ListProducts.ViewModel(products: newProducts)
+        viewController?.listProducts(viewModel: viewModel)
     }
     
     func startProductInteraction(response: ProductList.StartProductInteraction.Response) {
-        
+        let viewModel = ProductList.StartProductInteraction.ViewModel(index: response.index)
+        viewController?.startProductInteraction(viewModel: viewModel)
     }
     
     func finishProductInteraction(response: ProductList.FinishProductInteraction.Response) {
-        
+        let viewModel = ProductList.FinishProductInteraction.ViewModel(index: response.index)
+        viewController?.finishProductInteraction(viewModel: viewModel)
     }
 }

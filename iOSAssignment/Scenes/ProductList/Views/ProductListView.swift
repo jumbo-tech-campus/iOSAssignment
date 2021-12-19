@@ -24,10 +24,15 @@ class ProductListView: UIView {
     }
     
     func setupComponents() {
-        
+        addSubviewForAutolayout(tableView)
     }
     
     func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }

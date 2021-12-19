@@ -64,7 +64,7 @@ class ProductListPresenterTests: XCTestCase {
         // Given
         let spy = ProductListDisplayLogicSpy()
         sut.viewController = spy
-        let response = ProductList.ListProducts.Response(products: Products(products: [ProductRaw]()), cartProducts: [CartProduct]())
+        let response = ProductList.ListProducts.Response(products: [ProductRaw](), cartProducts: [CartProduct]())
     
         // When
         sut.listProducts(response: response)
@@ -77,13 +77,12 @@ class ProductListPresenterTests: XCTestCase {
         // Given
         let spy = ProductListDisplayLogicSpy()
         sut.viewController = spy
-        let response = ProductList.ListProducts.Response(products:
-                                                            Products(products: [
-                                                                        Product.create(withId: "0"),
-                                                                        Product.create(withId: "1")]),
-                                                         cartProducts: [CartProduct(product: Product.create(withId: "0"),
-                                                                                    amount: 15)])
-    
+        let response = ProductList.ListProducts.Response(products: [
+                                                            Product.create(withId: "0"),
+                                                            Product.create(withId: "1")],
+                                                         cartProducts: [
+                                                            CartProduct(product: Product.create(withId: "0"),
+                                                                        amount: 15)])
         // When
         sut.listProducts(response: response)
     

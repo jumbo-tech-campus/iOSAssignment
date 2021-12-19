@@ -22,10 +22,12 @@ class ProductListInteractorTests: XCTestCase {
   
     override func setUp() {
         super.setUp()
+        UserDefaults.standard.removeObject(forKey: "cart")
         setupProductListInteractor()
     }
     
     override func tearDown() {
+        UserDefaults.standard.removeObject(forKey: "cart")
         super.tearDown()
     }
   
@@ -72,7 +74,13 @@ class ProductListInteractorTests: XCTestCase {
     
         // When
         sut.initialLoad(request: request)
-    
+        
+        let expectation = self.expectation(description: "Waiting for async fetching products")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: .seconds(1))) {
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        
         // Then
         XCTAssertTrue(spy.listProductsCalled, "initialLoad(request:) should ask the presenter to list products")
     }
@@ -81,23 +89,28 @@ class ProductListInteractorTests: XCTestCase {
         // Given
         let spy = ProductListPresentationLogicSpy()
         sut.presenter = spy
-        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 10)]
-        let request = ProductList.CartUpdate.Request(productIndex: 0, delta: 1)
+        sut.products = [Product.create(withId: "0")]
+        
+        let request = ProductList.CartUpdate.Request(productIndex: 0, type: .add)
     
         // When
         sut.updateCart(request: request)
     
         // Then
         XCTAssertTrue(spy.listProductsCalled, "updateCart(request:) should ask the presenter to list products")
-        XCTAssertEqual(spy.cartProducts.first?.amount, 11, "updateCart(request:) should update the quantity for a product in the cart")
+        XCTAssertEqual(spy.cartProducts.first?.amount, 1, "updateCart(request:) should update the quantity for a product in the cart")
     }
     
     func testRemoveProductFromCart() {
         // Given
         let spy = ProductListPresentationLogicSpy()
         sut.presenter = spy
-        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 10)]
-        let request = ProductList.CartUpdate.Request(productIndex: 0, delta: -1)
+        sut.products = [Product.create(withId: "0")]
+        for _ in 0..<10 {
+            sut.cartWorker.addProductToCart(product: Product.create(withId: "0"))
+        }
+        
+        let request = ProductList.CartUpdate.Request(productIndex: 0, type: .remove)
     
         // When
         sut.updateCart(request: request)
@@ -111,8 +124,10 @@ class ProductListInteractorTests: XCTestCase {
         // Given
         let spy = ProductListPresentationLogicSpy()
         sut.presenter = spy
-        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 10)]
-        let request = ProductList.CartUpdate.Request(productIndex: 0, delta: -10)
+        sut.products = [Product.create(withId: "0")]
+        sut.cartWorker.addProductToCart(product: Product.create(withId: "0"))
+        
+        let request = ProductList.CartUpdate.Request(productIndex: 0, type: .remove)
     
         // When
         sut.updateCart(request: request)
@@ -126,8 +141,9 @@ class ProductListInteractorTests: XCTestCase {
         // Given
         let spy = ProductListPresentationLogicSpy()
         sut.presenter = spy
-        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 10)]
-        let request = ProductList.CartUpdate.Request(productIndex: 0, delta: -100)
+        sut.products = [Product.create(withId: "0")]
+        
+        let request = ProductList.CartUpdate.Request(productIndex: 0, type: .remove)
     
         // When
         sut.updateCart(request: request)
@@ -221,7 +237,7 @@ class ProductListInteractorTests: XCTestCase {
         let expect = self.expectation(description: "Waiting to finish interaction")
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(1))) { [weak self] in
-            self?.sut.updateCart(request: ProductList.CartUpdate.Request(productIndex: 5, delta: 1))
+            self?.sut.updateCart(request: ProductList.CartUpdate.Request(productIndex: 5, type: .add))
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(2))) {

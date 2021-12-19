@@ -13,14 +13,28 @@
 import UIKit
 
 protocol ProductListWorkerInterface {
-    func getProducts(start: Int, end: Int) -> Products
+    func getProducts(start: Int, amount: Int, completionHandler: (Products) -> Void)
 }
 
 struct ProductListWorker: ProductListWorkerInterface {
     
     var productRepository: ProductsRepositoryType = ProductsRepository()
     
-    func getProducts(start: Int, end: Int) -> Products {
-        return Products(products: [ProductRaw]())
+    func getProducts(start: Int, amount: Int, completionHandler: (Products) -> Void) {
+        
+        guard let products = productRepository.fetchRawProducts(), start < products.products.count else {
+            completionHandler(Products(products: [ProductRaw]()))
+            return
+        }
+        
+        let productsArray = products.products
+        
+        let end = start + amount - 1 < productsArray.count ? start + amount - 1 : productsArray.count - 1
+        
+        let newProductsArray = Array(productsArray[start...end])
+        
+        let newProducts = Products(products: newProductsArray)
+        
+        completionHandler(newProducts)
     }
 }
