@@ -36,9 +36,7 @@ class ProductListViewControllerTests: XCTestCase {
     // MARK: Test setup
   
     func setupProductListViewController() {
-        let bundle = Bundle.main
-        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        sut = storyboard.instantiateViewController(withIdentifier: "ProductListViewController") as! ProductListViewController
+        sut = ProductListViewController()
     }
   
     func loadView() {
@@ -49,16 +47,32 @@ class ProductListViewControllerTests: XCTestCase {
     // MARK: Test doubles
   
     class ProductListBusinessLogicSpy: ProductListBusinessLogic {
-        var doSomethingCalled = false
-    
-        func doSomething(request: ProductList.Something.Request) {
-            doSomethingCalled = true
+        
+        var initialLoadCalled = false
+        var addProductToCartCalled = false
+        var removeProductFromCartCalled = false
+        var startProductInteractionCalled = false
+        
+        func initialLoad(request: ProductList.InitialLoad.Request) {
+            initialLoadCalled = true
+        }
+        
+        func updateCart(request: ProductList.CartUpdate.Request) {
+            addProductToCartCalled = true
+        }
+        
+        func removeProductFromCart(request: ProductList.CartUpdate.Request) {
+            removeProductFromCartCalled = true
+        }
+        
+        func startProductInteraction(request: ProductList.ProductInteraction.Request) {
+            startProductInteractionCalled = true
         }
     }
   
     // MARK: Tests
   
-    func testShouldDoSomethingWhenViewIsLoaded() {
+    func testInitialLoad() {
         // Given
         let spy = ProductListBusinessLogicSpy()
         sut.interactor = spy
@@ -67,18 +81,89 @@ class ProductListViewControllerTests: XCTestCase {
         loadView()
     
         // Then
-        XCTAssertTrue(spy.doSomethingCalled, "viewDidLoad() should ask the interactor to do something")
+        XCTAssertTrue(spy.initialLoadCalled, "viewDidLoad() should ask the interactor to do the initial data load")
+    }
+    
+    func testForceLoadData() {
+        // Given
+        let spy = ProductListBusinessLogicSpy()
+        sut.interactor = spy
+    
+        // When
+        sut.loadData()
+    
+        // Then
+        XCTAssertTrue(spy.initialLoadCalled, "loadData() should ask the interactor to do the initial data load")
     }
   
-    func testDisplaySomething() {
+    func testListProducts() {
         // Given
-        let viewModel = ProductList.Something.ViewModel()
+        let viewModel = ProductList.ListProducts.ViewModel(products: [CartProduct(product: Product.create(withId: "1"), amount: 10),
+                                                                      CartProduct(product: Product.create(withId: "2"), amount: 10),
+                                                                      CartProduct(product: Product.create(withId: "3"), amount: 10),
+                                                                      CartProduct(product: Product.create(withId: "4"), amount: 10)])
     
         // When
         loadView()
-        sut.displaySomething(viewModel: viewModel)
+        sut.listProducts(viewModel: viewModel)
     
         // Then
-        //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
+        XCTAssertEqual(sut.products, viewModel.products, "listProducts(viewModel:) should update the products being shown on the viewController")
+    }
+    
+    func testStartInteraction() {
+        // Given
+        let viewModel = ProductList.StartProductInteraction.ViewModel(index: 5)
+        
+        // When
+        loadView()
+        sut.startProductInteraction(viewModel: viewModel)
+        
+        // Then
+        let cell = sut.productListView.tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? ProductCell
+        XCTAssertNotNil(cell, "Cell on index 5 should be ProductCell")
+        
+        XCTAssertEqual(cell?.state, .interaction, "Cell on index 5 should have interaction state")
+    }
+    
+    func testFinishInteraction() {
+        // Given
+        let viewModel = ProductList.FinishProductInteraction.ViewModel(index: 5)
+        
+        // When
+        loadView()
+        sut.finishProductInteraction(viewModel: viewModel)
+        
+        // Then
+        let cell = sut.productListView.tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? ProductCell
+        XCTAssertNotNil(cell, "Cell on index 5 should be ProductCell")
+        
+        XCTAssertEqual(cell?.state, .normal, "Cell on index 5 should have interaction state")
+    }
+    
+    func testAddProductToCart() {
+        // Given
+        let spy = ProductListBusinessLogicSpy()
+        sut.interactor = spy
+        
+        // When
+        loadView()
+        sut.addProductToCart(index: 0)
+        
+        // Then
+        XCTAssertTrue(spy.addProductToCartCalled, "addProductToCart(index:) should call the addProductToCart method on the interactor")
+    }
+    
+    func testRemoveProductToCart() {
+        // Given
+        let spy = ProductListBusinessLogicSpy()
+        sut.interactor = spy
+        
+        // When
+        loadView()
+        sut.removeProductFromCart(index: 0)
+        
+        // Then
+        XCTAssertTrue(spy.removeProductFromCartCalled, "removeProductFromCart(index:) should call the removeProductFromCart method on the interactor")
     }
 }

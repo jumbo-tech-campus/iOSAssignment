@@ -13,16 +13,25 @@
 import UIKit
 
 protocol ProductListPresentationLogic {
-    func presentSomething(response: ProductList.Something.Response)
+    func listProducts(response: ProductList.ListProducts.Response)
+    func startProductInteraction(response: ProductList.StartProductInteraction.Response)
+    func finishProductInteraction(response: ProductList.FinishProductInteraction.Response)
 }
 
 class ProductListPresenter: ProductListPresentationLogic {
+    
     weak var viewController: ProductListDisplayLogic?
   
-    // MARK: Do something
-  
-    func presentSomething(response: ProductList.Something.Response) {
-        let viewModel = ProductList.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    // MARK: Implementation
+    func listProducts(response: ProductList.ListProducts.Response) {
+        
+    }
+    
+    func startProductInteraction(response: ProductList.StartProductInteraction.Response) {
+        
+    }
+    
+    func finishProductInteraction(response: ProductList.FinishProductInteraction.Response) {
+        
     }
 }

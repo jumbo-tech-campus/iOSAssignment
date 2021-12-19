@@ -38,25 +38,82 @@ class ProductListPresenterTests: XCTestCase {
     // MARK: Test doubles
   
     class ProductListDisplayLogicSpy: ProductListDisplayLogic {
-        var displaySomethingCalled = false
-    
-        func displaySomething(viewModel: ProductList.Something.ViewModel) {
-            displaySomethingCalled = true
+        
+        var startProductInteractionCalled = false
+        var finishProductInteractionCalled = false
+        var listProductsCalled = false
+        var finalProductsCount = 0
+        
+        func listProducts(viewModel: ProductList.ListProducts.ViewModel) {
+            listProductsCalled = true
+            finalProductsCount = viewModel.products.count
+        }
+        
+        func startProductInteraction(viewModel: ProductList.StartProductInteraction.ViewModel) {
+            startProductInteractionCalled = true
+        }
+        
+        func finishProductInteraction(viewModel: ProductList.FinishProductInteraction.ViewModel) {
+            finishProductInteractionCalled = true
         }
     }
   
     // MARK: Tests
   
-    func testPresentSomething() {
+    func testListProductsCalled() {
         // Given
         let spy = ProductListDisplayLogicSpy()
         sut.viewController = spy
-        let response = ProductList.Something.Response()
+        let response = ProductList.ListProducts.Response(products: Products(products: [ProductRaw]()), cartProducts: [CartProduct]())
     
         // When
-        sut.presentSomething(response: response)
+        sut.listProducts(response: response)
     
         // Then
-        XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
+        XCTAssertTrue(spy.listProductsCalled, "listProducts(response:) should ask the view controller to display the products")
+    }
+    
+    func testListProductsAmount() {
+        // Given
+        let spy = ProductListDisplayLogicSpy()
+        sut.viewController = spy
+        let response = ProductList.ListProducts.Response(products:
+                                                            Products(products: [
+                                                                        Product.create(withId: "0"),
+                                                                        Product.create(withId: "1")]),
+                                                         cartProducts: [CartProduct(product: Product.create(withId: "0"),
+                                                                                    amount: 15)])
+    
+        // When
+        sut.listProducts(response: response)
+    
+        // Then
+        XCTAssertEqual(spy.finalProductsCount, 2, "listProducts(response:) should ask the view controller to display only 2 products")
+    }
+    
+    func testStartProductInteraction() {
+        // Given
+        let spy = ProductListDisplayLogicSpy()
+        sut.viewController = spy
+        let response = ProductList.StartProductInteraction.Response(index: 5)
+    
+        // When
+        sut.startProductInteraction(response: response)
+    
+        // Then
+        XCTAssertTrue(spy.startProductInteractionCalled, "startProductInteraction(response:) should ask the view controller to start the interaction animation")
+    }
+    
+    func testFinishProductInteraction() {
+        // Given
+        let spy = ProductListDisplayLogicSpy()
+        sut.viewController = spy
+        let response = ProductList.FinishProductInteraction.Response(index: 5)
+    
+        // When
+        sut.finishProductInteraction(response: response)
+    
+        // Then
+        XCTAssertTrue(spy.finishProductInteractionCalled, "finishProductInteraction(response:) should ask the view controller to finish the interaction animation")
     }
 }

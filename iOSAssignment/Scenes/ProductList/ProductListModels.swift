@@ -14,15 +14,54 @@ import UIKit
 
 enum ProductList {
     // MARK: Use cases
-    enum Something {
+    enum InitialLoad {
+        struct Request {}
+    }
+    
+    enum CartUpdate {
         struct Request {
-            
+            let productIndex: Int
+            let delta: Int
         }
+    }
+    
+    enum ProductInteraction {
+        struct Request {
+            let index: Int
+        }
+    }
+    
+    enum StartProductInteraction {
+        
         struct Response {
-            
+            let index: Int
         }
+        
         struct ViewModel {
-            
+            let index: Int
+        }
+    }
+    
+    enum FinishProductInteraction {
+        
+        struct Response {
+            let index: Int
+        }
+        
+        struct ViewModel {
+            let index: Int
+        }
+    }
+    
+    enum ListProducts {
+        
+        struct Response {
+            let products: Products
+            let cartProducts: [CartProduct]
+        }
+        
+        struct ViewModel {
+            let products: [CartProduct]
         }
     }
 }

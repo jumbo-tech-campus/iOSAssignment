@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol ProductListRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToWelcome()
 }
 
 protocol ProductListDataPassing { }
@@ -22,6 +22,10 @@ class ProductListRouter: NSObject, ProductListRoutingLogic, ProductListDataPassi
     weak var viewController: ProductListViewController?
     var dataStore: ProductListDataStore?
   
+    func routeToWelcome() {
+        
+    }
+    
 //    // MARK: Routing
 //    func routeToSomewhere(segue: UIStoryboardSegue?) {
 //        if let segue = segue {

@@ -12,7 +12,15 @@
 
 import UIKit
 
-class ProductListWorker {
-    func doSomeWork() {    
+protocol ProductListWorkerInterface {
+    func getProducts(start: Int, end: Int) -> Products
+}
+
+struct ProductListWorker: ProductListWorkerInterface {
+    
+    var productRepository: ProductsRepositoryType = ProductsRepository()
+    
+    func getProducts(start: Int, end: Int) -> Products {
+        return Products(products: [ProductRaw]())
     }
 }

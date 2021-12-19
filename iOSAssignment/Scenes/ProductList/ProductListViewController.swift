@@ -13,13 +13,18 @@
 import UIKit
 
 protocol ProductListDisplayLogic: AnyObject {
-    func displaySomething(viewModel: ProductList.Something.ViewModel)
+    func listProducts(viewModel: ProductList.ListProducts.ViewModel)
+    func startProductInteraction(viewModel: ProductList.StartProductInteraction.ViewModel)
+    func finishProductInteraction(viewModel: ProductList.FinishProductInteraction.ViewModel)
 }
 
 class ProductListViewController: UIViewController, ProductListDisplayLogic {
-  
+    
     var interactor: ProductListBusinessLogic?
     var router: (NSObjectProtocol & ProductListRoutingLogic & ProductListDataPassing)?
+    
+    var products = [CartProduct]()
+    let productListView = ProductListView(frame: .zero)
 
     // MARK: Object lifecycle
   
@@ -48,35 +53,32 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
         router.dataStore = interactor
     }
   
-  // MARK: Routing
-  
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: View lifecycle
     
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
+    override func loadView() {
+        self.view = productListView
     }
-  
-  // MARK: View lifecycle
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        loadData()
     }
   
     // MARK: Do something
-  
-    //@IBOutlet weak var nameTextField: UITextField!
-  
-    func doSomething() {
-        let request = ProductList.Something.Request()
-        interactor?.doSomething(request: request)
+    
+    func loadData() {}
+    @objc func addProductToCart(index: Int) {}
+    @objc func removeProductFromCart(index: Int) {}
+    
+    func listProducts(viewModel: ProductList.ListProducts.ViewModel) {
+        
     }
     
-    func displaySomething(viewModel: ProductList.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func startProductInteraction(viewModel: ProductList.StartProductInteraction.ViewModel) {
+        
+    }
+    
+    func finishProductInteraction(viewModel: ProductList.FinishProductInteraction.ViewModel) {
+        
     }
 }

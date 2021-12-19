@@ -32,6 +32,26 @@ class ProductListWorkerTests: XCTestCase {
   
     // MARK: Test setup
   
+    enum Possibilities {
+        case undefined
+        case empty
+        case filled
+    }
+    
+    class ProductRepositorySpy: ProductsRepositoryType {
+        var possibility: Possibilities = .empty
+        func fetchRawProducts() -> Products? {
+            switch possibility {
+            case .empty:
+                return Products(products: [ProductRaw]())
+            case .undefined:
+                return nil
+            case .filled:
+                return Products(products: Array(0...100).map({ Product.create(withId: "\($0)") }))
+            }
+        }
+    }
+    
     func setupProductListWorker() {
         sut = ProductListWorker()
     }
@@ -40,11 +60,36 @@ class ProductListWorkerTests: XCTestCase {
   
     // MARK: Tests
   
-    func testSomething() {
+    func testGetProductsWithRange() {
         // Given
-    
+        let spy = ProductRepositorySpy()
+        spy.possibility = .filled
+        sut.productRepository = spy
         // When
-    
+        let productsReturned = sut.getProducts(start: 0, end: 10)
         // Then
+        XCTAssertEqual(productsReturned.products.count, 10, "There should only be 10 products returned")
+    }
+    
+    func testGetProductsWhenNoProductsAvailable() {
+        // Given
+        let spy = ProductRepositorySpy()
+        spy.possibility = .empty
+        sut.productRepository = spy
+        // When
+        let productsReturned = sut.getProducts(start: 0, end: 10)
+        // Then
+        XCTAssertEqual(productsReturned.products.count, 0, "There should not be products returned")
+    }
+    
+    func testGetProductsWhenProductFailToBeReturned() {
+        // Given
+        let spy = ProductRepositorySpy()
+        spy.possibility = .undefined
+        sut.productRepository = spy
+        // When
+        let productsReturned = sut.getProducts(start: 0, end: 10)
+        // Then
+        XCTAssertEqual(productsReturned.products.count, 0, "There should not be products returned")
     }
 }

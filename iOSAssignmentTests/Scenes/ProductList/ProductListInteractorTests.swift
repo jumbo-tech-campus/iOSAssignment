@@ -38,25 +38,200 @@ class ProductListInteractorTests: XCTestCase {
     // MARK: Test doubles
   
     class ProductListPresentationLogicSpy: ProductListPresentationLogic {
-        var presentSomethingCalled = false
-    
-        func presentSomething(response: ProductList.Something.Response) {
-            presentSomethingCalled = true
+        
+        var listProductsCalled = false
+        var startProductInteractionCalled = false
+        var finishProductInteractionCalled = false
+        
+        var index = 0
+        var cartProducts = [CartProduct]()
+        
+        func listProducts(response: ProductList.ListProducts.Response) {
+            listProductsCalled = true
+            cartProducts = response.cartProducts
+        }
+        
+        func startProductInteraction(response: ProductList.StartProductInteraction.Response) {
+            startProductInteractionCalled = true
+            index = response.index
+        }
+        
+        func finishProductInteraction(response: ProductList.FinishProductInteraction.Response) {
+            finishProductInteractionCalled = true
+            index = response.index
         }
     }
   
     // MARK: Tests
   
-    func testDoSomething() {
+    func testListProductsCalled() {
         // Given
         let spy = ProductListPresentationLogicSpy()
         sut.presenter = spy
-        let request = ProductList.Something.Request()
+        let request = ProductList.InitialLoad.Request()
     
         // When
-        sut.doSomething(request: request)
+        sut.initialLoad(request: request)
     
         // Then
-        XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
+        XCTAssertTrue(spy.listProductsCalled, "initialLoad(request:) should ask the presenter to list products")
     }
+    
+    func testAddProductToCart() {
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 10)]
+        let request = ProductList.CartUpdate.Request(productIndex: 0, delta: 1)
+    
+        // When
+        sut.updateCart(request: request)
+    
+        // Then
+        XCTAssertTrue(spy.listProductsCalled, "updateCart(request:) should ask the presenter to list products")
+        XCTAssertEqual(spy.cartProducts.first?.amount, 11, "updateCart(request:) should update the quantity for a product in the cart")
+    }
+    
+    func testRemoveProductFromCart() {
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 10)]
+        let request = ProductList.CartUpdate.Request(productIndex: 0, delta: -1)
+    
+        // When
+        sut.updateCart(request: request)
+    
+        // Then
+        XCTAssertTrue(spy.listProductsCalled, "updateCart(request:) should ask the presenter to list products")
+        XCTAssertEqual(spy.cartProducts.first?.amount, 9, "updateCart(request:) should update the quantity for a product in the cart")
+    }
+    
+    func testRemoveProductCompletelyFromCart() {
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 10)]
+        let request = ProductList.CartUpdate.Request(productIndex: 0, delta: -10)
+    
+        // When
+        sut.updateCart(request: request)
+    
+        // Then
+        XCTAssertTrue(spy.listProductsCalled, "updateCart(request:) should ask the presenter to list products")
+        XCTAssertTrue(spy.cartProducts.isEmpty, "updateCart(request:) should update the quantity for a product in the cart")
+    }
+    
+    func testRemoveMoreThanExisting() {
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 10)]
+        let request = ProductList.CartUpdate.Request(productIndex: 0, delta: -100)
+    
+        // When
+        sut.updateCart(request: request)
+    
+        // Then
+        XCTAssertTrue(spy.listProductsCalled, "updateCart(request:) should ask the presenter to list products")
+        XCTAssertTrue(spy.cartProducts.isEmpty, "updateCart(request:) should update the quantity for a product in the cart")
+    }
+    
+    func testStartInteractionCalled() {
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        let request = ProductList.ProductInteraction.Request(index: 5)
+    
+        // When
+        sut.startProductInteraction(request: request)
+    
+        // Then
+        XCTAssertTrue(spy.startProductInteractionCalled, "startProductInteraction(request:) should ask the presenter start the interaction")
+        XCTAssertEqual(spy.index, request.index, "startProductInteraction(request:) should ask the presenter start the interaction on the same index")
+    }
+    
+    func testFinishInteractionCalled() {
+        
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        let request = ProductList.ProductInteraction.Request(index: 5)
+    
+        // When
+        sut.startProductInteraction(request: request)
+        let expect = self.expectation(description: "Waiting to finish interaction")
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(2))) {
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // Then
+        XCTAssertTrue(spy.finishProductInteractionCalled, "an started interaction should ask the presenter finish the interaction after 2 seconds")
+    }
+    
+    func testFinishInteractionNotCalledBeforeTimeout() {
+        
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        let request = ProductList.ProductInteraction.Request(index: 5)
+    
+        // When
+        sut.startProductInteraction(request: request)
+        let expect = self.expectation(description: "Waiting to finish interaction")
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(1))) {
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1, handler: nil)
+        
+        // Then
+        XCTAssertFalse(spy.finishProductInteractionCalled, "an started interaction should not ask the presenter finish the interaction before 2 seconds")
+    }
+    
+    func testFinishInteractionCalledAfterNewInteraction() {
+        
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        let request1 = ProductList.ProductInteraction.Request(index: 5)
+        let request2 = ProductList.ProductInteraction.Request(index: 3)
+    
+        // When
+        sut.startProductInteraction(request: request1)
+        sut.startProductInteraction(request: request2)
+        
+        // Then
+        XCTAssertTrue(spy.finishProductInteractionCalled, "the interactor should ask the presenter to finish a previous interaction when a new one appears")
+    }
+    
+    func testFinishInteractionNotCalledWhenAdditionalInteractionsOccur() {
+        
+        // Given
+        let spy = ProductListPresentationLogicSpy()
+        sut.presenter = spy
+        let request = ProductList.ProductInteraction.Request(index: 5)
+    
+        // When
+        sut.startProductInteraction(request: request)
+        let expect = self.expectation(description: "Waiting to finish interaction")
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(1))) { [weak self] in
+            self?.sut.updateCart(request: ProductList.CartUpdate.Request(productIndex: 5, delta: 1))
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(2))) {
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // Then
+        XCTAssertFalse(spy.finishProductInteractionCalled, "an started interaction should not ask the presenter finish the interaction after 2 seconds if another interaction on the same product happened")
+    }
+    
 }

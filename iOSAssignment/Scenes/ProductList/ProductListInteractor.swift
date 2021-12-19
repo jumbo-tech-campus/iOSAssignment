@@ -13,7 +13,9 @@
 import UIKit
 
 protocol ProductListBusinessLogic {
-    func doSomething(request: ProductList.Something.Request)
+    func initialLoad(request: ProductList.InitialLoad.Request)
+    func startProductInteraction(request: ProductList.ProductInteraction.Request)
+    func updateCart(request: ProductList.CartUpdate.Request)
 }
 
 protocol ProductListDataStore {
@@ -21,17 +23,30 @@ protocol ProductListDataStore {
 }
 
 class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore {
+    
     var presenter: ProductListPresentationLogic?
-    var worker: ProductListWorker?
-    //var name: String = ""
+    
+    var products = [CartProduct]()
+    
+    lazy var productListWorker: ProductListWorkerInterface = {
+        return ProductListWorker()
+    }()
+    
+    lazy var cartWorker: CartWorkerInterface = {
+        return CartWorker()
+    }()
   
     // MARK: Do something
   
-    func doSomething(request: ProductList.Something.Request) {
-        worker = ProductListWorker()
-        worker?.doSomeWork()
+    func initialLoad(request: ProductList.InitialLoad.Request) {
+        
+    }
     
-        let response = ProductList.Something.Response()
-        presenter?.presentSomething(response: response)
+    func updateCart(request: ProductList.CartUpdate.Request) {
+        
+    }
+    
+    func startProductInteraction(request: ProductList.ProductInteraction.Request) {
+        
     }
 }
