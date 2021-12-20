@@ -10,7 +10,6 @@
 		AA4301CC276E221E00D1DC28 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301CB276E221E00D1DC28 /* UIView.swift */; };
 		AA4301CE276E28D800D1DC28 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301CD276E28D800D1DC28 /* UIColor.swift */; };
 		AA4301D0276E2BF700D1DC28 /* WelcomeRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301CF276E2BF700D1DC28 /* WelcomeRouterTests.swift */; };
-		AA4301D2276E3F4C00D1DC28 /* ProductListRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301D1276E3F4C00D1DC28 /* ProductListRouterTests.swift */; };
 		AA4301D5276E44BF00D1DC28 /* CartWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301D4276E44BF00D1DC28 /* CartWorker.swift */; };
 		AA4301D9276E44E000D1DC28 /* CartWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301D8276E44E000D1DC28 /* CartWorkerTests.swift */; };
 		AA4301DC276F24CA00D1DC28 /* CartDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4301DB276F24CA00D1DC28 /* CartDataStore.swift */; };
@@ -48,10 +47,10 @@
 		AA5FE71A276FBF08003D5F80 /* TheSans-Plain.otf in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE705276FBF08003D5F80 /* TheSans-Plain.otf */; };
 		AA5FE71C276FC01D003D5F80 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5FE71B276FC01D003D5F80 /* UIFont.swift */; };
 		AA5FE720276FCFDB003D5F80 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5FE71F276FCFDB003D5F80 /* Launch Screen.storyboard */; };
+		AA5FE7232770ADAE003D5F80 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5FE7222770ADAE003D5F80 /* Collection.swift */; };
 		AADF2B9A276E07FF00E6AF47 /* WelcomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */; };
 		AADF2B9C276E07FF00E6AF47 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */; };
 		AADF2BA4276E09DD00E6AF47 /* WelcomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */; };
-		AADF2BAE276E0A0F00E6AF47 /* ProductListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA8276E0A0F00E6AF47 /* ProductListRouter.swift */; };
 		AADF2BAF276E0A0F00E6AF47 /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BA9276E0A0F00E6AF47 /* ProductListPresenter.swift */; };
 		AADF2BB0276E0A0F00E6AF47 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BAA276E0A0F00E6AF47 /* ProductListViewController.swift */; };
 		AADF2BB1276E0A0F00E6AF47 /* ProductListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2BAB276E0A0F00E6AF47 /* ProductListInteractor.swift */; };
@@ -89,7 +88,6 @@
 		AA4301CB276E221E00D1DC28 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		AA4301CD276E28D800D1DC28 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		AA4301CF276E2BF700D1DC28 /* WelcomeRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouterTests.swift; sourceTree = "<group>"; };
-		AA4301D1276E3F4C00D1DC28 /* ProductListRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRouterTests.swift; sourceTree = "<group>"; };
 		AA4301D4276E44BF00D1DC28 /* CartWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartWorker.swift; sourceTree = "<group>"; };
 		AA4301D8276E44E000D1DC28 /* CartWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartWorkerTests.swift; sourceTree = "<group>"; };
 		AA4301DB276F24CA00D1DC28 /* CartDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDataStore.swift; sourceTree = "<group>"; };
@@ -126,10 +124,10 @@
 		AA5FE705276FBF08003D5F80 /* TheSans-Plain.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TheSans-Plain.otf"; sourceTree = "<group>"; };
 		AA5FE71B276FC01D003D5F80 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		AA5FE71F276FCFDB003D5F80 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		AA5FE7222770ADAE003D5F80 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		AADF2B94276E07FF00E6AF47 /* WelcomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
 		AADF2B96276E07FF00E6AF47 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		AADF2BA0276E09DD00E6AF47 /* WelcomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewControllerTests.swift; sourceTree = "<group>"; };
-		AADF2BA8276E0A0F00E6AF47 /* ProductListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListRouter.swift; sourceTree = "<group>"; };
 		AADF2BA9276E0A0F00E6AF47 /* ProductListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
 		AADF2BAA276E0A0F00E6AF47 /* ProductListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
 		AADF2BAB276E0A0F00E6AF47 /* ProductListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListInteractor.swift; sourceTree = "<group>"; };
@@ -193,6 +191,7 @@
 				AA4301CD276E28D800D1DC28 /* UIColor.swift */,
 				AA4301E9276F5ED400D1DC28 /* UITableViewCell.swift */,
 				AA5FE71B276FC01D003D5F80 /* UIFont.swift */,
+				AA5FE7222770ADAE003D5F80 /* Collection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -344,7 +343,6 @@
 				AADF2BAB276E0A0F00E6AF47 /* ProductListInteractor.swift */,
 				AADF2BAD276E0A0F00E6AF47 /* ProductListModels.swift */,
 				AADF2BA9276E0A0F00E6AF47 /* ProductListPresenter.swift */,
-				AADF2BA8276E0A0F00E6AF47 /* ProductListRouter.swift */,
 				AADF2BAA276E0A0F00E6AF47 /* ProductListViewController.swift */,
 				AADF2BAC276E0A0F00E6AF47 /* ProductListWorker.swift */,
 			);
@@ -377,7 +375,6 @@
 				AADF2BB8276E0C1A00E6AF47 /* ProductListPresenterTests.swift */,
 				AADF2BB5276E0C1A00E6AF47 /* ProductListViewControllerTests.swift */,
 				AADF2BB6276E0C1A00E6AF47 /* ProductListWorkerTests.swift */,
-				AA4301D1276E3F4C00D1DC28 /* ProductListRouterTests.swift */,
 			);
 			path = ProductList;
 			sourceTree = "<group>";
@@ -626,8 +623,8 @@
 				AA5A5DD8276FB4D500D150EA /* AddCartButton.swift in Sources */,
 				AA5A5DD6276FB4C300D150EA /* PriceView.swift in Sources */,
 				AA5FE71C276FC01D003D5F80 /* UIFont.swift in Sources */,
+				AA5FE7232770ADAE003D5F80 /* Collection.swift in Sources */,
 				AA4301D5276E44BF00D1DC28 /* CartWorker.swift in Sources */,
-				AADF2BAE276E0A0F00E6AF47 /* ProductListRouter.swift in Sources */,
 				AFF534942701ECBC00EEE4AE /* AppDelegate.swift in Sources */,
 				AADF2B9C276E07FF00E6AF47 /* WelcomeViewController.swift in Sources */,
 				AFF534C62701EE7300EEE4AE /* ProductRaw.swift in Sources */,
@@ -654,7 +651,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4301D2276E3F4C00D1DC28 /* ProductListRouterTests.swift in Sources */,
 				AADF2BBA276E0C1A00E6AF47 /* ProductListWorkerTests.swift in Sources */,
 				AA4301F1276F609A00D1DC28 /* ProductCellDecoratorTests.swift in Sources */,
 				AA4301D0276E2BF700D1DC28 /* WelcomeRouterTests.swift in Sources */,

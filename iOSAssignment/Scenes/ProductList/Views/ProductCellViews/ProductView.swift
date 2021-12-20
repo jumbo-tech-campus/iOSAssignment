@@ -9,6 +9,7 @@ import UIKit
 
 class ProductView: UIView {
     
+    let containerView: UIView
     let productImageView: UIImageView
     let productNameLabel: UILabel
     let productSizeLabel: UILabel
@@ -18,6 +19,7 @@ class ProductView: UIView {
 
     override init(frame: CGRect) {
         
+        containerView = UIView()
         productImageView = UIImageView()
         productNameLabel = UILabel()
         productSizeLabel = UILabel()
@@ -39,7 +41,7 @@ class ProductView: UIView {
         switch state {
         case .normal:
             if animated {
-                UIView.animate(withDuration: 0.5) { [weak self] in
+                UIView.animate(withDuration: 0.1) { [weak self] in
                     self?.shadowView.alpha = 0
                 }
             } else {
@@ -47,7 +49,7 @@ class ProductView: UIView {
             }
         case .interaction:
             if animated {
-                UIView.animate(withDuration: 0.5) { [weak self] in
+                UIView.animate(withDuration: 0.1) { [weak self] in
                     self?.shadowView.alpha = 1
                 }
             } else {
@@ -62,6 +64,7 @@ class ProductView: UIView {
         
         productNameLabel.font = .jumboText(withSize: 14)
         productNameLabel.numberOfLines = 0
+        productNameLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         productSizeLabel.font = .jumboText(withSize: 14)
         productSizeLabel.numberOfLines = 0
@@ -72,33 +75,42 @@ class ProductView: UIView {
         shadowView.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
         shadowView.alpha = 0
         
-        addSubviewForAutolayout(productImageView)
-        addSubviewForAutolayout(productNameLabel)
-        addSubviewForAutolayout(productSizeLabel)
-        addSubviewForAutolayout(productPriceView)
+        addSubviewForAutolayout(containerView)
+        containerView.addSubviewForAutolayout(productImageView)
+        containerView.addSubviewForAutolayout(productNameLabel)
+        containerView.addSubviewForAutolayout(productSizeLabel)
+        containerView.addSubviewForAutolayout(productPriceView)
         addSubviewForAutolayout(shadowView)
         addSubviewForAutolayout(productAddCartButton)
+        
     }
     
     func setupConstraints() {
         
         NSLayoutConstraint.activate([
-            productImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            productImageView.topAnchor.constraint(equalTo: topAnchor),
-            productImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+            
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            containerView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            
+            productImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            productImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            productImageView.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor),
             productImageView.widthAnchor.constraint(equalToConstant: 90),
             productImageView.heightAnchor.constraint(equalToConstant: 90),
             
-            productNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            productNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
             productNameLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 16),
             
             productSizeLabel.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 8),
             productSizeLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 16),
-            productSizeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            productSizeLabel.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor, constant: -16),
             
             productPriceView.leadingAnchor.constraint(equalTo: productNameLabel.trailingAnchor, constant: 16),
-            productPriceView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            productPriceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
+            productPriceView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
+            productPriceView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -50),
+            productPriceView.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor, constant: -16),
             
             shadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
             shadowView.trailingAnchor.constraint(equalTo: trailingAnchor),

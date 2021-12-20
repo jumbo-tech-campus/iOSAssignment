@@ -37,6 +37,7 @@ class ProductCell: UITableViewCell {
     }
     
     func updateState(_ state: ProductCellState, animated: Bool) {
+        guard self.state != state else { return }
         self.state = state
         productView.updateState(state, animated: animated)
     }
@@ -47,10 +48,10 @@ class ProductCell: UITableViewCell {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            productView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            productView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            productView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            productView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            productView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            productView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            productView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            productView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
     }
 }

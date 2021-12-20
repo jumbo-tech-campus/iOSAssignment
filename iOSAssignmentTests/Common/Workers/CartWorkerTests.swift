@@ -21,9 +21,11 @@ class CartWorkerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         setupProductListWorker()
+        UserDefaults.standard.removeObject(forKey: "cart")
     }
   
     override func tearDown() {
+        UserDefaults.standard.removeObject(forKey: "cart")
         super.tearDown()
     }
   

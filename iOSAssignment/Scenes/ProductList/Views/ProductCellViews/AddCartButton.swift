@@ -27,6 +27,8 @@ class AddCartButton: UIView {
     
     weak var delegate: AddCartDelegate?
     
+    var widthConstraint: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         
         containerView = UIView()
@@ -54,27 +56,30 @@ class AddCartButton: UIView {
     
     func setupComponents() {
         
-        containerView.backgroundColor = .jumboGreen
+        containerView.backgroundColor = .white
         containerView.layer.borderWidth = 2
         containerView.layer.borderColor = UIColor.jumboGreen.cgColor
         containerView.layer.cornerRadius = 12
         containerView.clipsToBounds = true
         
         amountOrAddLabel.textColor = .white
+        amountOrAddLabel.backgroundColor = .jumboGreen
         amountOrAddLabel.text = "+"
-        amountOrAddLabel.font = .jumboText(withSize: 24)
+        amountOrAddLabel.font = .jumboText(withSize: 18)
         amountOrAddLabel.textAlignment = .center
         amountOrAddLabel.isUserInteractionEnabled = true
         
+        addSubviewForAutolayout(containerView)
+        
         addViewsForInitialState()
         
-        stackView.addArrangedSubview(addButton)
-        stackView.addArrangedSubview(amountLabel)
         stackView.addArrangedSubview(removeButton)
+        stackView.addArrangedSubview(amountLabel)
+        stackView.addArrangedSubview(addButton)
         
         addButton.setTitle("+", for: .normal)
         removeButton.setTitle("-", for: .normal)
-        amountLabel.text = "0"
+        amountLabel.text = "1"
         
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapOnAmountOrAddLabel))
         amountOrAddLabel.addGestureRecognizer(tapGestureRecognizer!)
@@ -82,7 +87,12 @@ class AddCartButton: UIView {
         addButton.addTarget(self, action: #selector(didTapOnAddToCart), for: .touchUpInside)
         removeButton.addTarget(self, action: #selector(didTapOnRemoveFromCart), for: .touchUpInside)
         
-        [addButton.titleLabel, amountLabel, removeButton.titleLabel].forEach { $0?.font = .jumboTextBold(withSize: 16) }
+        [addButton.titleLabel, amountLabel, removeButton.titleLabel].forEach {
+            $0?.font = .jumboTextBold(withSize: 18)
+            $0?.textAlignment = .center
+        }
+        addButton.setTitleColor(.black, for: .normal)
+        removeButton.setTitleColor(.black, for: .normal)
     }
     
     @objc func didTapOnAmountOrAddLabel() {
@@ -117,39 +127,52 @@ class AddCartButton: UIView {
         switch state {
         case .interaction:
             amountOrAddLabel.removeFromSuperview()
-            addViewsForInteractionState()
-            setupConstraintsForInteractionState()
             if animated {
-                UIView.animate(withDuration: 1) { [weak self] in
-                    self?.containerView.layoutIfNeeded()
+                UIView.animate(withDuration: 0.25) { [weak self] in
+                    self?.changeToInteractiveState()
                 }
             } else {
-                containerView.layoutIfNeeded()
+                changeToInteractiveState()
             }
         case .normal:
             stackView.removeFromSuperview()
-            addViewsForInitialState()
-            setupConstraintsForInitialState()
             if animated {
-            UIView.animate(withDuration: 1) { [weak self] in
-                self?.containerView.layoutIfNeeded()
-            }
+                UIView.animate(withDuration: 0.25) { [weak self] in
+                    self?.changeToNormalState()
+                }
             } else {
-                containerView.layoutIfNeeded()
+                changeToNormalState()
             }
         }
     }
     
+    func changeToNormalState() {
+        addViewsForInitialState()
+        setupConstraintsForInitialState()
+        layoutIfNeeded()
+    }
+    func changeToInteractiveState() {
+        addViewsForInteractionState()
+        setupConstraintsForInteractionState()
+        layoutIfNeeded()
+    }
+    
     func setupConstraints() {
+        
+        widthConstraint = containerView.widthAnchor.constraint(equalToConstant: 24)
+        widthConstraint?.isActive = true
+        
         NSLayoutConstraint.activate([
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             containerView.topAnchor.constraint(equalTo: topAnchor),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            addButton.widthAnchor.constraint(equalToConstant: 24),
-            removeButton.widthAnchor.constraint(equalToConstant: 24),
-            amountLabel.widthAnchor.constraint(equalToConstant: 72),
+            containerView.widthAnchor.constraint(greaterThanOrEqualToConstant: 24),
+            
+            addButton.widthAnchor.constraint(equalToConstant: 32),
+            removeButton.widthAnchor.constraint(equalToConstant: 32),
+            amountLabel.widthAnchor.constraint(equalToConstant: 56)
         ])
         
         setupConstraintsForInitialState()
@@ -161,24 +184,36 @@ class AddCartButton: UIView {
     
     func addViewsForInitialState() {
         containerView.addSubviewForAutolayout(amountOrAddLabel)
-        addSubviewForAutolayout(containerView)
     }
     
     func setupConstraintsForInitialState() {
+        
+        widthConstraint?.constant = 24
+        
         NSLayoutConstraint.activate([
-            amountOrAddLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            amountOrAddLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
-            amountOrAddLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            amountOrAddLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+//            amountOrAddLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+//            amountOrAddLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+//            amountOrAddLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+//            amountOrAddLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            
+            amountOrAddLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            amountOrAddLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            amountOrAddLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor)
         ])
     }
     
     func setupConstraintsForInteractionState() {
+        
+        widthConstraint?.constant = 120
+        
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+//            stackView.leadingAnchor.constraint(greaterThanOrEqualTo: containerView.leadingAnchor),
+//            stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
+//            stackView.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor),
+//            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            
+            stackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
     }
 }

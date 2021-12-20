@@ -16,6 +16,7 @@ protocol ProductListPresentationLogic {
     func listProducts(response: ProductList.ListProducts.Response)
     func startProductInteraction(response: ProductList.StartProductInteraction.Response)
     func finishProductInteraction(response: ProductList.FinishProductInteraction.Response)
+    func updateProductCell(response: ProductList.CartUpdate.Response)
 }
 
 class ProductListPresenter: ProductListPresentationLogic {
@@ -52,5 +53,10 @@ class ProductListPresenter: ProductListPresentationLogic {
     func finishProductInteraction(response: ProductList.FinishProductInteraction.Response) {
         let viewModel = ProductList.FinishProductInteraction.ViewModel(index: response.index)
         viewController?.finishProductInteraction(viewModel: viewModel)
+    }
+    
+    func updateProductCell(response: ProductList.CartUpdate.Response) {
+        let viewModel = ProductList.CartUpdate.ViewModel(index: response.index)
+        viewController?.updateProductCell(viewModel: viewModel)
     }
 }

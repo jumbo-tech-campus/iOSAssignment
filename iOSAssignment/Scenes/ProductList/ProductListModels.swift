@@ -29,6 +29,14 @@ enum ProductList {
             let productIndex: Int
             let type: UpdateType
         }
+        
+        struct Response {
+            let index: Int
+        }
+        
+        struct ViewModel {
+            let index: Int
+        }
     }
     
     enum ProductInteraction {

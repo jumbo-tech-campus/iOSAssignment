@@ -44,6 +44,7 @@ class ProductListInteractorTests: XCTestCase {
         var listProductsCalled = false
         var startProductInteractionCalled = false
         var finishProductInteractionCalled = false
+        var updateProductCellCalled = false
         
         var index = 0
         var cartProducts = [CartProduct]()
@@ -60,6 +61,11 @@ class ProductListInteractorTests: XCTestCase {
         
         func finishProductInteraction(response: ProductList.FinishProductInteraction.Response) {
             finishProductInteractionCalled = true
+            index = response.index
+        }
+        
+        func updateProductCell(response: ProductList.CartUpdate.Response) {
+            updateProductCellCalled = true
             index = response.index
         }
     }
@@ -157,7 +163,8 @@ class ProductListInteractorTests: XCTestCase {
         // Given
         let spy = ProductListPresentationLogicSpy()
         sut.presenter = spy
-        let request = ProductList.ProductInteraction.Request(index: 5)
+        sut.products = [Product.create(withId: "0")]
+        let request = ProductList.ProductInteraction.Request(index: 0)
     
         // When
         sut.startProductInteraction(request: request)
@@ -172,6 +179,8 @@ class ProductListInteractorTests: XCTestCase {
         // Given
         let spy = ProductListPresentationLogicSpy()
         sut.presenter = spy
+        sut.products = [Product.create(withId: "0")]
+        sut.currentInteractingProductIndex = 0
         let request = ProductList.ProductInteraction.Request(index: 5)
     
         // When
@@ -182,7 +191,7 @@ class ProductListInteractorTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 2, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         
         // Then
         XCTAssertTrue(spy.finishProductInteractionCalled, "an started interaction should ask the presenter finish the interaction after 2 seconds")

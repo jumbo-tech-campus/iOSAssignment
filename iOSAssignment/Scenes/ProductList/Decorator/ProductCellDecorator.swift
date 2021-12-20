@@ -10,12 +10,12 @@ import AlamofireImage
 
 enum ProductCellDecorator {
     
+    static func getCurrentCell(tableView: UITableView, indexPath: IndexPath) -> ProductCell? {
+        return tableView.cellForRow(at: indexPath) as? ProductCell
+    }
+    
     static func dequeueProductCell(tableView: UITableView, indexPath: IndexPath) -> ProductCell? {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier) as? ProductCell else {
-            return nil
-        }
-        return cell
+        return tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier) as? ProductCell
     }
     
     static func setupProductCell(cell: ProductCell, indexPath: IndexPath, product: CartProduct, delegate: AddCartDelegate) {
@@ -29,7 +29,7 @@ enum ProductCellDecorator {
         cell.productView.productNameLabel.text = rawProduct.title
         
         if let quantity = rawProduct.quantity {
-            cell.productView.productSizeLabel.text = "Inhoud: \(quantity)"
+            cell.productView.productSizeLabel.text = quantity
         }
         
         if let regularPrice = rawProduct.prices?.price, let unitPrice = rawProduct.prices?.unitPrice {
@@ -40,8 +40,12 @@ enum ProductCellDecorator {
             cell.productView.productPriceView.priceSpecLabel.text = "\(price)/\(unit)"
         }
         
-        cell.productView.productAddCartButton.setAmount(product.amount)
+        updateCellAmount(cell: cell, product: product)
         cell.productView.productAddCartButton.delegate = delegate
         cell.productView.productAddCartButton.indexPathToReport = indexPath
+    }
+    
+    static func updateCellAmount(cell: ProductCell, product: CartProduct) {
+        cell.productView.productAddCartButton.setAmount(product.amount)
     }
 }

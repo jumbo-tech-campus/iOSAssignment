@@ -16,12 +16,12 @@ protocol ProductListDisplayLogic: AnyObject {
     func listProducts(viewModel: ProductList.ListProducts.ViewModel)
     func startProductInteraction(viewModel: ProductList.StartProductInteraction.ViewModel)
     func finishProductInteraction(viewModel: ProductList.FinishProductInteraction.ViewModel)
+    func updateProductCell(viewModel: ProductList.CartUpdate.ViewModel)
 }
 
 class ProductListViewController: UIViewController, ProductListDisplayLogic {
     
     var interactor: ProductListBusinessLogic?
-    var router: (NSObjectProtocol & ProductListRoutingLogic & ProductListDataPassing)?
     
     var products = [CartProduct]()
     let productListView = ProductListView(frame: .zero)
@@ -44,13 +44,9 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
         let viewController = self
         let interactor = ProductListInteractor()
         let presenter = ProductListPresenter()
-        let router = ProductListRouter()
         viewController.interactor = interactor
-        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
     }
   
     // MARK: View lifecycle
@@ -91,16 +87,21 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
     
     func startProductInteraction(viewModel: ProductList.StartProductInteraction.ViewModel) {
         
-        let productCell = ProductCellDecorator.dequeueProductCell(tableView: productListView.tableView, indexPath: IndexPath(row: viewModel.index, section: 0))
-        
+        let productCell = ProductCellDecorator.getCurrentCell(tableView: productListView.tableView, indexPath: IndexPath(row: viewModel.index, section: 0))
         productCell?.updateState(.interaction, animated: true)
     }
     
     func finishProductInteraction(viewModel: ProductList.FinishProductInteraction.ViewModel) {
         
-        let productCell = ProductCellDecorator.dequeueProductCell(tableView: productListView.tableView, indexPath: IndexPath(row: viewModel.index, section: 0))
-        
+        let productCell = ProductCellDecorator.getCurrentCell(tableView: productListView.tableView, indexPath: IndexPath(row: viewModel.index, section: 0))
         productCell?.updateState(.normal, animated: true)
+    }
+    
+    func updateProductCell(viewModel: ProductList.CartUpdate.ViewModel) {
+        guard let productCell = ProductCellDecorator.getCurrentCell(tableView: productListView.tableView, indexPath: IndexPath(row: viewModel.index, section: 0)) else { return }
+        
+        let product = products[viewModel.index]
+        ProductCellDecorator.updateCellAmount(cell: productCell, product: product)
     }
 }
 

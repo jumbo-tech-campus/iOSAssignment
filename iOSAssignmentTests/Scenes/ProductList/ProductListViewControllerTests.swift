@@ -110,31 +110,34 @@ class ProductListViewControllerTests: XCTestCase {
     
     func testStartInteraction() {
         // Given
-        let viewModel = ProductList.StartProductInteraction.ViewModel(index: 5)
+        let viewModel = ProductList.StartProductInteraction.ViewModel(index: 0)
+        
+        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 0)]
         
         // When
         loadView()
         sut.startProductInteraction(viewModel: viewModel)
         
         // Then
-        let cell = sut.productListView.tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? ProductCell
-        XCTAssertNotNil(cell, "Cell on index 5 should be ProductCell")
+        let cell = sut.productListView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ProductCell
         
+        XCTAssertNotNil(cell, "Cell on index 5 should be ProductCell")
         XCTAssertEqual(cell?.state, .interaction, "Cell on index 5 should have interaction state")
     }
     
     func testFinishInteraction() {
         // Given
-        let viewModel = ProductList.FinishProductInteraction.ViewModel(index: 5)
+        let viewModel = ProductList.FinishProductInteraction.ViewModel(index: 0)
+        sut.products = [CartProduct(product: Product.create(withId: "0"), amount: 0)]
         
         // When
         loadView()
         sut.finishProductInteraction(viewModel: viewModel)
         
         // Then
-        let cell = sut.productListView.tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? ProductCell
-        XCTAssertNotNil(cell, "Cell on index 5 should be ProductCell")
+        let cell = sut.productListView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ProductCell
         
+        XCTAssertNotNil(cell, "Cell on index 5 should be ProductCell")
         XCTAssertEqual(cell?.state, .normal, "Cell on index 5 should have interaction state")
     }
     

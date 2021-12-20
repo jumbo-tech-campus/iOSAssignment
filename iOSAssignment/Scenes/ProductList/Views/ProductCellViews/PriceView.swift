@@ -48,14 +48,14 @@ class PriceView: UIView {
             fractionLabel.topAnchor.constraint(equalTo: topAnchor),
             fractionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            
             integerLabel.trailingAnchor.constraint(equalTo: fractionLabel.leadingAnchor, constant: -4),
             integerLabel.topAnchor.constraint(equalTo: topAnchor),
             integerLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
             
             priceSpecLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             priceSpecLabel.topAnchor.constraint(equalTo: integerLabel.bottomAnchor, constant: 4),
-            priceSpecLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
+            priceSpecLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            priceSpecLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

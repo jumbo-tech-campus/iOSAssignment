@@ -42,6 +42,7 @@ class ProductListPresenterTests: XCTestCase {
         var startProductInteractionCalled = false
         var finishProductInteractionCalled = false
         var listProductsCalled = false
+        var updateProductCellCalled = false
         var finalProductsCount = 0
         
         func listProducts(viewModel: ProductList.ListProducts.ViewModel) {
@@ -55,6 +56,10 @@ class ProductListPresenterTests: XCTestCase {
         
         func finishProductInteraction(viewModel: ProductList.FinishProductInteraction.ViewModel) {
             finishProductInteractionCalled = true
+        }
+        
+        func updateProductCell(viewModel: ProductList.CartUpdate.ViewModel) {
+            updateProductCellCalled = true
         }
     }
   

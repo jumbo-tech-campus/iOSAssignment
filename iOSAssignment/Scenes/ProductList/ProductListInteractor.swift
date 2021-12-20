@@ -37,6 +37,9 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore {
     }()
     
     var isLoading = false
+    
+    var timer: Timer?
+    var currentInteractingProductIndex: Int?
   
     // MARK: Do something
   
@@ -53,6 +56,8 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore {
     
     func updateCart(request: ProductList.CartUpdate.Request) {
         
+        extendTimer()
+        
         guard request.productIndex < products.count else {
             return
         }
@@ -67,12 +72,73 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore {
         }
         
         listProducts()
+        
+        let foundCartProduct = cartWorker.cartProducts.first(where: { $0.product.id == product.id })
+        
+        if foundCartProduct == nil {
+            finishInteraction(index: request.productIndex)
+        }
+        
+        let response = ProductList.CartUpdate.Response(index: request.productIndex)
+        presenter?.updateProductCell(response: response)
     }
     
     func startProductInteraction(request: ProductList.ProductInteraction.Request) {
         
+        timer?.invalidate()
+        timer = nil
+        
+        if let currentIndex = currentInteractingProductIndex {
+            finishInteraction(index: currentIndex)
+            currentInteractingProductIndex = nil
+        }
+        
+        startInteraction(index: request.index)
+        currentInteractingProductIndex = request.index
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { [weak self] _ in
+            self?.finishInteraction(index: request.index)
+            self?.currentInteractingProductIndex = nil
+        })
     }
     
+    func extendTimer() {
+        
+        guard let currentIndex = currentInteractingProductIndex else { return }
+        
+        timer?.invalidate()
+        timer = nil
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { [weak self] _ in
+            self?.finishInteraction(index: currentIndex)
+            self?.currentInteractingProductIndex = nil
+        })
+    }
+    
+    private func startInteraction(index: Int) {
+        
+        guard let product = products[safe: index] else { return }
+        
+        let foundCartProduct = cartWorker.cartProducts.first(where: { $0.product.id == product.id })
+        
+        if foundCartProduct == nil {
+            
+            cartWorker.addProductToCart(product: product)
+            
+            listProducts()
+            
+            let response = ProductList.CartUpdate.Response(index: index)
+            presenter?.updateProductCell(response: response)
+        }
+        
+        let response = ProductList.StartProductInteraction.Response(index: index)
+        presenter?.startProductInteraction(response: response)
+    }
+    
+    private func finishInteraction(index: Int) {
+        let response = ProductList.FinishProductInteraction.Response(index: index)
+        presenter?.finishProductInteraction(response: response)
+    }
     private func listProducts() {
         let response = ProductList.ListProducts.Response(products: products, cartProducts: cartWorker.cartProducts)
         presenter?.listProducts(response: response)
