@@ -26,4 +26,8 @@ extension UIColor {
     static var jumboYellow: UIColor {
         return UIColor(hex: 0xeeb717)
     }
+    
+    static var jumboGreen: UIColor {
+        return UIColor(hex: 0x0fc647)
+    }
 }

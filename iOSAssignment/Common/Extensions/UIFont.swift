@@ -12,7 +12,7 @@ extension UIFont {
         return UIFont(name: "TheSansBold-Expert", size: size) ?? .systemFont(ofSize: size)
     }
     class func jumboNumbersBlack(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: "TheSansBlack-Expert", size: size) ?? .systemFont(ofSize: size)
+        return UIFont(name: "TheSans-B9Black", size: size) ?? .systemFont(ofSize: size)
     }
     class func jumboTextBoldCaps(withSize size: CGFloat) -> UIFont {
         return UIFont(name: "TheSansBold-Caps", size: size) ?? .systemFont(ofSize: size)
@@ -24,6 +24,9 @@ extension UIFont {
         return UIFont(name: "TheSansBlack-Plain", size: size) ?? .systemFont(ofSize: size)
     }
     class func jumboText(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: "TheSans-Plain", size: size) ?? .systemFont(ofSize: size)
+        return UIFont(name: "TheSans-B5Plain", size: size) ?? .systemFont(ofSize: size)
+    }
+    class func jumboTextBold(withSize size: CGFloat) -> UIFont {
+        return UIFont(name: "TheSans-B7Bold", size: size) ?? .systemFont(ofSize: size)
     }
 }

@@ -91,10 +91,16 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
     
     func startProductInteraction(viewModel: ProductList.StartProductInteraction.ViewModel) {
         
+        let productCell = ProductCellDecorator.dequeueProductCell(tableView: productListView.tableView, indexPath: IndexPath(row: viewModel.index, section: 0))
+        
+        productCell?.updateState(.interaction, animated: true)
     }
     
     func finishProductInteraction(viewModel: ProductList.FinishProductInteraction.ViewModel) {
         
+        let productCell = ProductCellDecorator.dequeueProductCell(tableView: productListView.tableView, indexPath: IndexPath(row: viewModel.index, section: 0))
+        
+        productCell?.updateState(.normal, animated: true)
     }
 }
 
@@ -109,7 +115,24 @@ extension ProductListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let product = products[indexPath.row]
-        ProductCellDecorator.setupProductCell(cell: cell, product: product)
+        ProductCellDecorator.setupProductCell(cell: cell, indexPath: indexPath, product: product, delegate: self)
         return cell
+    }
+}
+
+extension ProductListViewController: AddCartDelegate {
+    func didStartInteraction(indexPath: IndexPath) {
+        let request = ProductList.ProductInteraction.Request(index: indexPath.row)
+        interactor?.startProductInteraction(request: request)
+    }
+    
+    func didAddToCart(indexPath: IndexPath) {
+        let request = ProductList.CartUpdate.Request(productIndex: indexPath.row, type: .add)
+        interactor?.updateCart(request: request)
+    }
+    
+    func didRemoveFromCart(indexPath: IndexPath) {
+        let request = ProductList.CartUpdate.Request(productIndex: indexPath.row, type: .remove)
+        interactor?.updateCart(request: request)
     }
 }

@@ -14,7 +14,7 @@ enum ProductCellState {
 
 class ProductCell: UITableViewCell {
     
-    var state: ProductCellState = .normal
+    private(set) var state: ProductCellState = .normal
     
     let productView: ProductView
     
@@ -34,6 +34,11 @@ class ProductCell: UITableViewCell {
     
     override func prepareForReuse() {
         state = .normal
+    }
+    
+    func updateState(_ state: ProductCellState, animated: Bool) {
+        self.state = state
+        productView.updateState(state, animated: animated)
     }
     
     func setupComponents() {

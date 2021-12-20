@@ -18,21 +18,21 @@ enum ProductCellDecorator {
         return cell
     }
     
-    static func setupProductCell(cell: ProductCell, product: CartProduct) {
+    static func setupProductCell(cell: ProductCell, indexPath: IndexPath, product: CartProduct, delegate: AddCartDelegate) {
         
-        let product = product.product
+        let rawProduct = product.product
         
-        if let url = URL(string: product.imageInfo?.primaryView?.smallestImage?.url ?? "") {
+        if let url = URL(string: rawProduct.imageInfo?.primaryView?.smallestImage?.url ?? "") {
             cell.productView.productImageView.af.setImage(withURL: url)
         }
         
-        cell.productView.productNameLabel.text = product.title
+        cell.productView.productNameLabel.text = rawProduct.title
         
-        if let quantity = product.quantity {
+        if let quantity = rawProduct.quantity {
             cell.productView.productSizeLabel.text = "Inhoud: \(quantity)"
         }
         
-        if let regularPrice = product.prices?.price, let unitPrice = product.prices?.unitPrice {
+        if let regularPrice = rawProduct.prices?.price, let unitPrice = rawProduct.prices?.unitPrice {
             cell.productView.productPriceView.integerLabel.text = "\(regularPrice.amount)"
             cell.productView.productPriceView.fractionLabel.text = ".-"
             let unit = unitPrice.unit ?? ""
@@ -40,5 +40,8 @@ enum ProductCellDecorator {
             cell.productView.productPriceView.priceSpecLabel.text = "\(price)/\(unit)"
         }
         
+        cell.productView.productAddCartButton.setAmount(product.amount)
+        cell.productView.productAddCartButton.delegate = delegate
+        cell.productView.productAddCartButton.indexPathToReport = indexPath
     }
 }
