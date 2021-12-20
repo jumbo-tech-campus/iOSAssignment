@@ -60,6 +60,7 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
         
         productListView.tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.identifier)
         productListView.tableView.dataSource = self
+        productListView.tableView.delegate = self
         
         loadData()
     }
@@ -67,8 +68,8 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
     // MARK: Do something
     
     func loadData() {
-        let request = ProductList.InitialLoad.Request()
-        interactor?.initialLoad(request: request)
+        let request = ProductList.LoadData.Request()
+        interactor?.loadData(request: request)
     }
     
     @objc func addProductToCart(index: Int) {
@@ -82,7 +83,19 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic {
     }
     
     func listProducts(viewModel: ProductList.ListProducts.ViewModel) {
+        
+        var shouldReloadTableView = false
+        
+        if products.count != viewModel.products.count {
+            shouldReloadTableView =  true
+        }
+        
         products = viewModel.products
+        
+        if(shouldReloadTableView) {
+            productListView.tableView.reloadData()
+        }
+        
     }
     
     func startProductInteraction(viewModel: ProductList.StartProductInteraction.ViewModel) {
@@ -118,6 +131,14 @@ extension ProductListViewController: UITableViewDataSource {
         let product = products[indexPath.row]
         ProductCellDecorator.setupProductCell(cell: cell, indexPath: indexPath, product: product, delegate: self)
         return cell
+    }
+}
+
+extension ProductListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == products.count - 1 {
+            loadData()
+        }
     }
 }
 

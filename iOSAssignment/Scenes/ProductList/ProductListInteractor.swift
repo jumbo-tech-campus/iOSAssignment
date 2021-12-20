@@ -13,7 +13,7 @@
 import UIKit
 
 protocol ProductListBusinessLogic {
-    func initialLoad(request: ProductList.InitialLoad.Request)
+    func loadData(request: ProductList.LoadData.Request)
     func startProductInteraction(request: ProductList.ProductInteraction.Request)
     func updateCart(request: ProductList.CartUpdate.Request)
 }
@@ -43,14 +43,19 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore {
   
     // MARK: Do something
   
-    func initialLoad(request: ProductList.InitialLoad.Request) {
+    func loadData(request: ProductList.LoadData.Request) {
+        
+        guard !isLoading else { return }
         
         isLoading = true
         
-        productListWorker.getProducts(start: products.count, amount: 10) { [weak self] products in
-            self?.products.append(contentsOf: products.products)
+        productListWorker.getProducts(start: products.count, amount: 8) { [weak self] products in
+            let fetchedProducts = products.products
+            let current = self?.products.count ?? 0
+            self?.products.append(contentsOf: fetchedProducts)
+            let final = self?.products.count ?? 0
             self?.isLoading = false
-            self?.listProducts()
+            self?.listProducts(addingLast: final - current)
         }
     }
     
@@ -139,7 +144,7 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore {
         let response = ProductList.FinishProductInteraction.Response(index: index)
         presenter?.finishProductInteraction(response: response)
     }
-    private func listProducts() {
+    private func listProducts(addingLast: Int = 0) {
         let response = ProductList.ListProducts.Response(products: products, cartProducts: cartWorker.cartProducts)
         presenter?.listProducts(response: response)
     }

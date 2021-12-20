@@ -46,14 +46,14 @@ class ProductListViewControllerTests: XCTestCase {
   
     // MARK: Test doubles
   
-    class ProductListBusinessLogicSpy: ProductListBusinessLogic {
+    class ProductListBusinessLogicSpy: ProductListBusinessLogic {        
         
         var initialLoadCalled = false
         var updateCartCalled = false
         var startProductInteractionCalled = false
         var cartUpdateType: ProductList.CartUpdate.UpdateType = .add
         
-        func initialLoad(request: ProductList.InitialLoad.Request) {
+        func loadData(request: ProductList.LoadData.Request) {
             initialLoadCalled = true
         }
         

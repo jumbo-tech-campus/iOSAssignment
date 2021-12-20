@@ -76,10 +76,10 @@ class ProductListInteractorTests: XCTestCase {
         // Given
         let spy = ProductListPresentationLogicSpy()
         sut.presenter = spy
-        let request = ProductList.InitialLoad.Request()
+        let request = ProductList.LoadData.Request()
     
         // When
-        sut.initialLoad(request: request)
+        sut.loadData(request: request)
         
         let expectation = self.expectation(description: "Waiting for async fetching products")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: .seconds(1))) {
@@ -88,7 +88,7 @@ class ProductListInteractorTests: XCTestCase {
         waitForExpectations(timeout: 2, handler: nil)
         
         // Then
-        XCTAssertTrue(spy.listProductsCalled, "initialLoad(request:) should ask the presenter to list products")
+        XCTAssertTrue(spy.listProductsCalled, "loadData(request:) should ask the presenter to list products")
     }
     
     func testAddProductToCart() {

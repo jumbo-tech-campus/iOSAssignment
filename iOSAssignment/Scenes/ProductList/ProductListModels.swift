@@ -14,7 +14,7 @@ import UIKit
 
 enum ProductList {
     // MARK: Use cases
-    enum InitialLoad {
+    enum LoadData {
         struct Request {}
     }
     
