@@ -21,6 +21,9 @@
 		AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF534D2270202AA00EEE4AE /* Data+Json.swift */; };
 		AFF534D72702088800EEE4AE /* ImageDetailRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF534D62702088800EEE4AE /* ImageDetailRaw.swift */; };
 		AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF534DA27020CB800EEE4AE /* ProductsRepository.swift */; };
+		C77E0B3727BD78D700E882A9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E0B3527BD78D700E882A9 /* ProductCell.swift */; };
+		C77E0B3827BD78D700E882A9 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77E0B3627BD78D700E882A9 /* ProductCell.xib */; };
+		C77E0B3F27BD7A2A00E882A9 /* jumbo.png in Resources */ = {isa = PBXBuildFile; fileRef = C77E0B3E27BD7A2A00E882A9 /* jumbo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		AFF534D2270202AA00EEE4AE /* Data+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Json.swift"; sourceTree = "<group>"; };
 		AFF534D62702088800EEE4AE /* ImageDetailRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailRaw.swift; sourceTree = "<group>"; };
 		AFF534DA27020CB800EEE4AE /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
+		C77E0B3527BD78D700E882A9 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductCell.swift; path = iOSAssignment/Jumbo/Screens/ProductsScreen/ProductCell.swift; sourceTree = SOURCE_ROOT; };
+		C77E0B3627BD78D700E882A9 /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProductCell.xib; path = iOSAssignment/Jumbo/Screens/ProductsScreen/ProductCell.xib; sourceTree = SOURCE_ROOT; };
+		C77E0B3E27BD7A2A00E882A9 /* jumbo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumbo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,14 +98,11 @@
 		AFF534922701ECBC00EEE4AE /* iOSAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				C77E0B3927BD794F00E882A9 /* Extras */,
 				AFF534C32701EE5400EEE4AE /* Jumbo */,
 				AFF534932701ECBC00EEE4AE /* AppDelegate.swift */,
 				AFF534952701ECBC00EEE4AE /* SceneDelegate.swift */,
 				AFF534972701ECBC00EEE4AE /* ViewController.swift */,
-				AFF534992701ECBC00EEE4AE /* Main.storyboard */,
-				AFF5349C2701ECBF00EEE4AE /* Assets.xcassets */,
-				AFF5349E2701ECBF00EEE4AE /* LaunchScreen.storyboard */,
-				AFF534A12701ECBF00EEE4AE /* Info.plist */,
 			);
 			path = iOSAssignment;
 			sourceTree = "<group>";
@@ -162,6 +165,8 @@
 		AFF534D5270203A000EEE4AE /* ProductsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				C77E0B3527BD78D700E882A9 /* ProductCell.swift */,
+				C77E0B3627BD78D700E882A9 /* ProductCell.xib */,
 			);
 			path = ProductsScreen;
 			sourceTree = "<group>";
@@ -180,6 +185,18 @@
 				AFF534DA27020CB800EEE4AE /* ProductsRepository.swift */,
 			);
 			path = Products;
+			sourceTree = "<group>";
+		};
+		C77E0B3927BD794F00E882A9 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				C77E0B3E27BD7A2A00E882A9 /* jumbo.png */,
+				AFF534992701ECBC00EEE4AE /* Main.storyboard */,
+				AFF5349C2701ECBF00EEE4AE /* Assets.xcassets */,
+				AFF5349E2701ECBF00EEE4AE /* LaunchScreen.storyboard */,
+				AFF534A12701ECBF00EEE4AE /* Info.plist */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +282,8 @@
 			files = (
 				AFF534A02701ECBF00EEE4AE /* LaunchScreen.storyboard in Resources */,
 				AFF534D02702007000EEE4AE /* products.json in Resources */,
+				C77E0B3827BD78D700E882A9 /* ProductCell.xib in Resources */,
+				C77E0B3F27BD7A2A00E882A9 /* jumbo.png in Resources */,
 				AFF5349D2701ECBF00EEE4AE /* Assets.xcassets in Resources */,
 				AFF5349B2701ECBC00EEE4AE /* Main.storyboard in Resources */,
 			);
@@ -291,6 +310,7 @@
 				AFF534C62701EE7300EEE4AE /* ProductRaw.swift in Sources */,
 				AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */,
 				AFF534CA2701F98300EEE4AE /* ProductImagesInfoRaw.swift in Sources */,
+				C77E0B3727BD78D700E882A9 /* ProductCell.swift in Sources */,
 				AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */,
 				AFF534D72702088800EEE4AE /* ImageDetailRaw.swift in Sources */,
 			);
