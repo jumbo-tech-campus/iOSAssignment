@@ -28,6 +28,8 @@
 		C74FED7427BDED7B00393408 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FED7327BDED7B00393408 /* ProductCell.swift */; };
 		C74FED7627BDFE3800393408 /* ProductsControllerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FED7527BDFE3800393408 /* ProductsControllerAction.swift */; };
 		C74FED7827BE081800393408 /* ProductCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FED7727BE081800393408 /* ProductCellViewModel.swift */; };
+		C74FED7B27BE13F900393408 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FED7A27BE13F900393408 /* ImageManager.swift */; };
+		C74FED7E27BE27FE00393408 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FED7D27BE27FE00393408 /* URLSession.swift */; };
 		C77E0B3727BD78D700E882A9 /* ProductCellStretch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E0B3527BD78D700E882A9 /* ProductCellStretch.swift */; };
 		C77E0B3827BD78D700E882A9 /* ProductCellStretch.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77E0B3627BD78D700E882A9 /* ProductCellStretch.xib */; };
 		C77E0B3F27BD7A2A00E882A9 /* jumbo.png in Resources */ = {isa = PBXBuildFile; fileRef = C77E0B3E27BD7A2A00E882A9 /* jumbo.png */; };
@@ -68,6 +70,8 @@
 		C74FED7327BDED7B00393408 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		C74FED7527BDFE3800393408 /* ProductsControllerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsControllerAction.swift; sourceTree = "<group>"; };
 		C74FED7727BE081800393408 /* ProductCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellViewModel.swift; sourceTree = "<group>"; };
+		C74FED7A27BE13F900393408 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		C74FED7D27BE27FE00393408 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		C77E0B3527BD78D700E882A9 /* ProductCellStretch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductCellStretch.swift; path = iOSAssignment/Jumbo/Screens/ProductsScreen/Cells/ProductCellStretch.swift; sourceTree = SOURCE_ROOT; };
 		C77E0B3627BD78D700E882A9 /* ProductCellStretch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProductCellStretch.xib; path = iOSAssignment/Jumbo/Screens/ProductsScreen/Cells/ProductCellStretch.xib; sourceTree = SOURCE_ROOT; };
 		C77E0B3E27BD7A2A00E882A9 /* jumbo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumbo.png; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		AFF534C32701EE5400EEE4AE /* Jumbo */ = {
 			isa = PBXGroup;
 			children = (
+				C74FED7927BE139400393408 /* Managers */,
 				AFF534D827020CA000EEE4AE /* Repositories */,
 				AFF534D42702038700EEE4AE /* Screens */,
 				AFF534D12702029A00EEE4AE /* Extensions */,
@@ -164,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				AFF534D2270202AA00EEE4AE /* Data+Json.swift */,
+				C74FED7D27BE27FE00393408 /* URLSession.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +221,14 @@
 				C74FED6F27BDE19900393408 /* ProductCellWide.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		C74FED7927BE139400393408 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C74FED7A27BE13F900393408 /* ImageManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		C77E0B3927BD794F00E882A9 /* Extras */ = {
@@ -334,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
+				C74FED7B27BE13F900393408 /* ImageManager.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */,
 				C74FED7827BE081800393408 /* ProductCellViewModel.swift in Sources */,
 				C74FED7627BDFE3800393408 /* ProductsControllerAction.swift in Sources */,
@@ -346,6 +361,7 @@
 				C74FED6D27BDCE0400393408 /* ProductsViewModel.swift in Sources */,
 				C74FED6927BDB86400393408 /* CircleView.swift in Sources */,
 				AFF534CA2701F98300EEE4AE /* ProductImagesInfoRaw.swift in Sources */,
+				C74FED7E27BE27FE00393408 /* URLSession.swift in Sources */,
 				C77E0B3727BD78D700E882A9 /* ProductCellStretch.swift in Sources */,
 				AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */,
 				AFF534D72702088800EEE4AE /* ImageDetailRaw.swift in Sources */,

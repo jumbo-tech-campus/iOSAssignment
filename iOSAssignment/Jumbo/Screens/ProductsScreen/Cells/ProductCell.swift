@@ -36,9 +36,14 @@ extension ProductCell {
 
     func setUp(viewModel: ProductCellViewModel) {
         self.viewModel = viewModel
+
+        Task {
+            let image = await viewModel.productImage
+            await update(image: image)
+        }
+
         addToCartButton.setTitle("", for: .normal)
         removeFromCartButton?.setTitle("", for: .normal)
-        productImage.image = viewModel.productImage
         name.text = viewModel.name
         quantity.isHidden = viewModel.isQuantityHidden
         quantity.text = viewModel.quantity
@@ -52,6 +57,11 @@ extension ProductCell {
             cartQuantityContainer.isHidden = true
         }
 
+    }
+
+    @MainActor
+    func update(image: UIImage?) {
+        productImage.image = image
     }
 
     @MainActor

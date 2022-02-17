@@ -26,6 +26,8 @@ class ProductCellWide: UITableViewCell, ProductCell {
         // Initialization code
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {} // left empty to avoid click highlight
+
     @MainActor
     @IBAction func addToCartPressed(_ sender: UIButton) {
         addToCart()

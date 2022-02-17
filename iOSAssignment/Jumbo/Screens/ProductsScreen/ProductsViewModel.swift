@@ -11,10 +11,13 @@ class ProductsViewModel {
     @MainActor @Published var products: [ProductCellViewModel] = []
 
     private let repository: ProductsRepositoryType
+    private let imageManager: ImageManager
     private var currentTask: Task<(), Never>?
 
-    init(repository: ProductsRepositoryType = ProductsRepository()) {
+    init(repository: ProductsRepositoryType = ProductsRepository(),
+         imageManager: ImageManager = ImageManager()) {
         self.repository = repository
+        self.imageManager = imageManager
     }
 
     @MainActor
@@ -41,7 +44,7 @@ class ProductsViewModel {
             do {
                 let products = try await repository.fetchRawProducts() //simulate network call
                 let viewModels = products?.products.map { product in
-                    ProductCellViewModel(product: product, productsViewModel: self)
+                    ProductCellViewModel(product: product, productsViewModel: self, imageManager: imageManager)
                 } ?? []
                 await MainActor.run { self.products = viewModels }
             } catch {

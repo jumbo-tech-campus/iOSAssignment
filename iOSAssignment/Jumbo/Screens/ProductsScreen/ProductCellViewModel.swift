@@ -16,7 +16,12 @@ class ProductCellViewModel: Hashable {
 
     private let product: ProductRaw
 
-    var productImage: UIImage? { parseImage() }
+    var productImage: UIImage? {
+        get async {
+            await parseImage()
+        }
+    }
+    
     var name: String { product.title }
     var isQuantityHidden: Bool { product.quantity == nil }
     var quantity: String { formatQuantity() }
@@ -24,21 +29,26 @@ class ProductCellViewModel: Hashable {
     var unitPrice: String { formatUnitPrice() }
     var cartQuantity: String? { (0...1).randomElement() == 0 ? nil : "1" }
     private weak var productsViewModel: ProductsViewModel?
+    private weak var imageManager: ImageManager?
 
-    init(product: ProductRaw, productsViewModel: ProductsViewModel) {
+    init(product: ProductRaw, productsViewModel: ProductsViewModel, imageManager: ImageManager) {
         self.product = product
         self.productsViewModel = productsViewModel
+        self.imageManager = imageManager
     }
 
     // MARK: - Data processing
-    func parseImage() -> UIImage? {
-        return UIImage(systemName: "hexagon.fill")
+    func parseImage() async -> UIImage? {
+        guard let primaryView = product.imageInfo?.primaryView,
+              let imageDetail = primaryView.first,
+              let url = URL(string: imageDetail.url),
+              let imageManager = imageManager,
+              let data = try? await imageManager.download(url: url) else { // A proper error handling logic is needed
+                  return UIImage(systemName: "hexagon.fill")
+              }
 
-        //        guard let primaryView = product.imageInfo?.primaryView,
-        //              let imageDetail = primaryView.first,
-        //              let url = URL(string: imageDetail.url) else {
-        //                  return UIImage(systemName: "hexagon.fill")
-        //              }
+        return UIImage(data: data)
+
     }
 
     func formatPrice() -> String {
