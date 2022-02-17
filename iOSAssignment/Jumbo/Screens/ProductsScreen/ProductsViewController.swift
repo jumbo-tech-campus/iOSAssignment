@@ -63,7 +63,7 @@ class ProductsViewController: UIViewController {
             snapshot.appendSections([.store])
             snapshot.appendItems(products, toSection: .store)
 
-            dataSource?.apply(snapshot)
+            dataSource?.apply(snapshot, animatingDifferences: false)
 
         }.store(in: &cancellables)
     }

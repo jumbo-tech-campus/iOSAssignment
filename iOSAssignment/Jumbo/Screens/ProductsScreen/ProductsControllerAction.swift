@@ -8,6 +8,6 @@
 enum ProductsControllerAction {
     case firstLoad
     case viewCart
-    case addToCart(id: String)
-    case removeFromCart(id: String)
+    case addToCart(product: ProductRaw)
+    case removeFromCart(product: ProductRaw)
 }

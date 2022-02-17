@@ -14,27 +14,33 @@ enum ProductsCellAction {
 
 class ProductCellViewModel: Hashable {
 
-    private let product: ProductRaw
+    let product: ProductRaw
+    private let inCartQuantity: Int
 
     var productImage: UIImage? {
         get async {
             await parseImage()
         }
     }
-    
+
+    var id: String { product.id }
     var name: String { product.title }
     var isQuantityHidden: Bool { product.quantity == nil }
     var quantity: String { formatQuantity() }
     var price: String { formatPrice() }
     var unitPrice: String { formatUnitPrice() }
-    var cartQuantity: String? { (0...1).randomElement() == 0 ? nil : "1" }
+    var cartQuantity: String? { inCartQuantity == 0 ? nil : inCartQuantity.description }
     private weak var productsViewModel: ProductsViewModel?
     private weak var imageManager: ImageManager?
 
-    init(product: ProductRaw, productsViewModel: ProductsViewModel, imageManager: ImageManager) {
+    init(product: ProductRaw,
+         productsViewModel: ProductsViewModel,
+         imageManager: ImageManager,
+         inCartQuantity: Int) {
         self.product = product
         self.productsViewModel = productsViewModel
         self.imageManager = imageManager
+        self.inCartQuantity = inCartQuantity
     }
 
     // MARK: - Data processing
@@ -88,9 +94,9 @@ class ProductCellViewModel: Hashable {
 
         switch action {
             case .addToCart:
-                event = .addToCart(id: product.id)
+                event = .addToCart(product: product)
             case .removeFromCart:
-                event = .removeFromCart(id: product.id)
+                event = .removeFromCart(product: product)
         }
 
         productsViewModel.productsEvent(action: event)
@@ -99,7 +105,7 @@ class ProductCellViewModel: Hashable {
 
     // MARK: - Hashable conformance
     static func == (lhs: ProductCellViewModel, rhs: ProductCellViewModel) -> Bool {
-        lhs.product.id == rhs.product.id
+        lhs.id == rhs.id
     }
 
     func hash(into hasher: inout Hasher) {
