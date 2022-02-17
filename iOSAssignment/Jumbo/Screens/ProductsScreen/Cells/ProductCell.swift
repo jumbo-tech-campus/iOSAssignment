@@ -53,4 +53,17 @@ extension ProductCell {
         }
 
     }
+
+    @MainActor
+    func addToCart() {
+        guard let viewModel = viewModel else { return }
+        viewModel.productsEvent(action: .addToCart)
+    }
+
+    @MainActor
+    func removeFromCart() {
+        guard let viewModel = viewModel else { return }
+        viewModel.productsEvent(action: .removeFromCart)
+    }
+
 }

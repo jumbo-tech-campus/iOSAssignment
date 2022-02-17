@@ -89,7 +89,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="23"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addToCartPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iIj-jn-yaM"/>
+                                    <action selector="removeFromCartPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XkS-Jh-xjA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfk-x4-fzX">
@@ -103,7 +103,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="23"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addToCartPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="QZy-c2-9EA"/>
+                                    <action selector="addToCartPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kZe-sG-BOk"/>
                                 </connections>
                             </button>
                         </subviews>

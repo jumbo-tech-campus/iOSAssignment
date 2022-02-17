@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 enum ProductSection {
     case store
@@ -18,10 +19,18 @@ class ProductsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private var dataSource: ProductsDiffableDataSource?
+    private let viewModel = ProductsViewModel()
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        configureViewModel()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        viewModel.productsEvent(action: .firstLoad)
     }
 
     private func configureTableView() {
@@ -45,14 +54,18 @@ class ProductsViewController: UIViewController {
 
             return cell
         }
+    }
 
-        guard let products = ProductsRepository().fetchRawProducts() else { return }
-        let viewModels = products.products.map(ProductCellViewModel.init)
-        var snapshot = ProductsSnapshot()
-        snapshot.appendSections([.store])
-        snapshot.appendItems(viewModels, toSection: .store)
+    private func configureViewModel() {
+        viewModel.$products.sink { [dataSource] products in
 
-        dataSource?.apply(snapshot)
+            var snapshot = ProductsSnapshot()
+            snapshot.appendSections([.store])
+            snapshot.appendItems(products, toSection: .store)
+
+            dataSource?.apply(snapshot)
+
+        }.store(in: &cancellables)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

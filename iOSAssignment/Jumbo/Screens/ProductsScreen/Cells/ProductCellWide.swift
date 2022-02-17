@@ -26,10 +26,14 @@ class ProductCellWide: UITableViewCell, ProductCell {
         // Initialization code
     }
 
+    @MainActor
     @IBAction func addToCartPressed(_ sender: UIButton) {
-        var x = cartQuantityContainer.isHidden
-        x.toggle()
-        cartQuantityContainer.isHidden = x
+        addToCart()
+    }
+
+    @MainActor
+    @IBAction func removeFromCartPressed(_ sender: UIButton) {
+        removeFromCart()
     }
     
 }
