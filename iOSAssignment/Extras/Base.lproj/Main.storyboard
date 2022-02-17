@@ -67,14 +67,60 @@
                             <constraint firstItem="83E-OG-OXH" firstAttribute="bottom" secondItem="asl-bU-PEc" secondAttribute="bottom" id="kRy-mW-QOr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Avk-Mc-iok"/>
+                    <navigationItem key="navigationItem" id="Avk-Mc-iok">
+                        <barButtonItem key="rightBarButtonItem" image="cart.fill" catalog="system" style="plain" id="xyq-ol-zP2">
+                            <connections>
+                                <action selector="CartButtonPressed:" destination="bot-kJ-pDN" id="c5A-vJ-ALu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="asl-bU-PEc" id="Qlp-rS-KiV"/>
+                        <segue destination="D0N-BC-KgS" kind="presentation" id="1Gg-9n-udJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mel-Zl-JuV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2068" y="139"/>
+        </scene>
+        <!--Cart View Controller-->
+        <scene sceneID="omr-Cv-Nuh">
+            <objects>
+                <viewController storyboardIdentifier="CartViewController" id="D0N-BC-KgS" customClass="CartViewController" customModule="iOSAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yGf-Nh-9Rd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have the following items in your cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQH-t7-diP">
+                                <rect key="frame" x="0.0" y="16" width="414" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y4f-LH-uN0">
+                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NRD-ch-3eB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NRD-ch-3eB" firstAttribute="trailing" secondItem="Y4f-LH-uN0" secondAttribute="trailing" id="1Aa-5u-xAu"/>
+                            <constraint firstItem="NRD-ch-3eB" firstAttribute="trailing" secondItem="NQH-t7-diP" secondAttribute="trailing" id="AVg-Aa-uN5"/>
+                            <constraint firstItem="Y4f-LH-uN0" firstAttribute="leading" secondItem="NRD-ch-3eB" secondAttribute="leading" id="Oc3-YY-8RW"/>
+                            <constraint firstItem="NQH-t7-diP" firstAttribute="top" secondItem="NRD-ch-3eB" secondAttribute="top" constant="16" id="efa-Qa-UjB"/>
+                            <constraint firstItem="NRD-ch-3eB" firstAttribute="bottom" secondItem="Y4f-LH-uN0" secondAttribute="bottom" id="f6B-3U-eKi"/>
+                            <constraint firstItem="Y4f-LH-uN0" firstAttribute="top" secondItem="NQH-t7-diP" secondAttribute="bottom" constant="4" id="nZ6-Fi-BAu"/>
+                            <constraint firstItem="NQH-t7-diP" firstAttribute="leading" secondItem="NRD-ch-3eB" secondAttribute="leading" id="tsF-1i-9Ty"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Y4f-LH-uN0" id="lXr-YD-NSP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mjr-Gq-hMs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3094" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hVk-5Y-Ruz">
@@ -96,6 +142,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="jumbo.png" width="300" height="199.91999816894531"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

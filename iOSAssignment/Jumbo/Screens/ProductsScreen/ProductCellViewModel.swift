@@ -15,7 +15,7 @@ enum ProductsCellAction {
 class ProductCellViewModel: Hashable {
 
     let product: ProductRaw
-    private let inCartQuantity: Int
+    let inCartQuantity: Int
 
     var productImage: UIImage? {
         get async {
@@ -30,15 +30,15 @@ class ProductCellViewModel: Hashable {
     var price: String { formatPrice() }
     var unitPrice: String { formatUnitPrice() }
     var cartQuantity: String? { inCartQuantity == 0 ? nil : inCartQuantity.description }
-    private weak var productsViewModel: ProductsViewModel?
+    private weak var productDisplayableViewModel: ProductDisplayableViewModel?
     private weak var imageManager: ImageManager?
 
     init(product: ProductRaw,
-         productsViewModel: ProductsViewModel,
+         productDisplayableViewModel: ProductDisplayableViewModel,
          imageManager: ImageManager,
          inCartQuantity: Int) {
         self.product = product
-        self.productsViewModel = productsViewModel
+        self.productDisplayableViewModel = productDisplayableViewModel
         self.imageManager = imageManager
         self.inCartQuantity = inCartQuantity
     }
@@ -89,7 +89,7 @@ class ProductCellViewModel: Hashable {
 
     @MainActor
     func productsEvent(action: ProductsCellAction) {
-        guard let productsViewModel = productsViewModel else { return }
+        guard let productDisplayableViewModel = productDisplayableViewModel else { return }
         let event: ProductsControllerAction
 
         switch action {
@@ -99,7 +99,7 @@ class ProductCellViewModel: Hashable {
                 event = .removeFromCart(product: product)
         }
 
-        productsViewModel.productsEvent(action: event)
+        productDisplayableViewModel.productsEvent(action: event)
     }
 
 

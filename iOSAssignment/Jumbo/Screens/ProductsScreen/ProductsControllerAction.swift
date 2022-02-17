@@ -6,7 +6,7 @@
 //
 
 enum ProductsControllerAction {
-    case firstLoad
+    case reload
     case viewCart
     case addToCart(product: ProductRaw)
     case removeFromCart(product: ProductRaw)

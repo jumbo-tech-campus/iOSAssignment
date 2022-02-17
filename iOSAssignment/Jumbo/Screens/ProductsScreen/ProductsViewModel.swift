@@ -7,9 +7,11 @@
 
 import Combine
 
-class ProductsViewModel {
+class ProductsViewModel: ProductDisplayableViewModel {
     @MainActor @Published var products: [ProductCellViewModel] = []
+    @MainActor let cartViewModelPublisher = PassthroughSubject<CartViewModel, Never>()
 
+    var productsPublisher: Published<[ProductCellViewModel]>.Publisher { $products }
     private let repository: ProductsRepositoryType
     private let imageManager: ImageManager
     private let cartManager: CartManager
@@ -28,10 +30,13 @@ class ProductsViewModel {
     @MainActor
     func productsEvent(action: ProductsControllerAction) {
         switch action {
-            case .firstLoad:
+            case .reload:
                 firstLoad()
             case .viewCart:
-                print("viewCart")
+                let products = products.filter { viewModel in viewModel.cartQuantity != nil }
+
+                let cartViewModel = CartViewModel(products: products, imageManager: imageManager, cartManager: cartManager)
+                cartViewModelPublisher.send(cartViewModel)
             case .addToCart(let product):
                 Task {
                     await cartManager.addToCart(product: product)
@@ -54,7 +59,7 @@ class ProductsViewModel {
         }) else { return }
         
         products[index] = ProductCellViewModel(product: product,
-                                               productsViewModel: self,
+                                               productDisplayableViewModel: self,
                                                imageManager: imageManager,
                                                inCartQuantity: await cartManager.quantity(for: product))
     }
@@ -74,7 +79,7 @@ class ProductsViewModel {
                 for product in products {
                     let quantity = await cartManager.quantity(for: product)
                     let viewModel = ProductCellViewModel(product: product,
-                                                         productsViewModel: self,
+                                                         productDisplayableViewModel: self,
                                                          imageManager: imageManager,
                                                          inCartQuantity: quantity)
                     buffer.append(viewModel)
