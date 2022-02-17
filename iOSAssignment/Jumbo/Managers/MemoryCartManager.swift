@@ -32,7 +32,7 @@ class MemoryCartManager: CartManager {
 
     func save() {}
 
-    func load() -> [CartItem] { products.values.map { $0 } }
+    func load() {}
 
 
 }

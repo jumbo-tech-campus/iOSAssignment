@@ -36,6 +36,7 @@
 		C7D2419A27BEAD5900A610D8 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2419927BEAD5900A610D8 /* CartManager.swift */; };
 		C7D2419C27BEB5D400A610D8 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2419B27BEB5D400A610D8 /* CartItem.swift */; };
 		C7D2419E27BEB63C00A610D8 /* MemoryCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2419D27BEB63C00A610D8 /* MemoryCartManager.swift */; };
+		C7D241A027BEB72C00A610D8 /* DiskCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2419F27BEB72C00A610D8 /* DiskCartManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		C7D2419927BEAD5900A610D8 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		C7D2419B27BEB5D400A610D8 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		C7D2419D27BEB63C00A610D8 /* MemoryCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCartManager.swift; sourceTree = "<group>"; };
+		C7D2419F27BEB72C00A610D8 /* DiskCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCartManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 				C74FED7A27BE13F900393408 /* ImageManager.swift */,
 				C7D2419927BEAD5900A610D8 /* CartManager.swift */,
 				C7D2419D27BEB63C00A610D8 /* MemoryCartManager.swift */,
+				C7D2419F27BEB72C00A610D8 /* DiskCartManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D241A027BEB72C00A610D8 /* DiskCartManager.swift in Sources */,
 				C7D2419E27BEB63C00A610D8 /* MemoryCartManager.swift in Sources */,
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
 				C74FED7B27BE13F900393408 /* ImageManager.swift in Sources */,

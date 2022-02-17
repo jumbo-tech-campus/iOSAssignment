@@ -17,10 +17,12 @@ class ProductsViewModel {
 
     init(repository: ProductsRepositoryType = ProductsRepository(),
          imageManager: ImageManager = ImageManager(),
-         cartManager: CartManager = MemoryCartManager()) {
+         cartManager: CartManager = DiskCartManager()) {
         self.repository = repository
         self.imageManager = imageManager
         self.cartManager = cartManager
+
+        Task { await cartManager.load() }
     }
 
     @MainActor
@@ -31,16 +33,22 @@ class ProductsViewModel {
             case .viewCart:
                 print("viewCart")
             case .addToCart(let product):
-                cartManager.addToCart(product: product)
-                update(product: product)
+                Task {
+                    await cartManager.addToCart(product: product)
+                    await cartManager.save()
+                    await update(product: product)
+                }
             case .removeFromCart(let product):
-                cartManager.removeFromCart(product: product)
-                update(product: product)
+                Task {
+                    await cartManager.removeFromCart(product: product)
+                    await cartManager.save()
+                    await update(product: product)
+                }
         }
     }
 
     @MainActor
-    private func update(product: ProductRaw) {
+    private func update(product: ProductRaw) async {
         guard let index = products.firstIndex(where: {
             viewModel in viewModel.id == product.id
         }) else { return }
@@ -48,7 +56,7 @@ class ProductsViewModel {
         products[index] = ProductCellViewModel(product: product,
                                                productsViewModel: self,
                                                imageManager: imageManager,
-                                               inCartQuantity: cartManager.quantity(for: product))
+                                               inCartQuantity: await cartManager.quantity(for: product))
     }
 
     private func firstLoad() {
@@ -59,17 +67,22 @@ class ProductsViewModel {
 
         currentTask = Task {
             do {
-                let products = try await repository.fetchRawProducts() //simulate network call
-                let viewModels = products?.products.map { product in
 
-                    ProductCellViewModel(product: product,
-                                         productsViewModel: self,
-                                         imageManager: imageManager,
-                                         inCartQuantity: cartManager.quantity(for: product))
+                let products = try await repository.fetchRawProducts()?.products ?? [] //simulate network call
+                var buffer: [ProductCellViewModel] = []
 
-                } ?? []
+                for product in products {
+                    let quantity = await cartManager.quantity(for: product)
+                    let viewModel = ProductCellViewModel(product: product,
+                                                         productsViewModel: self,
+                                                         imageManager: imageManager,
+                                                         inCartQuantity: quantity)
+                    buffer.append(viewModel)
+                }
+
+                let viewModels = buffer // need to pass a `let` to `MainActor.run`
                 await MainActor.run { self.products = viewModels }
-            } catch {
+            } catch { // No actual error here because of the "simulate network call" above
                 print(error)
             }
         }

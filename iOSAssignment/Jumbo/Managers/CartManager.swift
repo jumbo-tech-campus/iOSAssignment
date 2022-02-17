@@ -6,9 +6,9 @@
 //
 
 protocol CartManager {
-    func addToCart(product: ProductRaw)
-    func removeFromCart(product: ProductRaw)
-    func quantity(for: ProductRaw) -> Int
-    func save()
-    func load() -> [CartItem]
+    func addToCart(product: ProductRaw) async
+    func removeFromCart(product: ProductRaw) async
+    func quantity(for: ProductRaw) async -> Int
+    func save() async
+    func load() async
 }
