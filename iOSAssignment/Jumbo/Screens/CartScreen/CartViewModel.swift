@@ -7,20 +7,25 @@
 
 import Combine
 
+protocol CartViewModelDelegate: AnyObject {
+    func cartViewControllerDidDismiss()
+}
+
 class CartViewModel: ProductDisplayableViewModel {
-    
+
     @MainActor @Published var products: [ProductCellViewModel] = []
     var productsPublisher: Published<[ProductCellViewModel]>.Publisher { $products }
+    weak var delegate: CartViewModelDelegate?
     
     private let imageManager: ImageManager
     private let cartManager: CartManager
-    
+
     @MainActor
     init(products: [ProductCellViewModel], imageManager: ImageManager, cartManager: CartManager) {
         self.products = []
         self.imageManager = imageManager
         self.cartManager = cartManager
-        
+
         self.products = products.map({ viewModel in
             ProductCellViewModel(product: viewModel.product,
                                  productDisplayableViewModel: self,
@@ -28,12 +33,12 @@ class CartViewModel: ProductDisplayableViewModel {
                                  inCartQuantity: viewModel.inCartQuantity)
         })
     }
-    
+
     @MainActor
     func productsEvent(action: ProductsControllerAction) {
         switch action {
-            case .reload, // Not needed, we passed all the data on the constructor
-                    .viewCart: // Not needed, already on cart
+            case .reload,   // Not needed, we passed all the data on the constructor
+                 .viewCart: // Not needed, already on cart
                 print("not needed")
             case .addToCart(let product):
                 Task {
@@ -47,17 +52,19 @@ class CartViewModel: ProductDisplayableViewModel {
                     await cartManager.save()
                     await update(product: product)
                 }
+            case .cartDismissed:
+                delegate?.cartViewControllerDidDismiss()
         }
     }
-    
+
     @MainActor
     private func update(product: ProductRaw) async {
         guard let index = products.firstIndex(where: {
             viewModel in viewModel.id == product.id
         }) else { return }
-        
+
         let quantity = await cartManager.quantity(for: product)
-        
+
         if quantity > 0 {
             products[index] = ProductCellViewModel(product: product,
                                                    productDisplayableViewModel: self,
@@ -66,6 +73,6 @@ class CartViewModel: ProductDisplayableViewModel {
         } else {
             products.remove(at: index)
         }
-        
+
     }
 }

@@ -10,4 +10,5 @@ enum ProductsControllerAction {
     case viewCart
     case addToCart(product: ProductRaw)
     case removeFromCart(product: ProductRaw)
+    case cartDismissed
 }

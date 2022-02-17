@@ -41,6 +41,7 @@
 		C7D241A527BEF28900A610D8 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D241A427BEF28900A610D8 /* CartViewModel.swift */; };
 		C7D241A727BEFC1C00A610D8 /* ProductDisplayableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D241A627BEFC1C00A610D8 /* ProductDisplayableController.swift */; };
 		C7D241A927BEFC6200A610D8 /* ProductDisplayableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D241A827BEFC6200A610D8 /* ProductDisplayableViewModel.swift */; };
+		C7D241AB27BF111100A610D8 /* ProductsViewModel+CartViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D241AA27BF111100A610D8 /* ProductsViewModel+CartViewModelDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		C7D241A427BEF28900A610D8 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		C7D241A627BEFC1C00A610D8 /* ProductDisplayableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDisplayableController.swift; sourceTree = "<group>"; };
 		C7D241A827BEFC6200A610D8 /* ProductDisplayableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDisplayableViewModel.swift; sourceTree = "<group>"; };
+		C7D241AA27BF111100A610D8 /* ProductsViewModel+CartViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductsViewModel+CartViewModelDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				C74FED6C27BDCE0400393408 /* ProductsViewModel.swift */,
 				C74FED7527BDFE3800393408 /* ProductsControllerAction.swift */,
 				C74FED7727BE081800393408 /* ProductCellViewModel.swift */,
+				C7D241AA27BF111100A610D8 /* ProductsViewModel+CartViewModelDelegate.swift */,
 			);
 			path = ProductsScreen;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				C7D241A027BEB72C00A610D8 /* DiskCartManager.swift in Sources */,
 				C7D2419E27BEB63C00A610D8 /* MemoryCartManager.swift in Sources */,
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
+				C7D241AB27BF111100A610D8 /* ProductsViewModel+CartViewModelDelegate.swift in Sources */,
 				C74FED7B27BE13F900393408 /* ImageManager.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */,
 				C7D241A927BEFC6200A610D8 /* ProductDisplayableViewModel.swift in Sources */,

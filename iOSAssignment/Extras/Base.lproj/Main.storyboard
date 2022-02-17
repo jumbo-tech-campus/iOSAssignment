@@ -91,12 +91,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have the following items in your cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQH-t7-diP">
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="FkD-Ma-AeG">
                                 <rect key="frame" x="0.0" y="16" width="414" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="You have the following items in your cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQH-t7-diP">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Coo-dV-Z0Z">
+                                        <rect key="frame" x="0.0" y="-6" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="MpN-Jq-FW5"/>
+                                            <constraint firstAttribute="width" constant="30" id="fbk-va-aHr"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="xmark" catalog="system"/>
+                                        <variation key="heightClass=compact-widthClass=regular" hidden="NO"/>
+                                        <connections>
+                                            <action selector="dismissButtonPressed:" destination="D0N-BC-KgS" eventType="touchUpInside" id="Pb8-uy-Lge"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y4f-LH-uN0">
                                 <rect key="frame" x="0.0" y="44" width="414" height="764"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -106,12 +124,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NRD-ch-3eB" firstAttribute="trailing" secondItem="Y4f-LH-uN0" secondAttribute="trailing" id="1Aa-5u-xAu"/>
-                            <constraint firstItem="NRD-ch-3eB" firstAttribute="trailing" secondItem="NQH-t7-diP" secondAttribute="trailing" id="AVg-Aa-uN5"/>
+                            <constraint firstItem="NRD-ch-3eB" firstAttribute="trailing" secondItem="FkD-Ma-AeG" secondAttribute="trailing" id="B6t-qP-tV8"/>
+                            <constraint firstItem="FkD-Ma-AeG" firstAttribute="leading" secondItem="NRD-ch-3eB" secondAttribute="leading" id="MVf-Vm-t7b"/>
                             <constraint firstItem="Y4f-LH-uN0" firstAttribute="leading" secondItem="NRD-ch-3eB" secondAttribute="leading" id="Oc3-YY-8RW"/>
-                            <constraint firstItem="NQH-t7-diP" firstAttribute="top" secondItem="NRD-ch-3eB" secondAttribute="top" constant="16" id="efa-Qa-UjB"/>
+                            <constraint firstItem="FkD-Ma-AeG" firstAttribute="top" secondItem="NRD-ch-3eB" secondAttribute="top" constant="16" id="cRp-hN-CQI"/>
                             <constraint firstItem="NRD-ch-3eB" firstAttribute="bottom" secondItem="Y4f-LH-uN0" secondAttribute="bottom" id="f6B-3U-eKi"/>
-                            <constraint firstItem="Y4f-LH-uN0" firstAttribute="top" secondItem="NQH-t7-diP" secondAttribute="bottom" constant="4" id="nZ6-Fi-BAu"/>
-                            <constraint firstItem="NQH-t7-diP" firstAttribute="leading" secondItem="NRD-ch-3eB" secondAttribute="leading" id="tsF-1i-9Ty"/>
+                            <constraint firstItem="Y4f-LH-uN0" firstAttribute="top" secondItem="FkD-Ma-AeG" secondAttribute="bottom" constant="4" id="spE-J2-OBd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -120,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjr-Gq-hMs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3094" y="139"/>
+            <point key="canvasLocation" x="3092.753623188406" y="138.61607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hVk-5Y-Ruz">
@@ -144,6 +162,7 @@
     <resources>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="jumbo.png" width="300" height="199.91999816894531"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

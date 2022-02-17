@@ -30,12 +30,13 @@ class ProductsViewModel: ProductDisplayableViewModel {
     @MainActor
     func productsEvent(action: ProductsControllerAction) {
         switch action {
-            case .reload:
-                firstLoad()
+            case .reload, .cartDismissed:
+                reload()
             case .viewCart:
                 let products = products.filter { viewModel in viewModel.cartQuantity != nil }
 
                 let cartViewModel = CartViewModel(products: products, imageManager: imageManager, cartManager: cartManager)
+                cartViewModel.delegate = self
                 cartViewModelPublisher.send(cartViewModel)
             case .addToCart(let product):
                 Task {
@@ -49,6 +50,7 @@ class ProductsViewModel: ProductDisplayableViewModel {
                     await cartManager.save()
                     await update(product: product)
                 }
+
         }
     }
 
@@ -64,7 +66,7 @@ class ProductsViewModel: ProductDisplayableViewModel {
                                                inCartQuantity: await cartManager.quantity(for: product))
     }
 
-    private func firstLoad() {
+    private func reload() {
 
         if let currentTask = currentTask {
             currentTask.cancel()

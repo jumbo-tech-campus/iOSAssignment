@@ -35,4 +35,8 @@ class CartViewController: UIViewController, ProductDisplayableController {
         handleRotation()
     }
 
+    @IBAction func dismissButtonPressed(_ sender: UIButton) {
+        viewModel.productsEvent(action: .cartDismissed)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
 }
