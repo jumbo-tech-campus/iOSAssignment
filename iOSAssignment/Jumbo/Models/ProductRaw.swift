@@ -1,4 +1,4 @@
-struct ProductRaw: Codable {
+struct ProductRaw: Codable, Equatable {
     let id: String
     let title: String
     let prices: ProductPriceDataRaw?
@@ -8,4 +8,8 @@ struct ProductRaw: Codable {
     let topLevelCategory: String?
     let topLevelCategoryId: String?
     let quantity: String?
+
+    static func == (lhs: ProductRaw, rhs: ProductRaw) -> Bool {
+        lhs.id == rhs.id
+    }
 }

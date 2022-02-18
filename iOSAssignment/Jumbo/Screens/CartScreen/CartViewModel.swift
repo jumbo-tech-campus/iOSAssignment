@@ -35,6 +35,26 @@ class CartViewModel: ProductDisplayableViewModel {
     }
 
     @MainActor
+    init(products: [ProductRaw], imageManager: ImageManager, cartManager: CartManager) async {
+        self.products = []
+        self.imageManager = imageManager
+        self.cartManager = cartManager
+
+        var buffer: [ProductCellViewModel] = []
+
+        for product in products {
+            let quantity = await cartManager.quantity(for: product)
+            let viewModel = ProductCellViewModel(product: product,
+                                                 productDisplayableViewModel: self,
+                                                 imageManager: imageManager,
+                                                 inCartQuantity: quantity)
+            buffer.append(viewModel)
+        }
+
+        self.products = buffer
+    }
+
+    @MainActor
     func productsEvent(action: ProductsControllerAction) {
         switch action {
             case .reload,   // Not needed, we passed all the data on the constructor
