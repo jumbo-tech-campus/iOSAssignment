@@ -13,9 +13,10 @@ enum ProductsCellAction {
 }
 
 class ProductCellViewModel: Hashable {
-
     let product: ProductRaw
     let inCartQuantity: Int
+    private weak var productDisplayableViewModel: ProductDisplayableViewModel?
+    private weak var imageManager: ImageManager?
 
     var productImage: UIImage? {
         get async {
@@ -30,8 +31,13 @@ class ProductCellViewModel: Hashable {
     var price: String { formatPrice() }
     var unitPrice: String { formatUnitPrice() }
     var cartQuantity: String? { inCartQuantity == 0 ? nil : inCartQuantity.description }
-    private weak var productDisplayableViewModel: ProductDisplayableViewModel?
-    private weak var imageManager: ImageManager?
+
+    static let formatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+
+        return numberFormatter
+    }()
 
     init(product: ProductRaw,
          productDisplayableViewModel: ProductDisplayableViewModel,
@@ -58,13 +64,17 @@ class ProductCellViewModel: Hashable {
     }
 
     func formatPrice() -> String {
-        guard let price = product.prices?.price?.amount.description else {
+        guard let price = product.prices?.price?.amount,
+              let currency = product.prices?.price?.currency else {
             // I don't think price should be nullable
             // but in case it should we could do something like `isQuantityHidden`
             return ""
         }
 
-        return price
+        let formatter = ProductCellViewModel.formatter
+        formatter.currencyCode = currency
+
+        return formatter.string(from: NSNumber(value: price)) ?? ""
     }
 
     func formatUnitPrice() -> String {
