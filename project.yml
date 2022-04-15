@@ -1,0 +1,41 @@
+name: iOSAssignment
+options:
+  indentWidth: 2
+  tabWidth: 2
+settings:
+  base:
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: "iPhone Developer"
+    ENABLE_BITCODE: YES
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: "0.0.1"
+    CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+    ENABLE_TESTABILITY: YES
+targets:
+  iOSAssignment:
+    type: application
+    platform: iOS
+    deploymentTarget: 13.0
+    sources: [iOSAssignment]
+    scheme:
+      gatherCoverageData: true
+      testTargets:
+        - name: iOSAssignmentTests
+    settings:
+      configs:
+        debug:
+          DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+        release:
+          DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: test.iOSAssignment
+        TARGETED_DEVICE_FAMILY: 1
+        GCC_TREAT_WARNINGS_AS_ERRORS: YES
+
+  iOSAssignmentTests:
+    platform: iOS
+    deploymentTarget: 13.0
+    sources: [iOSAssignmentTests]
+    type: bundle.unit-test
+    dependencies:
+      - target: iOSAssignment
