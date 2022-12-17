@@ -7,5 +7,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startShoppingTapped(_ sender: Any) {
+        self.navigateToProductsList()
+    }
+    
+    public func navigateToProductsList() {
+        let vm = ProductsListVCViewModel()
+        let vc = ProductsListVC(viewModel: vm, loadXib: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
