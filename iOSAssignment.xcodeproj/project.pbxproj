@@ -71,6 +71,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4CF4579294D908E0073ABFA /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A4CF457A294D909B0073ABFA /* Product Screen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A4CF457A294D909B0073ABFA /* Product Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Product Screen";
+			sourceTree = "<group>";
+		};
+		A4CF457C294D96E50073ABFA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A4CF457D294D97A90073ABFA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		AFF534872701ECBC00EEE4AE = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +145,12 @@
 			isa = PBXGroup;
 			children = (
 				AFF534D827020CA000EEE4AE /* Repositories */,
-				AFF534D42702038700EEE4AE /* Screens */,
 				AFF534D12702029A00EEE4AE /* Extensions */,
 				AFF534CE2702004F00EEE4AE /* Resources */,
+				A4CF457D294D97A90073ABFA /* Controllers */,
+				A4CF4579294D908E0073ABFA /* Screens */,
 				AFF534C42701EE5E00EEE4AE /* Models */,
+				A4CF457C294D96E50073ABFA /* ViewModels */,
 			);
 			path = Jumbo;
 			sourceTree = "<group>";
@@ -149,21 +180,6 @@
 				AFF534D2270202AA00EEE4AE /* Data+Json.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		AFF534D42702038700EEE4AE /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				AFF534D5270203A000EEE4AE /* ProductsScreen */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		AFF534D5270203A000EEE4AE /* ProductsScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProductsScreen;
 			sourceTree = "<group>";
 		};
 		AFF534D827020CA000EEE4AE /* Repositories */ = {
