@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="1" id="mrp-vt-eqs" customClass="LineSeparatorTableViewCell" customModule="Fave" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="1"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mrp-vt-eqs" id="WX2-yl-FSU">
+                <rect key="frame" x="0.0" y="0.0" width="372" height="1"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqM-Fa-qxx">
+                        <rect key="frame" x="0.0" y="0.0" width="372" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="8Pz-Z0-tjv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FqM-Fa-qxx" firstAttribute="leading" secondItem="WX2-yl-FSU" secondAttribute="leading" id="2dk-jZ-LKU"/>
+                    <constraint firstAttribute="bottom" secondItem="FqM-Fa-qxx" secondAttribute="bottom" id="HKt-2D-fnK"/>
+                    <constraint firstItem="FqM-Fa-qxx" firstAttribute="top" secondItem="WX2-yl-FSU" secondAttribute="top" id="LyV-fG-cxS"/>
+                    <constraint firstAttribute="trailing" secondItem="FqM-Fa-qxx" secondAttribute="trailing" id="QPj-DG-V5U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="bottomConstraint" destination="HKt-2D-fnK" id="r2X-Jx-pFj"/>
+                <outlet property="containerBkgView" destination="WX2-yl-FSU" id="Ns2-gg-jlT"/>
+                <outlet property="containerView" destination="FqM-Fa-qxx" id="jFv-Ul-iLU"/>
+                <outlet property="leadingConstraint" destination="2dk-jZ-LKU" id="1Kv-3c-Nb4"/>
+                <outlet property="lineHeightConstraint" destination="8Pz-Z0-tjv" id="UbM-Qt-hV7"/>
+                <outlet property="topConstraint" destination="LyV-fG-cxS" id="Rhr-S4-3RX"/>
+                <outlet property="trailingConstraint" destination="QPj-DG-V5U" id="ODF-1F-lLC"/>
+            </connections>
+            <point key="canvasLocation" x="305.60000000000002" y="-10.344827586206897"/>
+        </tableViewCell>
+    </objects>
+</document>
