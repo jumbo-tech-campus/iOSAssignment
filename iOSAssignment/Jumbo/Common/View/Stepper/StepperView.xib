@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Rubik-Regular.otf">
+            <string>Rubik-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StepperView" customModule="iOSAssignment" customModuleProvider="target">
+            <connections>
+                <outlet property="addButton" destination="Gi9-8B-Ii7" id="aW3-BP-8fX"/>
+                <outlet property="countLabel" destination="51e-3v-Dac" id="grP-v5-g8c"/>
+                <outlet property="decrementButton" destination="egY-Kt-LuP" id="0yi-tw-EOH"/>
+                <outlet property="incrementButton" destination="y4j-Cd-ET2" id="sdl-Xr-jU3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="137" height="59"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Yn-lo-rQt">
+                    <rect key="frame" x="0.0" y="0.0" width="137" height="59"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gi9-8B-Ii7">
+                            <rect key="frame" x="41" y="12.5" width="55" height="34.5"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="6JH-aD-ew6"/>
+                            </connections>
+                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E7K-3l-xr4">
+                            <rect key="frame" x="15" y="9" width="102" height="40"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egY-Kt-LuP" userLabel="Decrement Button">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="UFx-Yu-BPt"/>
+                                        <constraint firstAttribute="height" constant="40" id="bDf-hy-pNq"/>
+                                    </constraints>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
+                                    <state key="normal" image="ic_stepper_minus">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="decrementButtonTapped:" destination="-1" eventType="touchUpInside" id="Vvx-Ev-F3V"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51e-3v-Dac" userLabel="Count Label">
+                                    <rect key="frame" x="40" y="10.5" width="22" height="19"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="22" id="hyQ-zb-S2T"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="16"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4j-Cd-ET2" userLabel="Increment Button">
+                                    <rect key="frame" x="62" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="7EZ-qg-gtS"/>
+                                        <constraint firstAttribute="height" constant="40" id="pMg-cz-rKs"/>
+                                    </constraints>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
+                                    <state key="normal" image="ic_stepper_plus">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="incrementButtonTapped:" destination="-1" eventType="touchUpInside" id="H2L-GD-eiJ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Gi9-8B-Ii7" firstAttribute="centerX" secondItem="1Yn-lo-rQt" secondAttribute="centerX" id="Mic-Rh-jNq"/>
+                        <constraint firstItem="Gi9-8B-Ii7" firstAttribute="centerY" secondItem="1Yn-lo-rQt" secondAttribute="centerY" id="QOD-yl-hYZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1Yn-lo-rQt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1f1-45-AUL"/>
+                <constraint firstItem="1Yn-lo-rQt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="2mo-j4-uKj"/>
+                <constraint firstItem="1Yn-lo-rQt" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="bWU-Xa-4yX"/>
+                <constraint firstItem="1Yn-lo-rQt" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="cci-bt-SkD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-288.80000000000001" y="147.97601199400302"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_stepper_minus" width="24" height="24"/>
+        <image name="ic_stepper_plus" width="24" height="24"/>
+    </resources>
+</document>
