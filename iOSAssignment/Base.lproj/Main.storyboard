@@ -18,29 +18,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6LE-we-28W">
-                                <rect key="frame" x="7" y="269.66666666666669" width="361" height="273.00000000000006"/>
+                                <rect key="frame" x="7" y="301.33333333333331" width="361" height="209.33333333333331"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-empty-basket" translatesAutoresizingMaskIntoConstraints="NO" id="g8p-Fk-gkb">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="172.66666666666666"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" translatesAutoresizingMaskIntoConstraints="NO" id="g8p-Fk-gkb">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="103"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's empty in your basket." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcD-oM-p1I">
-                                        <rect key="frame" x="0.0" y="182.66666666666663" width="361" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="113" width="361" height="19.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore our ever growing selection of products" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb1-g5-HHI">
-                                        <rect key="frame" x="0.0" y="209.66666666666663" width="361" height="13.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <rect key="frame" x="0.0" y="142.33333333333337" width="361" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JU9-yS-EDR">
-                                        <rect key="frame" x="0.0" y="233" width="361" height="40"/>
+                                        <rect key="frame" x="0.0" y="169.33333333333337" width="361" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0id-5J-37M">
-                                                <rect key="frame" x="112.33333333333333" y="2.6666666666666288" width="136.33333333333337" height="34.333333333333336"/>
-                                                <color key="backgroundColor" red="0.73085576299999999" green="0.28500008580000002" blue="0.26637881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="112.33333333333333" y="3" width="136.33333333333337" height="34.333333333333336"/>
+                                                <color key="backgroundColor" red="0.84265293924965989" green="0.32769880696666664" blue="0.13374255952380953" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Start shopping"/>
@@ -92,7 +92,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic-empty-basket" width="360.66665649414062" height="172.66667175292969"/>
+        <image name="cart" width="86" height="103"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
