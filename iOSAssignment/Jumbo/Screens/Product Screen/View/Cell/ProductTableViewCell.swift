@@ -36,6 +36,7 @@ final class ProductTableViewCell: BaseTableViewCell<ProductTableViewCellViewMode
         
         stepper.setMaxCount(maxCount: viewModel.stepperMaxCount)
         stepper.setMinCount(minCount: viewModel.stepperMinCount)
+        stepper.setCount(count: 0)
     }
     
 }

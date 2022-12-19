@@ -46,16 +46,15 @@ public class StepperView: UIView {
         addSubview(view)
     }
     
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
     override public func updateConstraints() {
         super.updateConstraints()
     }
     
     private func configureUI() {
-        setupAddButton()
+        self.addButton.layer.cornerRadius = 5
+        self.addButton.layer.masksToBounds = true
+        self.addButton.tintColor = .white
+        self.addButton.setTitle("Add", for: .normal)
     }
     
     private func checkButtonState() {
@@ -74,10 +73,15 @@ public class StepperView: UIView {
             self.incrementButton.isEnabled = false
             self.incrementButton.alpha = 0.5
         }
+        updateCountLabel()
+        setupAddButton()
+    }
+    
+    private func updateCountLabel() {
+        self.countLabel.text = "\(currentCount)"
     }
     
     private func setupAddButton() {
-        self.addButton.setTitle("Add", for: .normal)
         self.addButton.isHidden = !(self.currentCount == 0)
         self.decrementButton.isHidden = (self.currentCount == 0)
         self.incrementButton.isHidden = (self.currentCount == 0)
@@ -96,6 +100,13 @@ public class StepperView: UIView {
         self.maxCount = maxCount
         if self.currentCount > self.maxCount {
             self.currentCount = self.maxCount
+        }
+        self.checkButtonState()
+    }
+    
+    func setCount(count: Int) {
+        if count >= self.minCount && count <= self.maxCount {
+            self.currentCount = count
         }
         self.checkButtonState()
     }
@@ -118,7 +129,6 @@ public class StepperView: UIView {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         self.incrementButtonTapped(sender)
-        self.setupAddButton()
+        self.updateCountLabel()
     }
-    
 }
