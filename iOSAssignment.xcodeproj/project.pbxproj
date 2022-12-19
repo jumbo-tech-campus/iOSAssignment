@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		04CB30955A352E232F39A73D /* Pods_iOSAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84392F4EDD56161C595C910B /* Pods_iOSAssignment.framework */; };
+		A40009602950D3E4009ADFC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400095F2950D3E4009ADFC1 /* UIColor.swift */; };
+		A40009632950D500009ADFC1 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40009622950D500009ADFC1 /* GradientLayer.swift */; };
+		A40009662950D9CD009ADFC1 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40009652950D9CC009ADFC1 /* GradientButton.swift */; };
 		A4B2420B294F014C009A7FB8 /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B24209294F014C009A7FB8 /* StepperView.swift */; };
 		A4B2420C294F014C009A7FB8 /* StepperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B2420A294F014C009A7FB8 /* StepperView.xib */; };
 		A4CE3438294DF3E2000C243A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CE3436294DF3E2000C243A /* BaseTableViewCell.swift */; };
@@ -69,6 +72,9 @@
 		5E8150354220ECD1A98E1E68 /* Pods-iOSAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAssignment.release.xcconfig"; path = "Target Support Files/Pods-iOSAssignment/Pods-iOSAssignment.release.xcconfig"; sourceTree = "<group>"; };
 		84392F4EDD56161C595C910B /* Pods_iOSAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACB2B25E29B0359A45E5A61 /* Pods_iOSAssignmentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSAssignmentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A400095F2950D3E4009ADFC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		A40009622950D500009ADFC1 /* GradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
+		A40009652950D9CC009ADFC1 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		A4B24209294F014C009A7FB8 /* StepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		A4B2420A294F014C009A7FB8 /* StepperView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepperView.xib; sourceTree = "<group>"; };
 		A4CE3436294DF3E2000C243A /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -148,6 +154,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A40009612950D4F4009ADFC1 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		A40009642950D9A9009ADFC1 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				A40009652950D9CC009ADFC1 /* GradientButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		A4B24208294F0139009A7FB8 /* Stepper */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +199,7 @@
 		A4CE3460294E1785000C243A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A40009642950D9A9009ADFC1 /* Button */,
 				A4B24208294F0139009A7FB8 /* Stepper */,
 				A4CE3461294E17A8000C243A /* LineSeparator */,
 			);
@@ -363,9 +385,12 @@
 		AFF534D12702029A00EEE4AE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A40009612950D4F4009ADFC1 /* New Group */,
 				A4CE3455294E012F000C243A /* UIViewController+AutoLayout.swift */,
 				A4CE3442294DF9F3000C243A /* View.swift */,
 				AFF534D2270202AA00EEE4AE /* Data+Json.swift */,
+				A400095F2950D3E4009ADFC1 /* UIColor.swift */,
+				A40009622950D500009ADFC1 /* GradientLayer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -580,8 +605,10 @@
 				A4CE346C294E19BD000C243A /* ReusableView.swift in Sources */,
 				A4CE3471294EE59D000C243A /* ImageManager.swift in Sources */,
 				A4CE3447294DFCAC000C243A /* ProductsListVCViewModel.swift in Sources */,
+				A40009632950D500009ADFC1 /* GradientLayer.swift in Sources */,
 				A4B2420B294F014C009A7FB8 /* StepperView.swift in Sources */,
 				A4CE3443294DF9F4000C243A /* View.swift in Sources */,
+				A40009602950D3E4009ADFC1 /* UIColor.swift in Sources */,
 				A4CE345D294E067A000C243A /* ProductTableViewCell.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */,
 				AFF534942701ECBC00EEE4AE /* AppDelegate.swift in Sources */,
@@ -604,6 +631,7 @@
 				AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */,
 				A4CE3473294EE668000C243A /* ImageManagerError.swift in Sources */,
 				AFF534D72702088800EEE4AE /* ImageDetailRaw.swift in Sources */,
+				A40009662950D9CD009ADFC1 /* GradientButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
