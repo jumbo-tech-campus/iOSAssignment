@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class CartListVCViewModel: ViewModel {
 
@@ -16,8 +18,8 @@ final class CartListVCViewModel: ViewModel {
     var tableViewVM: ProductsListTableViewModel?
     
 
-    override init() {
+    init(updateCartSignal: BehaviorRelay<Void>) {
         super.init()
-        self.tableViewVM = ProductsListTableViewModel(state: .cart)
+        self.tableViewVM = ProductsListTableViewModel(state: .cart, updateCartSignal: updateCartSignal)
     }
 }

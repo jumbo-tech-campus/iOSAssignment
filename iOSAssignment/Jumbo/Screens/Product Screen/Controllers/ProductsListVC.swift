@@ -36,7 +36,11 @@ final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
     }
     
     override func bind() {
-        
+        viewModel.presentCartSignal.asObservable()
+            .subscribe { [weak self] cartVM in
+                let cartVC = CartListVCViewController(viewModel: cartVM, loadXib: false)
+                self?.navigationController?.pushViewController(cartVC, animated: true)
+            }.disposed(by: disposeBag)
     }
     
     private func configureUI() {
@@ -76,10 +80,9 @@ final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
             ])
     }
     
+    
     @objc func cartButtonPressed() {
-        let cartVM = CartListVCViewModel()
-        let cartVC = CartListVCViewController(viewModel: cartVM, loadXib: false)
-        self.navigationController?.pushViewController(cartVC, animated: true)
+        viewModel.presentCartView()
     }
     
 }

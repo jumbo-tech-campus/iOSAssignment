@@ -14,6 +14,7 @@ enum ProductListVCActions {
     case viewCart
     case addToCart(product: ProductRaw)
     case deleteFromCart(product: ProductRaw)
+    case reload
 }
 
 final class ProductsListVCViewModel: ViewModel {
@@ -22,14 +23,16 @@ final class ProductsListVCViewModel: ViewModel {
     
     // MARK:- Properties
     var tableViewVM: ProductsListTableViewModel?
-    let cartVM = CartListVCViewModel()
+    let updateCartSignal = BehaviorRelay<Void>.init(value: ())
+    let presentCartSignal = PublishSubject<CartListVCViewModel>()
 
     override init() {
         super.init()
-        self.tableViewVM = ProductsListTableViewModel(state: .store)
+        self.tableViewVM = ProductsListTableViewModel(state: .store, updateCartSignal: updateCartSignal)
     }
     
-
-    
-    
+    func presentCartView() {
+        let cartVM = CartListVCViewModel(updateCartSignal: updateCartSignal)
+        presentCartSignal.onNext(cartVM)
+    }
 }

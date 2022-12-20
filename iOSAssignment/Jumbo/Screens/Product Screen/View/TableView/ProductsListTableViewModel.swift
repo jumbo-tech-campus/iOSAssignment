@@ -28,14 +28,16 @@ final class ProductsListTableViewModel: BaseTableViewControllerViewModel {
     private let cartManager: CartManagerDiskProtocol
     
     // MARK:- Output
+    let updateCartSignal: BehaviorRelay<Void>
     
     init(state: ProductViewState = .store
         , cartManager: CartManagerDiskProtocol = DiskCacheCartManager()
         , repository: ProductsRepositoryType = ProductsRepository()
-        , updateCartSignal: PublishSubject<Void>) {
+        , updateCartSignal: BehaviorRelay<Void>) {
         self.repository = repository
         self.state = state
         self.cartManager = cartManager
+        self.updateCartSignal = updateCartSignal
         super.init()
         
         cartManager.load()
@@ -61,21 +63,23 @@ extension ProductsListTableViewModel {
             .subscribe(onNext: { [weak self] events in
                 guard let self = self else { return }
                 switch events {
-                case .addToCart(let product): self.addToCart(product: product)
-                case .deleteFromCart(let product): self.deleteFromCart(product: product)
-                default : break
+                    case .addToCart(let product): self.addToCart(product: product)
+                    case .deleteFromCart(let product): self.deleteFromCart(product: product)
+                    default : break
+                }
+                
+                switch self.state {
+                    case .cart: self.updateCartSignal.accept(())
+                    default: break
                 }
             }).disposed(by: disposeBag)
     }
     
     func configureSectionModels() {
-        self.sectionsModels = products
-            .asObservable()
-            .map { [weak self] (products: [ProductRaw]) -> [TableViewSectionModel] in
-                
+        self.sectionsModels = Observable.combineLatest(products, updateCartSignal, resultSelector: {  products, updateCartSignal -> [TableViewSectionModel] in
+         
                 var sections = [TableViewSectionModel]()
-                guard let self = self else { return sections }
-                
+                self.cartManager.load()
                 var productItems = [TableViewSectionItem]()
                 for product in products {
                     let item = TableViewSectionItem(reusableIdentifier: ProductTableViewCell.reuseIdentifier, viewModel: ProductTableViewCellViewModel(product: product, cartQuantity: self.cartManager.quantity(for: product)
@@ -88,9 +92,7 @@ extension ProductsListTableViewModel {
                 let productSection = TableViewSectionModel(items: productItems)
                 sections.append(productSection)
                 return sections
-        }
-        .asDriver(onErrorJustReturn: [TableViewSectionModel]())
-        .startWith([TableViewSectionModel]())
+        }).asDriver(onErrorJustReturn: [])
     }
     
     func loadData() {
