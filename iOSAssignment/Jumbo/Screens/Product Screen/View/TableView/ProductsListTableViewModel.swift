@@ -24,18 +24,34 @@ final class ProductsListTableViewModel: BaseTableViewControllerViewModel {
     // MARK:- Properties
     private let products: BehaviorRelay<[ProductRaw]> = BehaviorRelay(value: [])
     private let state: ProductViewState
-    // MARK:- Output
-
+    private let cellEvents = PublishSubject<ProductListVCActions>.init()
+    private let cartManager: CartManagerDiskProtocol
     
-    init(state: ProductViewState = .store,
-         repository: ProductsRepositoryType = ProductsRepository()) {
+    // MARK:- Output
+    
+    init(state: ProductViewState = .store
+        , cartManager: CartManagerDiskProtocol = DiskCacheCartManager()
+        , repository: ProductsRepositoryType = ProductsRepository()) {
         self.repository = repository
         self.state = state
+        self.cartManager = cartManager
         super.init()
         
+        cartManager.load()
         setupObservers()
         configureSectionModels()
         requestProductList()
+        
+    }
+    
+    private func addToCart(product: ProductRaw) {
+        cartManager.addToCart(product: product)
+        cartManager.save()
+    }
+    
+    private func deleteFromCart(product: ProductRaw) {
+        cartManager.remoteFromCart(product: product)
+        cartManager.save()
     }
 }
 
@@ -45,6 +61,16 @@ extension ProductsListTableViewModel {
         case .cart: break
         case .store: break
         }
+        
+        cellEvents.asObservable()
+            .subscribe(onNext: { [weak self] events in
+                guard let self = self else { return }
+                switch events {
+                case .addToCart(let product): self.addToCart(product: product)
+                case .deleteFromCart(let product): self.deleteFromCart(product: product)
+                default : break
+                }
+            }).disposed(by: disposeBag)
     }
     
     func configureSectionModels() {
@@ -55,21 +81,21 @@ extension ProductsListTableViewModel {
                 var sections = [TableViewSectionModel]()
                 guard let self = self else { return sections }
                 
-                    var productItems = [TableViewSectionItem]()
-                    for product in products {
-                        let item = TableViewSectionItem(reusableIdentifier: ProductTableViewCell.reuseIdentifier, viewModel: ProductTableViewCellViewModel(product: product))
-                            let seperatorItem = TableViewSectionItem(reusableIdentifier: LineSeparatorTableViewCell.subjectLabel, viewModel: LineSeparatorTableViewCellViewModel(lineSeparatorType: .default))
-                        productItems.append(item)
-                        productItems.append(seperatorItem)
-                    }
-
-                    let productSection = TableViewSectionModel(items: productItems)
-                    sections.append(productSection)
+                var productItems = [TableViewSectionItem]()
+                for product in products {
+                    let item = TableViewSectionItem(reusableIdentifier: ProductTableViewCell.reuseIdentifier, viewModel: ProductTableViewCellViewModel(product: product, cartQuantity: self.cartManager.quantity(for: product)
+                                                                      , events: self.cellEvents))
+                    let seperatorItem = TableViewSectionItem(reusableIdentifier: LineSeparatorTableViewCell.subjectLabel, viewModel: LineSeparatorTableViewCellViewModel(lineSeparatorType: .default))
+                    productItems.append(item)
+                    productItems.append(seperatorItem)
+                }
+                
+                let productSection = TableViewSectionModel(items: productItems)
+                sections.append(productSection)
                 return sections
         }
         .asDriver(onErrorJustReturn: [TableViewSectionModel]())
         .startWith([TableViewSectionModel]())
-                        
     }
     
     func requestProductList() {
@@ -77,4 +103,3 @@ extension ProductsListTableViewModel {
         self.products.accept(products)
     }
 }
-

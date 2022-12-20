@@ -11,6 +11,13 @@
 		A40009602950D3E4009ADFC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400095F2950D3E4009ADFC1 /* UIColor.swift */; };
 		A40009632950D500009ADFC1 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40009622950D500009ADFC1 /* GradientLayer.swift */; };
 		A40009662950D9CD009ADFC1 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40009652950D9CC009ADFC1 /* GradientButton.swift */; };
+		A400096829517E21009ADFC1 /* CartDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400096729517E21009ADFC1 /* CartDetails.swift */; };
+		A400096C2951834C009ADFC1 /* CartManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400096B2951834C009ADFC1 /* CartManagerProtocol.swift */; };
+		A400096E295183EE009ADFC1 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400096D295183EE009ADFC1 /* CartManager.swift */; };
+		A4000970295188FA009ADFC1 /* MemoryCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400096F295188FA009ADFC1 /* MemoryCartManager.swift */; };
+		A40009722951895C009ADFC1 /* DiskCacheCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40009712951895C009ADFC1 /* DiskCacheCartManager.swift */; };
+		A40009792951A41B009ADFC1 /* CartListVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40009762951A41B009ADFC1 /* CartListVCViewModel.swift */; };
+		A400097A2951A41B009ADFC1 /* CartListVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40009772951A41B009ADFC1 /* CartListVCViewController.swift */; };
 		A4B2420B294F014C009A7FB8 /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B24209294F014C009A7FB8 /* StepperView.swift */; };
 		A4B2420C294F014C009A7FB8 /* StepperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B2420A294F014C009A7FB8 /* StepperView.xib */; };
 		A4CE3438294DF3E2000C243A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CE3436294DF3E2000C243A /* BaseTableViewCell.swift */; };
@@ -75,6 +82,13 @@
 		A400095F2950D3E4009ADFC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A40009622950D500009ADFC1 /* GradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
 		A40009652950D9CC009ADFC1 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		A400096729517E21009ADFC1 /* CartDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDetails.swift; sourceTree = "<group>"; };
+		A400096B2951834C009ADFC1 /* CartManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManagerProtocol.swift; sourceTree = "<group>"; };
+		A400096D295183EE009ADFC1 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		A400096F295188FA009ADFC1 /* MemoryCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCartManager.swift; sourceTree = "<group>"; };
+		A40009712951895C009ADFC1 /* DiskCacheCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheCartManager.swift; sourceTree = "<group>"; };
+		A40009762951A41B009ADFC1 /* CartListVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListVCViewModel.swift; sourceTree = "<group>"; };
+		A40009772951A41B009ADFC1 /* CartListVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListVCViewController.swift; sourceTree = "<group>"; };
 		A4B24209294F014C009A7FB8 /* StepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		A4B2420A294F014C009A7FB8 /* StepperView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepperView.xib; sourceTree = "<group>"; };
 		A4CE3436294DF3E2000C243A /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -169,6 +183,35 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
+		A400096929517E58009ADFC1 /* ImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				A4CE3470294EE59D000C243A /* ImageManager.swift */,
+				A4CE3472294EE668000C243A /* ImageManagerError.swift */,
+			);
+			path = ImageManager;
+			sourceTree = "<group>";
+		};
+		A400096A29517E83009ADFC1 /* CartManager */ = {
+			isa = PBXGroup;
+			children = (
+				A400096B2951834C009ADFC1 /* CartManagerProtocol.swift */,
+				A400096D295183EE009ADFC1 /* CartManager.swift */,
+				A400096F295188FA009ADFC1 /* MemoryCartManager.swift */,
+				A40009712951895C009ADFC1 /* DiskCacheCartManager.swift */,
+			);
+			path = CartManager;
+			sourceTree = "<group>";
+		};
+		A40009732951A3CF009ADFC1 /* Cart Screen */ = {
+			isa = PBXGroup;
+			children = (
+				A40009762951A41B009ADFC1 /* CartListVCViewModel.swift */,
+				A40009772951A41B009ADFC1 /* CartListVCViewController.swift */,
+			);
+			path = "Cart Screen";
+			sourceTree = "<group>";
+		};
 		A4B24208294F0139009A7FB8 /* Stepper */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,8 +270,8 @@
 		A4CE346F294EE57B000C243A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				A4CE3470294EE59D000C243A /* ImageManager.swift */,
-				A4CE3472294EE668000C243A /* ImageManagerError.swift */,
+				A400096A29517E83009ADFC1 /* CartManager */,
+				A400096929517E58009ADFC1 /* ImageManager */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -236,6 +279,7 @@
 		A4CF4579294D908E0073ABFA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				A40009732951A3CF009ADFC1 /* Cart Screen */,
 				A4CF457A294D909B0073ABFA /* Product Screen */,
 			);
 			path = Screens;
@@ -370,6 +414,7 @@
 				AFF534C72701F93100EEE4AE /* ProductPriceDataRaw.swift */,
 				AFF534C92701F98300EEE4AE /* ProductImagesInfoRaw.swift */,
 				AFF534D62702088800EEE4AE /* ImageDetailRaw.swift */,
+				A400096729517E21009ADFC1 /* CartDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -594,9 +639,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4000970295188FA009ADFC1 /* MemoryCartManager.swift in Sources */,
 				A4CE345E294E067A000C243A /* ProductTableViewCellViewModel.swift in Sources */,
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
 				A4CE3456294E012F000C243A /* UIViewController+AutoLayout.swift in Sources */,
+				A400096C2951834C009ADFC1 /* CartManagerProtocol.swift in Sources */,
 				A4CE3441294DF77C000C243A /* TableViewCell.swift in Sources */,
 				A4CE3465294E17A8000C243A /* LineSeparatorTableViewCellViewModel.swift in Sources */,
 				A4CE343D294DF650000C243A /* HasDisposeBag.swift in Sources */,
@@ -612,21 +659,26 @@
 				A4CE345D294E067A000C243A /* ProductTableViewCell.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */,
 				AFF534942701ECBC00EEE4AE /* AppDelegate.swift in Sources */,
+				A400097A2951A41B009ADFC1 /* CartListVCViewController.swift in Sources */,
+				A40009792951A41B009ADFC1 /* CartListVCViewModel.swift in Sources */,
 				A4CE3439294DF3E2000C243A /* BaseViewController.swift in Sources */,
 				A4CE343B294DF59B000C243A /* ViewModel.swift in Sources */,
 				A4CE3450294DFF25000C243A /* TableView.swift in Sources */,
+				A400096E295183EE009ADFC1 /* CartManager.swift in Sources */,
 				A4CE344E294DFD5E000C243A /* ProductsListTableViewModel.swift in Sources */,
 				A4CE344D294DFD5E000C243A /* ProductsListTableView.swift in Sources */,
 				A4CE343F294DF748000C243A /* BaseTableViewCellViewModel.swift in Sources */,
 				A4CE3438294DF3E2000C243A /* BaseTableViewCell.swift in Sources */,
 				A4CE3454294E00F4000C243A /* HasViewModel.swift in Sources */,
 				A4CE3467294E17A8000C243A /* LineSeparatorTableViewCell.swift in Sources */,
+				A400096829517E21009ADFC1 /* CartDetails.swift in Sources */,
 				AFF534C62701EE7300EEE4AE /* ProductRaw.swift in Sources */,
 				AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */,
 				A4CE346A294E186E000C243A /* SubjectLabelable.swift in Sources */,
 				AFF534CA2701F98300EEE4AE /* ProductImagesInfoRaw.swift in Sources */,
 				A4CE3458294E02F8000C243A /* BaseTableViewControllerViewModel.swift in Sources */,
 				A4CE3448294DFCAC000C243A /* ProductsListVC.swift in Sources */,
+				A40009722951895C009ADFC1 /* DiskCacheCartManager.swift in Sources */,
 				A4CE3452294DFF9F000C243A /* Refreshable.swift in Sources */,
 				AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */,
 				A4CE3473294EE668000C243A /* ImageManagerError.swift in Sources */,

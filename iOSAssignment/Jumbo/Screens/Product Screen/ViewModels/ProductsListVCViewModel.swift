@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+enum ProductListVCActions {
+    case viewCart
+    case addToCart(product: ProductRaw)
+    case deleteFromCart(product: ProductRaw)
+}
 
 final class ProductsListVCViewModel: ViewModel {
 
@@ -14,11 +22,11 @@ final class ProductsListVCViewModel: ViewModel {
     
     // MARK:- Properties
     var tableViewVM: ProductsListTableViewModel?
+    var cartViewModel: PublishSubject<CartListVCViewModel>
 
-    override init(
-        ){
+    init( cartViewModel: PublishSubject<CartListVCViewModel> = PublishSubject<CartListVCViewModel>.init()) {
+        self.cartViewModel = cartViewModel
         super.init()
         self.tableViewVM = ProductsListTableViewModel(state: .store)
     }
-    
 }

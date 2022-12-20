@@ -9,6 +9,11 @@
 import Foundation
 import RxSwift
 
+enum ProductTableViewCellActions {
+ case addToCart
+ case deleteFromCart
+}
+
 class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
     
     // MARK:- Dependency
@@ -17,15 +22,19 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
     
     //MARK:- Input
     private let product: ProductRaw
+    private let cartQuantity: Int
     
     // MARK- Output
+    var events: PublishSubject<ProductListVCActions>
+    
     var id: String { product.id }
     var name: String { product.title }
-    var isQuantityHidden: Bool { product.quantity == nil }
+    var isQuantityHidden: Bool { product.quantity == nil  }
     var quantity: String { formatQuantity() }
     var price: String { formatPrice() }
     var unitPrice: String { formatUnitPrice() }
     var productImage = BehaviorSubject<UIImage?>.init(value: nil)
+    var quantityInCart: Int { getQuantityInCart() }
 
     let cellButtonDidTap: PublishSubject<Void> = PublishSubject<()>()
     
@@ -41,14 +50,17 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
     let stepperMaxCount = 10
     
     init(product: ProductRaw
+        , cartQuantity: Int
+        , events: PublishSubject<ProductListVCActions>
         , imageManager: ImageManagerProtocol = ImageManager()){
         self.product = product
+        self.cartQuantity = cartQuantity
+        self.events = events
         self.imageManager = imageManager
         super.init()
         self.downloadProductImage()
     }
     
-    //
     private func formatQuantity() -> String {
         guard let quantity = product.quantity else { return "" }
         return "Qty: \(quantity)"
@@ -73,6 +85,10 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
         return "\(price)/ \(unit)"
     }
     
+    private func getQuantityInCart() -> Int {
+        return cartQuantity
+    }
+    
     private func downloadProductImage() {
         guard let primaryView = product.imageInfo?.primaryView,
               let rawImage = primaryView.first,
@@ -87,5 +103,12 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
                 // Handle failure
             }
         })
+    }
+    
+    func productAction(action: ProductTableViewCellActions) {
+        switch action {
+        case .addToCart: events.onNext( ProductListVCActions.addToCart(product: product))
+        case .deleteFromCart: events.onNext( ProductListVCActions.deleteFromCart(product: product))
+        }
     }
 }

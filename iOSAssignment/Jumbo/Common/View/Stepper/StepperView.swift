@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RxSwift
 
 let MINCOUNT = 0
 let MAXCOUNT = 10
@@ -22,6 +22,10 @@ public class StepperView: UIView {
     var currentCount: Int = MINCOUNT
     var maxCount: Int =  MINCOUNT
     var minCount: Int = MAXCOUNT
+    
+    private var incrementButtonTappedSignal: PublishSubject<Void>?
+    private var decrementButtonTappedSignal: PublishSubject<Void>?
+
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -110,13 +114,20 @@ public class StepperView: UIView {
         }
         self.checkButtonState()
     }
-
+    
+    func configureTapEvents(incrementButtonTappedSignal: PublishSubject<Void>?
+                            , decrementButtonTappedSignal: PublishSubject<Void>?) {
+        self.incrementButtonTappedSignal = incrementButtonTappedSignal
+        self.decrementButtonTappedSignal = decrementButtonTappedSignal
+    }
+    
     @IBAction func decrementButtonTapped(_ sender: Any) {
         if self.currentCount > self.minCount {
             self.currentCount -= 1
         }
         self.countLabel.text = "\(self.currentCount)"
         self.checkButtonState()
+        self.decrementButtonTappedSignal?.onNext(())
     }
     
     @IBAction func incrementButtonTapped(_ sender: Any) {
@@ -125,6 +136,7 @@ public class StepperView: UIView {
         }
         self.countLabel.text = "\(self.currentCount)"
         self.checkButtonState()
+        self.incrementButtonTappedSignal?.onNext(())
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {

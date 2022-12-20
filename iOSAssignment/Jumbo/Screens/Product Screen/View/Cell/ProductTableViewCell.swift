@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class ProductTableViewCell: BaseTableViewCell<ProductTableViewCellViewModel> {
     
@@ -36,7 +37,21 @@ final class ProductTableViewCell: BaseTableViewCell<ProductTableViewCellViewMode
         
         stepper.setMaxCount(maxCount: viewModel.stepperMaxCount)
         stepper.setMinCount(minCount: viewModel.stepperMinCount)
-        stepper.setCount(count: 0)
+        stepper.setCount(count: viewModel.quantityInCart)
+        
+        let addToCartSignal = PublishSubject<Void>()
+        let deleteFromCartSignal = PublishSubject<Void>()
+        stepper.configureTapEvents(incrementButtonTappedSignal: addToCartSignal, decrementButtonTappedSignal: deleteFromCartSignal)
+        
+        addToCartSignal.asObservable()
+            .bind(onNext: { [weak self] in
+                self?.viewModel.productAction(action: .addToCart)
+            }).disposed(by: disposeBag)
+        
+        deleteFromCartSignal.asObservable()
+            .bind(onNext: { [weak self] in
+                self?.viewModel.productAction(action: .deleteFromCart)
+            }).disposed(by: disposeBag)
     }
     
 }
