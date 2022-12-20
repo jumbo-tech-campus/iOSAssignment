@@ -22,11 +22,14 @@ final class ProductsListVCViewModel: ViewModel {
     
     // MARK:- Properties
     var tableViewVM: ProductsListTableViewModel?
-    var cartViewModel: PublishSubject<CartListVCViewModel>
+    let cartVM = CartListVCViewModel()
 
-    init( cartViewModel: PublishSubject<CartListVCViewModel> = PublishSubject<CartListVCViewModel>.init()) {
-        self.cartViewModel = cartViewModel
+    override init() {
         super.init()
         self.tableViewVM = ProductsListTableViewModel(state: .store)
     }
+    
+
+    
+    
 }

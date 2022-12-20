@@ -11,6 +11,7 @@ protocol CartManagerProtocol {
     func addToCart(product: ProductRaw)
     func remoteFromCart(product: ProductRaw)
     func quantity(for product: ProductRaw) -> Int
+    func getCartList() -> [CartDetails] 
 }
 
 protocol CartManagerDiskProtocol: CartManagerProtocol {

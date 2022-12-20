@@ -44,6 +44,19 @@ final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
         view.addSubview(contentView)
         contentView.addSubview(tableView)
         configureConstraint()
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        let cartButton = BadgedButtonItem(with: UIImage.init(systemName: "cart.fill"))
+        cartButton.setBadge(with: 2)
+        cartButton.position = .right
+        cartButton.badgeSize = .extraSmall
+        cartButton.tapAction = { [weak self] in
+            self?.cartButtonPressed()
+        }
+        self.navigationItem.rightBarButtonItem  = cartButton
+        self.title = "Products"
     }
     
     private func configureConstraint() {
@@ -61,6 +74,12 @@ final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ])
+    }
+    
+    @objc func cartButtonPressed() {
+        let cartVM = CartListVCViewModel()
+        let cartVC = CartListVCViewController(viewModel: cartVM, loadXib: false)
+        self.navigationController?.pushViewController(cartVC, animated: true)
     }
     
 }

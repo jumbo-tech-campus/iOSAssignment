@@ -11,8 +11,8 @@ class DiskCacheCartManager: CartManager, CartManagerDiskProtocol {
     private let base: URL
     
     override init() {
-        let documets = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        base = documets[0].appendingPathExtension("Cart")
+        let document = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        base = document[0].appendingPathExtension("Cart")
     }
     
     // Save data and write to the file
@@ -35,6 +35,4 @@ class DiskCacheCartManager: CartManager, CartManagerDiskProtocol {
             products = [:]
         }
     }
-    
-    
 }

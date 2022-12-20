@@ -11,21 +11,13 @@ import UIKit
 final class CartListVCViewModel: ViewModel {
 
     // MARK:- Dependency
-    private let imageManager: ImageManager
-    private let cartManager: CartManager
     
     // MARK:- Properties
-    var products: [ProductTableViewCellViewModel] = []
+    var tableViewVM: ProductsListTableViewModel?
     
 
-    init(products: [ProductTableViewCellViewModel]
-         , imageManager: ImageManager = ImageManager()
-         , cartManager : CartManager = CartManager()) {
-             
-             self.products = products
-             self.imageManager = imageManager
-             self.cartManager = cartManager
+    override init() {
         super.init()
+        self.tableViewVM = ProductsListTableViewModel(state: .cart)
     }
-    
 }

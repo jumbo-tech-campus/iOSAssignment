@@ -31,17 +31,17 @@ final class ProductsListTableViewModel: BaseTableViewControllerViewModel {
     
     init(state: ProductViewState = .store
         , cartManager: CartManagerDiskProtocol = DiskCacheCartManager()
-        , repository: ProductsRepositoryType = ProductsRepository()) {
+        , repository: ProductsRepositoryType = ProductsRepository()
+        , updateCartSignal: PublishSubject<Void>) {
         self.repository = repository
         self.state = state
         self.cartManager = cartManager
         super.init()
         
         cartManager.load()
+        loadData()
         setupObservers()
         configureSectionModels()
-        requestProductList()
-        
     }
     
     private func addToCart(product: ProductRaw) {
@@ -57,11 +57,6 @@ final class ProductsListTableViewModel: BaseTableViewControllerViewModel {
 
 extension ProductsListTableViewModel {
     func setupObservers() {
-        switch state {
-        case .cart: break
-        case .store: break
-        }
-        
         cellEvents.asObservable()
             .subscribe(onNext: { [weak self] events in
                 guard let self = self else { return }
@@ -98,8 +93,22 @@ extension ProductsListTableViewModel {
         .startWith([TableViewSectionModel]())
     }
     
+    func loadData() {
+        switch state {
+        case .cart: getCartItems()
+        case .store:  requestProductList()
+        }
+    }
+    
+    // Get data from the repository
     func requestProductList() {
         let products = repository.fetchRawProducts()?.products ?? []
         self.products.accept(products)
     }
+    
+    func getCartItems() {
+        let products = cartManager.getCartList().map { $0.product }
+        self.products.accept(products)
+    }
+  
 }

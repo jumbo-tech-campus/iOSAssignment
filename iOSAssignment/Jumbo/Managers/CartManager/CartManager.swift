@@ -28,6 +28,10 @@ class CartManager: CartManagerProtocol {
         }
     }
     
+    func getCartList() -> [CartDetails] {
+        products.map({ $1 })
+    }
+    
     func quantity(for product: ProductRaw) -> Int {
         products[product.id]?.quantity ?? 0
     }
