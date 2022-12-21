@@ -25,6 +25,10 @@ final class CartListVCViewController: BaseViewController<CartListVCViewModel> {
         return view
     }()
     
+    deinit {
+        print("Memory deallocated...")
+    }
+    
     // MARK:- Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

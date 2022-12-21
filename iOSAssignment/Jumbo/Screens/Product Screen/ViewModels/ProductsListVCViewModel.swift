@@ -26,6 +26,10 @@ final class ProductsListVCViewModel: ViewModel {
     let updateCartSignal = BehaviorRelay<Void>.init(value: ())
     let presentCartSignal = PublishSubject<CartListVCViewModel>()
 
+    deinit {
+        print("Memory deallocated - store")
+    }
+    
     override init() {
         super.init()
         self.tableViewVM = ProductsListTableViewModel(state: .store, updateCartSignal: updateCartSignal)

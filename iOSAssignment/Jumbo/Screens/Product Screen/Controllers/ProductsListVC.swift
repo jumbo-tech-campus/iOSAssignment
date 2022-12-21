@@ -35,6 +35,10 @@ final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
         super.viewDidAppear(animated)
     }
     
+    deinit {
+        print("Memory deallocated...")
+    }
+    
     override func bind() {
         viewModel.presentCartSignal.asObservable()
             .subscribe { [weak self] cartVM in

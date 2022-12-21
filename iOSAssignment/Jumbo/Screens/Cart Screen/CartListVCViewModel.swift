@@ -17,6 +17,9 @@ final class CartListVCViewModel: ViewModel {
     // MARK:- Properties
     var tableViewVM: ProductsListTableViewModel?
     
+    deinit {
+        print("Memory deallocated - cart")
+    }
 
     init(updateCartSignal: BehaviorRelay<Void>) {
         super.init()
