@@ -52,7 +52,7 @@ final class CartListVCViewController: BaseViewController<CartListVCViewModel> {
     }
     
     private func setupNavigationBar() {
-        self.title = "Cart"
+        self.title = "My Cart"
         self.navigationController?.navigationItem.backButtonTitle = nil
     }
     

@@ -4,8 +4,16 @@ import RxCocoa
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var startShoppingButton: GradientButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    func setupUI() {
+        self.startShoppingButton.layer.cornerRadius = 5
+        self.startShoppingButton.layer.masksToBounds = true
     }
     
     @IBAction func startShoppingTapped(_ sender: Any) {

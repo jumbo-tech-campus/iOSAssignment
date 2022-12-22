@@ -224,6 +224,45 @@
 			path = BadgeButton;
 			sourceTree = "<group>";
 		};
+		A40009812954B9E2009ADFC1 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A40009852954BA0A009ADFC1 /* Managers */,
+				A40009842954B9FD009ADFC1 /* Common */,
+				A40009832954B9F4009ADFC1 /* Cart */,
+				A40009822954B9EC009ADFC1 /* Store */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A40009822954B9EC009ADFC1 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		A40009832954B9F4009ADFC1 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		A40009842954B9FD009ADFC1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A40009852954BA0A009ADFC1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		A4B24208294F0139009A7FB8 /* Stepper */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +440,7 @@
 		AFF534A92701ECBF00EEE4AE /* iOSAssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
+				A40009812954B9E2009ADFC1 /* Screens */,
 				AFF534AA2701ECBF00EEE4AE /* iOSAssignmentTests.swift */,
 			);
 			path = iOSAssignmentTests;

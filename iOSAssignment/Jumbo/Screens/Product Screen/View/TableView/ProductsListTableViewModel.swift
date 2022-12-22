@@ -74,7 +74,7 @@ extension ProductsListTableViewModel {
                     default : break
                 }
                 
-                
+                // Reload signal to update store list
                 switch self.state {
                 case .cart: self.reloadSignal?.onNext(())
                     default: break
@@ -90,10 +90,11 @@ extension ProductsListTableViewModel {
         self.sectionsModels = products
             .asObservable()
             .map { (products: [ProductRaw]) -> [TableViewSectionModel] in
-                
+             
                 var sections = [TableViewSectionModel]()
                 var productItems = [TableViewSectionItem]()
                 for product in products {
+                 
                     let item = TableViewSectionItem(reusableIdentifier: ProductTableViewCell.reuseIdentifier, viewModel: ProductTableViewCellViewModel(product: product, cartQuantity: self.cartManager.quantity(for: product)
                                                                       , events: self.cellEvents))
                     let seperatorItem = TableViewSectionItem(reusableIdentifier: LineSeparatorTableViewCell.subjectLabel, viewModel: LineSeparatorTableViewCellViewModel(lineSeparatorType: .default))

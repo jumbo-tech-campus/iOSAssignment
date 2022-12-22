@@ -22,7 +22,7 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
     
     //MARK:- Input
     private let product: ProductRaw
-    private let cartQuantity: Int
+    private var cartQuantity: Int
     
     // MARK- Output
     var events: PublishSubject<ProductListVCActions>
@@ -108,7 +108,9 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
     func productAction(action: ProductTableViewCellActions) {
         switch action {
         case .addToCart: events.onNext( ProductListVCActions.addToCart(product: product))
+            cartQuantity += 1
         case .deleteFromCart: events.onNext( ProductListVCActions.deleteFromCart(product: product))
+            cartQuantity -= 1
         }
     }
 }

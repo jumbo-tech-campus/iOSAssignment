@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "fpo_cart.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "fpo_cart@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "fpo_cart@3x.png",
+      "filename" : "Screenshot 2022-12-22 at 11.48.33 PM.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

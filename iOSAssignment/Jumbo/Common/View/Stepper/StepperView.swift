@@ -42,6 +42,7 @@ public class StepperView: UIView {
         configureUI()
     }
     
+    
     fileprivate func load() {
         let view = Bundle(for: StepperView.self).loadNibNamed(String(describing: StepperView.self), owner: self, options: nil)![0] as! UIView
         view.frame = bounds
@@ -86,6 +87,7 @@ public class StepperView: UIView {
     }
     
     private func setupAddButton() {
+        self.addButton.isHidden = true
         self.addButton.isHidden = !(self.currentCount == 0)
         self.decrementButton.isHidden = (self.currentCount == 0)
         self.incrementButton.isHidden = (self.currentCount == 0)
