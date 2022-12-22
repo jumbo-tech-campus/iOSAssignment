@@ -17,13 +17,12 @@ enum ProductListVCActions {
     case reload
 }
 
-final class ProductsListVCViewModel: ViewModel {
+class ProductsListVCViewModel: ViewModel {
 
     // MARK:- Dependency
     
     // MARK:- Properties
     var tableViewVM: ProductsListTableViewModel?
-    let updateCartSignal = BehaviorRelay<Void>.init(value: ())
     let presentCartSignal = PublishSubject<CartListVCViewModel>()
     let updateCartBadgeSignal = PublishSubject<Int>.init()
     let viewDidAppearSignal = PublishSubject<Void>.init()
@@ -32,11 +31,12 @@ final class ProductsListVCViewModel: ViewModel {
         print("Memory deallocated - store")
     }
     
-    override init() {
+    init(state: ProductViewState) {
         super.init()
-        self.tableViewVM = ProductsListTableViewModel(state: .store
-                                                      , updateCartSignal: updateCartSignal
+        self.tableViewVM = ProductsListTableViewModel(state: state
                                                     , updateCartBadgeSignal: updateCartBadgeSignal)
+        
+        // Trigger event to update badge on view appear
         viewDidAppearSignal.asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return  }
@@ -45,10 +45,7 @@ final class ProductsListVCViewModel: ViewModel {
             }).disposed(by: disposeBag)
     }
     
-    func presentCartView() {
-        let cartVM = CartListVCViewModel(updateCartSignal: updateCartSignal)
-        presentCartSignal.onNext(cartVM)
+    public func reloadData() {
+        tableViewVM?.cellEvents.onNext(.reload)
     }
-    
-    
 }

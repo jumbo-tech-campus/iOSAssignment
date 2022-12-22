@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
+final class StoreListVC: BaseViewController<StoreListVCViewModel> {
     
     lazy var contentView: UIView = {
         let view = UIView()

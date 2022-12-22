@@ -13,7 +13,7 @@ import RxDataSources
 
 enum ProductViewState {
     case store
-    case cart
+    case cart(reloadSignal:PublishSubject<Void>)
 }
 
 final class ProductsListTableViewModel: BaseTableViewControllerViewModel {
@@ -24,26 +24,28 @@ final class ProductsListTableViewModel: BaseTableViewControllerViewModel {
     // MARK:- Properties
     private let products: BehaviorRelay<[ProductRaw]> = BehaviorRelay(value: [])
     private let state: ProductViewState
-    private let cellEvents = PublishSubject<ProductListVCActions>.init()
+    public let cellEvents = PublishSubject<ProductListVCActions>.init()
     private let cartManager: CartManagerDiskProtocol
     private let updateCartBadgeSignal: PublishSubject<Int>?
     
     // MARK:- Output
-    let updateCartSignal: BehaviorRelay<Void>
+    private var reloadSignal: PublishSubject<Void>?
     
     init(state: ProductViewState = .store
         , cartManager: CartManagerDiskProtocol = DiskCacheCartManager()
         , repository: ProductsRepositoryType = ProductsRepository()
-        , updateCartSignal: BehaviorRelay<Void>
         , updateCartBadgeSignal: PublishSubject<Int>? = nil) {
         self.repository = repository
         self.state = state
         self.cartManager = cartManager
-        self.updateCartSignal = updateCartSignal
         self.updateCartBadgeSignal = updateCartBadgeSignal
         super.init()
         
-        cartManager.load()
+        switch state {
+        case .cart(let reloadSignal): self.reloadSignal = reloadSignal
+        case .store: break
+        }
+        
         loadData()
         setupObservers()
         configureSectionModels()
@@ -68,11 +70,13 @@ extension ProductsListTableViewModel {
                 switch events {
                     case .addToCart(let product): self.addToCart(product: product)
                     case .deleteFromCart(let product): self.deleteFromCart(product: product)
+                case .reload: self.loadData()
                     default : break
                 }
                 
+                
                 switch self.state {
-                    case .cart: self.updateCartSignal.accept(())
+                case .cart: self.reloadSignal?.onNext(())
                     default: break
                 }
                 
@@ -83,11 +87,10 @@ extension ProductsListTableViewModel {
     }
     
     func configureSectionModels() {
-        self.sectionsModels = Observable.combineLatest(products, updateCartSignal, resultSelector: {  products, updateCartSignal -> [TableViewSectionModel] in
-         
-                // Reload the cart items on updateCart Signal
-                self.cartManager.load()
-            
+        self.sectionsModels = products
+            .asObservable()
+            .map { (products: [ProductRaw]) -> [TableViewSectionModel] in
+                
                 var sections = [TableViewSectionModel]()
                 var productItems = [TableViewSectionItem]()
                 for product in products {
@@ -101,10 +104,15 @@ extension ProductsListTableViewModel {
                 let productSection = TableViewSectionModel(items: productItems)
                 sections.append(productSection)
                 return sections
-        }).asDriver(onErrorJustReturn: [])
+        }.asDriver(onErrorJustReturn: [TableViewSectionModel]())
+            .startWith([TableViewSectionModel]())
     }
     
     func loadData() {
+        
+        // Load all the items store in the cart
+        cartManager.load()
+        
         switch state {
         case .cart: getCartItems()
         case .store:  requestProductList()

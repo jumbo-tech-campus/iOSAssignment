@@ -10,19 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class CartListVCViewModel: ViewModel {
+final class CartListVCViewModel: ProductsListVCViewModel {
 
     // MARK:- Dependency
-    
-    // MARK:- Properties
-    var tableViewVM: ProductsListTableViewModel?
     
     deinit {
         print("Memory deallocated - cart")
     }
 
-    init(updateCartSignal: BehaviorRelay<Void>) {
-        super.init()
-        self.tableViewVM = ProductsListTableViewModel(state: .cart, updateCartSignal: updateCartSignal)
+    init(reloadSignal: PublishSubject<Void>) {
+        super.init(state: .cart(reloadSignal: reloadSignal))
     }
 }
