@@ -26,6 +26,7 @@ final class ProductsListTableViewModel: BaseTableViewControllerViewModel {
     private let state: ProductViewState
     private let cellEvents = PublishSubject<ProductListVCActions>.init()
     private let cartManager: CartManagerDiskProtocol
+    private let updateCartBadgeSignal: PublishSubject<Int>?
     
     // MARK:- Output
     let updateCartSignal: BehaviorRelay<Void>
@@ -33,11 +34,13 @@ final class ProductsListTableViewModel: BaseTableViewControllerViewModel {
     init(state: ProductViewState = .store
         , cartManager: CartManagerDiskProtocol = DiskCacheCartManager()
         , repository: ProductsRepositoryType = ProductsRepository()
-        , updateCartSignal: BehaviorRelay<Void>) {
+        , updateCartSignal: BehaviorRelay<Void>
+        , updateCartBadgeSignal: PublishSubject<Int>? = nil) {
         self.repository = repository
         self.state = state
         self.cartManager = cartManager
         self.updateCartSignal = updateCartSignal
+        self.updateCartBadgeSignal = updateCartBadgeSignal
         super.init()
         
         cartManager.load()
@@ -72,14 +75,20 @@ extension ProductsListTableViewModel {
                     case .cart: self.updateCartSignal.accept(())
                     default: break
                 }
+                
+                // Update badge when items are updated in the cart
+                let badgeCount = self.getCartItemsCount()
+                self.updateCartBadgeSignal?.onNext((badgeCount))
             }).disposed(by: disposeBag)
     }
     
     func configureSectionModels() {
         self.sectionsModels = Observable.combineLatest(products, updateCartSignal, resultSelector: {  products, updateCartSignal -> [TableViewSectionModel] in
          
-                var sections = [TableViewSectionModel]()
+                // Reload the cart items on updateCart Signal
                 self.cartManager.load()
+            
+                var sections = [TableViewSectionModel]()
                 var productItems = [TableViewSectionItem]()
                 for product in products {
                     let item = TableViewSectionItem(reusableIdentifier: ProductTableViewCell.reuseIdentifier, viewModel: ProductTableViewCellViewModel(product: product, cartQuantity: self.cartManager.quantity(for: product)
@@ -111,6 +120,10 @@ extension ProductsListTableViewModel {
     func getCartItems() {
         let products = cartManager.getCartList().map { $0.product }
         self.products.accept(products)
+    }
+    
+    func getCartItemsCount() -> Int {
+        cartManager.getCartList().map { $0.product }.count
     }
   
 }

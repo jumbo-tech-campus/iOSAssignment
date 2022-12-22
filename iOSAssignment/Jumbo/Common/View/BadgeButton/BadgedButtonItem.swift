@@ -160,11 +160,11 @@ public class BadgedButtonItem: UIBarButtonItem {
         self.lblBadge.clipsToBounds = true
         self.lblBadge.layer.cornerRadius = badgeRadius
         self.lblBadge.textColor = .white
-        self.lblBadge.font = UIFont.systemFont(ofSize: 10)
+        self.lblBadge.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         self.lblBadge.textAlignment = .center
         self.lblBadge.isHidden = true
         self.lblBadge.minimumScaleFactor = 0.5
-        self.lblBadge.adjustsFontSizeToFitWidth = true
+        //self.lblBadge.adjustsFontSizeToFitWidth = true
         self.filterBtn.addSubview(lblBadge)
         self.customView = filterBtn
     }

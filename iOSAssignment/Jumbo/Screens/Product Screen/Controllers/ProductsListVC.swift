@@ -25,14 +25,18 @@ final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
         return view
     }()
     
+    let cartButton = BadgedButtonItem(with: UIImage.init(systemName: "cart.fill"))
+    
     // MARK:- Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
+        self.observeBadgeUpdates()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        viewModel.viewDidAppearSignal.onNext(())
     }
     
     deinit {
@@ -45,6 +49,17 @@ final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
                 let cartVC = CartListVCViewController(viewModel: cartVM, loadXib: false)
                 self?.navigationController?.pushViewController(cartVC, animated: true)
             }.disposed(by: disposeBag)
+        
+        // Update cart badge
+        viewModel.updateCartBadgeSignal
+            .asObservable()
+            .subscribe { [weak self] badgeCount in
+                self?.cartButton.setBadge(with: badgeCount)
+            }.disposed(by: disposeBag)
+    }
+    
+    func observeBadgeUpdates() {
+  
     }
     
     private func configureUI() {
@@ -56,10 +71,8 @@ final class ProductsListVC: BaseViewController<ProductsListVCViewModel> {
     }
     
     private func setupNavigationBar() {
-        let cartButton = BadgedButtonItem(with: UIImage.init(systemName: "cart.fill"))
-        cartButton.setBadge(with: 2)
         cartButton.position = .right
-        cartButton.badgeSize = .extraSmall
+        cartButton.badgeSize = .large
         cartButton.tapAction = { [weak self] in
             self?.cartButtonPressed()
         }

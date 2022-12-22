@@ -8,18 +8,27 @@
 import Foundation
 
 class DiskCacheCartManager: CartManager, CartManagerDiskProtocol {
-    private let base: URL
+    private var url: URL?
     
     override init() {
-        let document = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        base = document[0].appendingPathExtension("Cart")
+        super.init()
+        url = getDocumentsDirectory()
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        // find all possible documents directories for this user
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+        // just send back the first one, which ought to be the only one
+        return paths[0].appendingPathComponent("cart.txt")
     }
     
     // Save data and write to the file
     func save() {
+        guard let url = url else { return  }
         do {
             let data = try PropertyListEncoder().encode(products)
-            try data.write(to: base, options: .atomic)
+            try data.write(to: url, options: .atomic)
         } catch {
             print(error)
         }
@@ -27,11 +36,12 @@ class DiskCacheCartManager: CartManager, CartManagerDiskProtocol {
     
     // Load if data exist in the file
     func load() {
-        if let data = try? Data(contentsOf: base),
+        guard let url = url else { return  }
+        if let data = try? Data(contentsOf: url),
            let savedProducts = try? PropertyListDecoder().decode([String: CartDetails].self, from: data)
               {
             self.products = savedProducts
-        } else {
+        } else  {
             products = [:]
         }
     }

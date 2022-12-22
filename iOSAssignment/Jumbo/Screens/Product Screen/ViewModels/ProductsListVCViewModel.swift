@@ -25,18 +25,30 @@ final class ProductsListVCViewModel: ViewModel {
     var tableViewVM: ProductsListTableViewModel?
     let updateCartSignal = BehaviorRelay<Void>.init(value: ())
     let presentCartSignal = PublishSubject<CartListVCViewModel>()
-
+    let updateCartBadgeSignal = PublishSubject<Int>.init()
+    let viewDidAppearSignal = PublishSubject<Void>.init()
+    
     deinit {
         print("Memory deallocated - store")
     }
     
     override init() {
         super.init()
-        self.tableViewVM = ProductsListTableViewModel(state: .store, updateCartSignal: updateCartSignal)
+        self.tableViewVM = ProductsListTableViewModel(state: .store
+                                                      , updateCartSignal: updateCartSignal
+                                                    , updateCartBadgeSignal: updateCartBadgeSignal)
+        viewDidAppearSignal.asObservable()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return  }
+                let badgeCount = self.tableViewVM?.getCartItemsCount() ?? 0
+                self.updateCartBadgeSignal.onNext(badgeCount)
+            }).disposed(by: disposeBag)
     }
     
     func presentCartView() {
         let cartVM = CartListVCViewModel(updateCartSignal: updateCartSignal)
         presentCartSignal.onNext(cartVM)
     }
+    
+    
 }
