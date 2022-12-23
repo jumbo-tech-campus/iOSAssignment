@@ -20,6 +20,7 @@
 		A400097A2951A41B009ADFC1 /* CartListVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40009772951A41B009ADFC1 /* CartListVCViewController.swift */; };
 		A400097E2951FC61009ADFC1 /* BadgedButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400097D2951FC61009ADFC1 /* BadgedButtonItem.swift */; };
 		A400098029549655009ADFC1 /* StoreListVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400097F29549655009ADFC1 /* StoreListVCViewModel.swift */; };
+		A400098729554D30009ADFC1 /* CartManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400098629554D30009ADFC1 /* CartManagerTests.swift */; };
 		A4B2420B294F014C009A7FB8 /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B24209294F014C009A7FB8 /* StepperView.swift */; };
 		A4B2420C294F014C009A7FB8 /* StepperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B2420A294F014C009A7FB8 /* StepperView.xib */; };
 		A4CE3438294DF3E2000C243A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CE3436294DF3E2000C243A /* BaseTableViewCell.swift */; };
@@ -93,6 +94,7 @@
 		A40009772951A41B009ADFC1 /* CartListVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListVCViewController.swift; sourceTree = "<group>"; };
 		A400097D2951FC61009ADFC1 /* BadgedButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgedButtonItem.swift; sourceTree = "<group>"; };
 		A400097F29549655009ADFC1 /* StoreListVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListVCViewModel.swift; sourceTree = "<group>"; };
+		A400098629554D30009ADFC1 /* CartManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManagerTests.swift; sourceTree = "<group>"; };
 		A4B24209294F014C009A7FB8 /* StepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		A4B2420A294F014C009A7FB8 /* StepperView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepperView.xib; sourceTree = "<group>"; };
 		A4CE3436294DF3E2000C243A /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		A40009832954B9F4009ADFC1 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				A400098629554D30009ADFC1 /* CartManagerTests.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFF534AB2701ECBF00EEE4AE /* iOSAssignmentTests.swift in Sources */,
+				A400098729554D30009ADFC1 /* CartManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,7 +969,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -990,7 +994,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
