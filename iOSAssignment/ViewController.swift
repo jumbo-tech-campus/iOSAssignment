@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     public func navigateToProductsList() {
         let vm = StoreListVCViewModel()
-        let vc = StoreListVC(viewModel: vm, loadXib: false)
+        let vc = StoreListViewController(viewModel: vm, loadXib: false)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

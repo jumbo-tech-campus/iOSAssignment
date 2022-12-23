@@ -32,16 +32,16 @@
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E7K-3l-xr4">
                             <rect key="frame" x="0.0" y="0.0" width="170" height="59"/>
                             <subviews>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zoc-Dp-B6m" customClass="GradientButton" customModule="iOSAssignment" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="12.5" width="0.0" height="34.5"/>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zoc-Dp-B6m" customClass="GradientButton" customModule="iOSAssignment" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="12.5" width="55" height="34.5"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Add"/>
                                     <connections>
                                         <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="SU3-qg-HyA"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egY-Kt-LuP" userLabel="Decrement Button">
-                                    <rect key="frame" x="0.0" y="9.5" width="74" height="40"/>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egY-Kt-LuP" userLabel="Decrement Button">
+                                    <rect key="frame" x="55" y="9.5" width="19" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="bDf-hy-pNq"/>
                                     </constraints>

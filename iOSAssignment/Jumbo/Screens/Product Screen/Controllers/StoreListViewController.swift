@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class StoreListVC: BaseViewController<StoreListVCViewModel> {
+final class StoreListViewController: BaseViewController<StoreListVCViewModel> {
     
     lazy var contentView: UIView = {
         let view = UIView()
@@ -31,7 +31,6 @@ final class StoreListVC: BaseViewController<StoreListVCViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
-        self.observeBadgeUpdates()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,10 +55,6 @@ final class StoreListVC: BaseViewController<StoreListVCViewModel> {
             .subscribe { [weak self] badgeCount in
                 self?.cartButton.setBadge(with: badgeCount)
             }.disposed(by: disposeBag)
-    }
-    
-    func observeBadgeUpdates() {
-  
     }
     
     private func configureUI() {

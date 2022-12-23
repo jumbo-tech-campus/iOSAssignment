@@ -39,8 +39,6 @@ final class ProductTableViewCell: BaseTableViewCell<ProductTableViewCellViewMode
         stepper.setMinCount(minCount: viewModel.stepperMinCount)
         stepper.setCount(count: viewModel.quantityInCart)
         
-        print("---> \(viewModel.id) \(viewModel.quantityInCart)")
-        
         let addToCartSignal = PublishSubject<Void>()
         let deleteFromCartSignal = PublishSubject<Void>()
         stepper.configureTapEvents(incrementButtonTappedSignal: addToCartSignal, decrementButtonTappedSignal: deleteFromCartSignal)

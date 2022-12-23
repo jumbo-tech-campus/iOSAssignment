@@ -51,10 +51,6 @@ public class StepperView: UIView {
         addSubview(view)
     }
     
-    override public func updateConstraints() {
-        super.updateConstraints()
-    }
-    
     private func configureUI() {
         self.addButton.layer.cornerRadius = 5
         self.addButton.layer.masksToBounds = true
@@ -87,7 +83,6 @@ public class StepperView: UIView {
     }
     
     private func setupAddButton() {
-        self.addButton.isHidden = true
         self.addButton.isHidden = !(self.currentCount == 0)
         self.decrementButton.isHidden = (self.currentCount == 0)
         self.incrementButton.isHidden = (self.currentCount == 0)
