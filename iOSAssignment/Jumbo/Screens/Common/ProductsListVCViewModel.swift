@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 enum ProductListVCActions {
-    case viewCart
     case addToCart(product: ProductRaw)
     case deleteFromCart(product: ProductRaw)
     case reload
@@ -26,10 +25,6 @@ class ProductsListVCViewModel: ViewModel {
     let presentCartSignal = PublishSubject<CartListVCViewModel>()
     let updateCartBadgeSignal = PublishSubject<Int>.init()
     let viewDidAppearSignal = PublishSubject<Void>.init()
-    
-    deinit {
-        print("Memory deallocated - store")
-    }
     
     init(state: ProductViewState) {
         super.init()

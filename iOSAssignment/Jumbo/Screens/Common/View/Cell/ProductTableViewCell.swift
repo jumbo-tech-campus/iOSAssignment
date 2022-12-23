@@ -45,12 +45,12 @@ final class ProductTableViewCell: BaseTableViewCell<ProductTableViewCellViewMode
         
         addToCartSignal.asObservable()
             .bind(onNext: { [weak self] in
-                self?.viewModel.productAction(action: .addToCart)
+                self?.viewModel.productCellAction(action: .addToCart)
             }).disposed(by: disposeBag)
         
         deleteFromCartSignal.asObservable()
             .bind(onNext: { [weak self] in
-                self?.viewModel.productAction(action: .deleteFromCart)
+                self?.viewModel.productCellAction(action: .deleteFromCart)
             }).disposed(by: disposeBag)
     }
     

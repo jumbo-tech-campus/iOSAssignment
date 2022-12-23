@@ -95,14 +95,13 @@ extension ProductsListTableViewModel {
         
         switch state {
         case .cart: getCartItems()
-        case .store:  requestProductList()
+        case .store:  self.products.accept(requestProductList())
         }
     }
     
     // Get data from the repository
-    func requestProductList() {
-        let products = repository.fetchRawProducts()?.products ?? []
-        self.products.accept(products)
+    func requestProductList() -> [ProductRaw] {
+        repository.fetchRawProducts()?.products ?? []
     }
     
     // Get data from the local cache file
@@ -133,7 +132,6 @@ extension ProductsListTableViewModel {
         case .addToCart(let product): self.addToCart(product: product)
         case .deleteFromCart(let product): self.deleteFromCart(product: product)
         case .reload: self.loadData()
-        default : break
         }
         
         // Reload signal to update store list

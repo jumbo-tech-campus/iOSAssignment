@@ -85,7 +85,7 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
         return "\(price)/ \(unit)"
     }
     
-    private func getQuantityInCart() -> Int {
+   public func getQuantityInCart() -> Int {
         return cartQuantity
     }
     
@@ -105,7 +105,7 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
         })
     }
     
-    func productAction(action: ProductTableViewCellActions) {
+    public func productCellAction(action: ProductTableViewCellActions) {
         switch action {
         case .addToCart: events.onNext( ProductListVCActions.addToCart(product: product))
             cartQuantity += 1
