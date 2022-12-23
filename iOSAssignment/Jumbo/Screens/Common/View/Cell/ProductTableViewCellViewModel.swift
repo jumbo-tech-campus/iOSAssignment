@@ -47,7 +47,7 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
     
     // Assuming values
     let stepperMinCount = 0
-    let stepperMaxCount = 10
+    let stepperMaxCount = 100
     
     init(product: ProductRaw
         , cartQuantity: Int
@@ -87,6 +87,7 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
     
    public func getQuantityInCart() -> Int {
         return cartQuantity
+       
     }
     
     private func downloadProductImage() {

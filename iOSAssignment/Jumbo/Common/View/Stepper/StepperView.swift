@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 let MINCOUNT = 0
-let MAXCOUNT = 10
+let MAXCOUNT = 100
 
 public class StepperView: UIView {
 
@@ -20,8 +20,8 @@ public class StepperView: UIView {
     @IBOutlet weak var addButton: UIButton!
     
     var currentCount: Int = MINCOUNT
-    var maxCount: Int =  MINCOUNT
-    var minCount: Int = MAXCOUNT
+    var maxCount: Int =  MAXCOUNT
+    var minCount: Int = MINCOUNT
     
     private var incrementButtonTappedSignal: PublishSubject<Void>?
     private var decrementButtonTappedSignal: PublishSubject<Void>?
