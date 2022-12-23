@@ -41,7 +41,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egY-Kt-LuP" userLabel="Decrement Button">
-                                    <rect key="frame" x="55" y="9.5" width="19" height="40"/>
+                                    <rect key="frame" x="55" y="9.5" width="15" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="bDf-hy-pNq"/>
                                     </constraints>
@@ -54,15 +54,15 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51e-3v-Dac" userLabel="Count Label">
-                                    <rect key="frame" x="74" y="20" width="22" height="19"/>
+                                    <rect key="frame" x="70" y="20" width="30" height="19"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="22" id="hyQ-zb-S2T"/>
+                                        <constraint firstAttribute="width" constant="30" id="hyQ-zb-S2T"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="16"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4j-Cd-ET2" userLabel="Increment Button">
-                                    <rect key="frame" x="96" y="9.5" width="74" height="40"/>
+                                    <rect key="frame" x="100" y="9.5" width="70" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="pMg-cz-rKs"/>
                                     </constraints>

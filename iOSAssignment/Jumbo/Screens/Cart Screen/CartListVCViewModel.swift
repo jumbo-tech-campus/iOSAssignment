@@ -14,10 +14,6 @@ final class CartListVCViewModel: ProductsListVCViewModel {
 
     // MARK:- Dependency
     
-    deinit {
-        print("Memory deallocated - cart")
-    }
-
     init(reloadSignal: PublishSubject<Void>) {
         super.init(state: .cart(reloadSignal: reloadSignal))
     }

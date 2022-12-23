@@ -14,10 +14,6 @@ final class StoreListVCViewModel: ProductsListVCViewModel {
     // MARK:- Properties
     let reloadSignal = PublishSubject<Void>()
     
-    deinit {
-        print("Memory deallocated - cart")
-    }
-
     init() {
         super.init(state: .store)
         

@@ -35,11 +35,7 @@ final class StoreListViewController: BaseViewController<StoreListVCViewModel> {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.viewDidAppearSignal.onNext(())
-    }
-    
-    deinit {
-        print("Memory deallocated...")
+        viewModel.viewDidAppear()
     }
     
     override func bind() {

@@ -30,17 +30,14 @@ class ProductsListVCViewModel: ViewModel {
         super.init()
         self.tableViewVM = ProductsListTableViewModel(state: state
                                                     , updateCartBadgeSignal: updateCartBadgeSignal)
-        
-        // Trigger event to update badge on view appear
-        viewDidAppearSignal.asObservable()
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return  }
-                let badgeCount = self.tableViewVM?.getCartItemsCount() ?? 0
-                self.updateCartBadgeSignal.onNext(badgeCount)
-            }).disposed(by: disposeBag)
     }
     
     public func reloadData() {
         tableViewVM?.cellEvents.onNext(.reload)
+    }
+    
+    public func viewDidAppear() {
+        let badgeCount = self.tableViewVM?.getCartItemsCount() ?? 0
+        self.updateCartBadgeSignal.onNext(badgeCount)
     }
 }

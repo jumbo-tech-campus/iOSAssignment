@@ -69,9 +69,7 @@ extension ProductsListTableViewModel {
                 var sections = [TableViewSectionModel]()
                 var productItems = [TableViewSectionItem]()
                 for product in products {
-                    
-                    print("product \(product.id) --- \(self.cartManager.quantity(for: product))")
-                    
+            
                     let item = TableViewSectionItem(reusableIdentifier: ProductTableViewCell.reuseIdentifier, viewModel: ProductTableViewCellViewModel(product: product, cartQuantity: self.cartManager.quantity(for: product)
                                                                                                                                                        , events: self.cellEvents))
                     let seperatorItem = TableViewSectionItem(reusableIdentifier: LineSeparatorTableViewCell.subjectLabel, viewModel: LineSeparatorTableViewCellViewModel(lineSeparatorType: .default))
