@@ -63,7 +63,7 @@ class ProductTableViewCellViewModel: BaseTableViewCellViewModel {
     
     private func formatQuantity() -> String {
         guard let quantity = product.quantity else { return "" }
-        return "Qty: \(quantity)"
+        return "Inhoud: \(quantity)"
     }
     
     private func formatPrice() -> String {

@@ -25,10 +25,6 @@ final class CartListVCViewController: BaseViewController<CartListVCViewModel> {
         return view
     }()
     
-    deinit {
-        print("Memory deallocated...")
-    }
-    
     // MARK:- Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +48,7 @@ final class CartListVCViewController: BaseViewController<CartListVCViewModel> {
     }
     
     private func setupNavigationBar() {
-        self.title = "My Cart"
+        self.title = "Mijn Mandje"
         self.navigationController?.navigationItem.backButtonTitle = nil
     }
     

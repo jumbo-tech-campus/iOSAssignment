@@ -72,7 +72,7 @@ final class StoreListViewController: BaseViewController<StoreListVCViewModel> {
             self?.cartButtonPressed()
         }
         self.navigationItem.rightBarButtonItem  = cartButton
-        self.title = "Products"
+        self.title = "Producten"
     }
     
     private func configureConstraint() {
