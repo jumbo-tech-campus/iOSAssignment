@@ -41,7 +41,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JAo-59-g81">
             <objects>
-                <tabBarController id="ChM-aV-Wnu" sceneMemberID="viewController">
+                <tabBarController id="ChM-aV-Wnu" customClass="TabBarController" customModule="iOSAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="SUp-4d-Dfv"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WvR-9k-4dF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
@@ -49,6 +49,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBar" destination="WvR-9k-4dF" id="pqQ-k9-uRU"/>
                         <segue destination="VX3-i5-ixG" kind="relationship" relationship="viewControllers" id="7qI-1N-LtN"/>
                         <segue destination="QYe-Qy-wVu" kind="relationship" relationship="viewControllers" id="9Tt-I0-pFh"/>
                     </connections>
@@ -70,7 +71,7 @@
                             <outlet property="delegate" destination="VX3-i5-ixG" id="LYc-rd-bsA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Products" id="qMh-gt-jwg"/>
+                    <tabBarItem key="tabBarItem" title="Products" image="house.fill" catalog="system" id="qMh-gt-jwg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sY-u1-VWx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,7 +90,7 @@
                             <outlet property="delegate" destination="QYe-Qy-wVu" id="dIC-Ty-dvz"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Cart" id="DRl-pC-grC"/>
+                    <tabBarItem key="tabBarItem" title="Cart" image="cart.fill" catalog="system" id="DRl-pC-grC"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFD-Il-nq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,6 +98,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -7,21 +7,25 @@
 
 import Foundation
 
+protocol CartManagerDelegate {
+    func didUpdateCart()
+}
+
 class CartManager {
     
     static let shared = CartManager()
+    var delegate: CartManagerDelegate?
     
     var cart: [String: CartItem] = [:]
     
     func add(_ product: ProductRaw) {
-        var cartItemToAdd: CartItem!
         if var cartItem = cart[product.id] {
             cartItem.quantity += 1
-            cartItemToAdd = cartItem
+            cart[product.id] = cartItem
         } else {
-            cartItemToAdd = CartItem(product: product)
+            cart[product.id] = CartItem(product: product)
+            delegate?.didUpdateCart()
         }
-        cart[product.id] = cartItemToAdd
     }
     
     func remove(_ product: ProductRaw) {
@@ -29,9 +33,18 @@ class CartManager {
             cartItem.quantity -= 1
             if cartItem.quantity == 0 {
                 cart.removeValue(forKey: product.id)
+                delegate?.didUpdateCart()
             } else {
                 cart[product.id] = cartItem
             }
         }
+    }
+    
+    func save() {
+        
+    }
+    
+    func load() {
+        
     }
 }
