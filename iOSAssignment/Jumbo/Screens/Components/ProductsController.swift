@@ -19,6 +19,10 @@ class ProductsController: UITableViewController {
         products = productRepository.fetchRawProducts()?.products
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products?.count ?? 0
     }
@@ -33,6 +37,17 @@ class ProductsController: UITableViewController {
             cell.descriptionLabel.text = product.quantity
             cell.priceLabel.text = "\(product.prices?.price?.currency ?? "") \(product.prices?.price?.amount ?? 0)"
             cell.priceDetailsLabel.text = "\(product.prices?.unitPrice?.price?.amount ?? 0)/\(product.prices?.unitPrice?.unit ?? "")"
+            cell.quantityLabel.text = "\(CartManager.shared.cart[product.id]?.quantity ?? 0)"
+            cell.didTapAdd = {
+                CartManager.shared.add(product)
+//                tableView.reloadData()
+                cell.quantityLabel.text = "\(CartManager.shared.cart[product.id]?.quantity ?? 0)"
+            }
+            cell.didTapRemove = {
+                CartManager.shared.remove(product)
+//                tableView.reloadData()
+                cell.quantityLabel.text = "\(CartManager.shared.cart[product.id]?.quantity ?? 0)"
+            }
         }
         return cell
     }

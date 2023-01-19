@@ -54,11 +54,33 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="141-3m-4Ba">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNU-gy-Qkk">
                                         <rect key="frame" x="0.0" y="194.66666666666663" width="219.66666666666666" height="164.33333333333337"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Add to Cart"/>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcV-sQ-0Wz">
+                                                <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="164.33333333333334"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="-"/>
+                                                <connections>
+                                                    <action selector="didTapRemove:" destination="xmX-i9-l5d" eventType="touchUpInside" id="NWB-BT-cjL"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyI-v0-DZE">
+                                                <rect key="frame" x="99.666666666666686" y="0.0" width="10.333333333333329" height="164.33333333333334"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="141-3m-4Ba">
+                                                <rect key="frame" x="110.00000000000006" y="0.0" width="109.66666666666669" height="164.33333333333334"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="+"/>
+                                                <connections>
+                                                    <action selector="didTapAdd:" destination="xmX-i9-l5d" eventType="touchUpInside" id="TTm-qg-eiD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -78,6 +100,7 @@
                 <outlet property="priceDetailsLabel" destination="ado-dg-ync" id="OrK-Up-Foq"/>
                 <outlet property="priceLabel" destination="VKL-Xb-ZGX" id="nWH-el-s4k"/>
                 <outlet property="productImageview" destination="BTP-aI-Vzc" id="XsK-0z-fOp"/>
+                <outlet property="quantityLabel" destination="pyI-v0-DZE" id="Nv2-TM-SgF"/>
             </connections>
             <point key="canvasLocation" x="79.230769230769226" y="141.11374407582937"/>
         </tableViewCell>

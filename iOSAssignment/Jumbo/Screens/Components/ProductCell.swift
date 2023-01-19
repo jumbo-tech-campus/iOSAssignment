@@ -13,4 +13,16 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var priceDetailsLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    
+    var didTapAdd: (() -> Void)?
+    var didTapRemove: (() -> Void)?
+    
+    @IBAction func didTapAdd(_ sender: Any) {
+        didTapAdd?()
+    }
+    
+    @IBAction func didTapRemove(_ sender: Any) {
+        didTapRemove?()
+    }
 }
