@@ -10,7 +10,19 @@ import UIKit
 class CartController: ProductsController {
     
     override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
+    
+    func loadData() {
         products = CartManager.shared.cart.map({$1.product})
-        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    override func didTapRemoveProduct(_ product: ProductRaw) -> Int {
+        let quantity = super.didTapRemoveProduct(product)
+        if quantity == 0 {
+            loadData()
+        }
+        return quantity
     }
 }

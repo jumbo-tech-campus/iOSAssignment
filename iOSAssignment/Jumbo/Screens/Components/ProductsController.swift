@@ -52,10 +52,15 @@ class ProductsController: UITableViewController {
                 cell.setQuantity(CartManager.shared.cart[product.id]?.quantity ?? 0)
             }
             cell.didTapRemove = {
-                CartManager.shared.remove(product)
-                cell.setQuantity(CartManager.shared.cart[product.id]?.quantity ?? 0)
+                let quantity = self.didTapRemoveProduct(product)
+                cell.setQuantity(quantity)
             }
         }
         return cell
+    }
+    
+    func didTapRemoveProduct(_ product: ProductRaw) -> Int {
+        CartManager.shared.remove(product)
+        return CartManager.shared.cart[product.id]?.quantity ?? 0
     }
 }

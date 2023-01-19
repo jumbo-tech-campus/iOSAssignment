@@ -20,6 +20,7 @@ class TabBarController: UITabBarController, CartManagerDelegate {
     }
     
     func didUpdateCart() {
-        cartTabBarItem?.badgeValue = "\(CartManager.shared.cart.count)"
+        let cartItemCount = CartManager.shared.cart.count
+        cartTabBarItem?.badgeValue = cartItemCount > 0 ? "\(cartItemCount)" : nil
     }
 }
