@@ -1,5 +1,18 @@
 # Technical Assignment
 
+## Demo
+![Simulator Screen Recording - iPhone 14 Pro - 2023-01-19 at 16 36 10-2](https://user-images.githubusercontent.com/1901338/213397362-6b8a1006-c6b0-414b-bc64-5da981f438ad.gif)
+
+## Features
+- Start screen that navigate to list of products
+- Loads list of products from local json file
+- Able to add products to cart and modify its quantity
+- Cart badge displaying item count is updated automatically
+- Cart is saved and loaded locally on device
+- Cart list is accessible on the application level
+- Works on both landscape and portrait orientations
+- No external dependencies needed
+
 ## Description   
 
 The test project will be a native iOS application that should be created as an Xcode project (version 12.3 or higher) and should also support both landscape and portrait device  orientations. The result of your work should be a buildable application able to run on an iOS  device (iPad or iPhone) with iOS 13.0 or higher.  
@@ -33,4 +46,3 @@ Create an iOS application for browsing the Jumbo list of available products. To 
 - Write your code in production quality, in a reusable way
 
 ![Simulator Screen Shot - iPhone 8 - 2021-09-28 at 16 19 08](https://user-images.githubusercontent.com/55485534/135105894-52b5d465-eec1-4a40-80ee-8f63eed45915.png)
-
