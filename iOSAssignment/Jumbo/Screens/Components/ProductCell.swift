@@ -15,6 +15,9 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var priceDetailsLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     
+    @IBOutlet weak var addToCartButton: UIButton!
+    @IBOutlet weak var stepperView: UIStackView!
+    
     var didTapAdd: (() -> Void)?
     var didTapRemove: (() -> Void)?
     
@@ -24,5 +27,17 @@ class ProductCell: UITableViewCell {
     
     @IBAction func didTapRemove(_ sender: Any) {
         didTapRemove?()
+    }
+    
+    func setQuantity(_ quantity: Int) {
+        if quantity == 0 {
+            addToCartButton.isHidden = false
+            stepperView.isHidden = true
+        } else {
+            addToCartButton.isHidden = true
+            stepperView.isHidden = false
+        }
+        
+        quantityLabel.text = "\(quantity)"
     }
 }
