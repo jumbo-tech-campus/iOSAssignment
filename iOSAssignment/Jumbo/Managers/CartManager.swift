@@ -56,6 +56,7 @@ class CartManager {
             do {
                 let decoder = JSONDecoder()
                 cart = try decoder.decode([String: CartItem].self, from: data)
+                delegate?.didUpdateCart()
             } catch {
                 print("Unable to Decode Cart (\(error))")
             }

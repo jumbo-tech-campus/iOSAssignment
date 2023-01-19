@@ -15,8 +15,8 @@ class TabBarController: UITabBarController, CartManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        didUpdateCart()
         CartManager.shared.delegate = self
+        CartManager.shared.load()
     }
     
     func didUpdateCart() {
