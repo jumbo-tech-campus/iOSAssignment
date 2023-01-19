@@ -20,7 +20,5 @@ class StartScreen: UIViewController {
           return
         }
         webView.load(data, mimeType: "image/gif", characterEncodingName: "UTF-8", baseURL: baseURL)
-//        webView.scalesPageToFit = true
-        webView.contentMode = UIView.ContentMode.scaleAspectFit
       }
 }

@@ -13,16 +13,9 @@ class CartController: ProductsController {
         loadData()
     }
     
-    func loadData() {
+    override func loadData() {
         products = CartManager.shared.cart.map({$1.product})
         tableView.reloadData()
     }
     
-    override func didTapRemoveProduct(_ product: ProductRaw) -> Int {
-        let quantity = super.didTapRemoveProduct(product)
-        if quantity == 0 {
-            loadData()
-        }
-        return quantity
-    }
 }

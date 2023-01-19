@@ -43,7 +43,7 @@
                                     <segue destination="ChM-aV-Wnu" kind="show" id="ce5-sZ-KGO"/>
                                 </connections>
                             </button>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2l-VD-KKq">
+                            <wkWebView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2l-VD-KKq">
                                 <rect key="frame" x="45" y="248.66666666666663" width="300" height="300"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.76470588235294112" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>

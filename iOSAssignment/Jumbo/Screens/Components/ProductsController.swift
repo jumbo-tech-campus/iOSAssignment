@@ -20,6 +20,10 @@ class ProductsController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
+    
+    func loadData() {
         tableView.reloadData()
     }
     
@@ -36,7 +40,7 @@ class ProductsController: UITableViewController {
         if let product = products?[indexPath.row] {
             DispatchQueue.global().async {
                 let url = URL(string: product.imageInfo?.primaryView?.smallestImage?.url ?? "")
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                let data = try? Data(contentsOf: url!)
                 DispatchQueue.main.async {
                     cell.productImageview.image =  UIImage(data: data!)
                 }
@@ -44,7 +48,7 @@ class ProductsController: UITableViewController {
             
             cell.nameLabel.text = product.title
             cell.descriptionLabel.text = product.quantity
-            cell.priceLabel.text = "\(product.prices?.price?.currency ?? "") \(product.prices?.price?.amount ?? 0)"
+            cell.priceLabel.text = "\(product.prices?.price?.amount ?? 0)"
             cell.priceDetailsLabel.text = "\(product.prices?.unitPrice?.price?.amount ?? 0)/\(product.prices?.unitPrice?.unit ?? "")"
             cell.setQuantity(CartManager.shared.cart[product.id]?.quantity ?? 0)
             cell.didTapAdd = {
@@ -52,15 +56,14 @@ class ProductsController: UITableViewController {
                 cell.setQuantity(CartManager.shared.cart[product.id]?.quantity ?? 0)
             }
             cell.didTapRemove = {
-                let quantity = self.didTapRemoveProduct(product)
+                CartManager.shared.remove(product)
+                let quantity = CartManager.shared.cart[product.id]?.quantity ?? 0
                 cell.setQuantity(quantity)
+                if quantity == 0 {
+                    self.loadData()
+                }
             }
         }
         return cell
-    }
-    
-    func didTapRemoveProduct(_ product: ProductRaw) -> Int {
-        CartManager.shared.remove(product)
-        return CartManager.shared.cart[product.id]?.quantity ?? 0
     }
 }
