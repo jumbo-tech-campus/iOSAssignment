@@ -28,6 +28,8 @@
 		F5AB3156297830EF00A82D82 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3155297830EF00A82D82 /* CartItem.swift */; };
 		F5AB3158297848C900A82D82 /* CartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3157297848C900A82D82 /* CartController.swift */; };
 		F5AB315A2978E86C00A82D82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB31592978E86C00A82D82 /* TabBarController.swift */; };
+		F5FB02E72979094A004BB1B0 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB02E62979094A004BB1B0 /* StartController.swift */; };
+		F5FB02E9297909F7004BB1B0 /* jumbo.gif in Resources */ = {isa = PBXBuildFile; fileRef = F5FB02E8297909F7004BB1B0 /* jumbo.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +65,10 @@
 		F50DD36F2977F1110027FBBF /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		F5AB315329782DD500A82D82 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		F5AB3155297830EF00A82D82 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
-		F5AB3157297848C900A82D82 /* CartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartController.swift; path = iOSAssignment/Jumbo/Models/CartController.swift; sourceTree = SOURCE_ROOT; };
+		F5AB3157297848C900A82D82 /* CartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartController.swift; path = iOSAssignment/Jumbo/Screens/CartScreen/CartController.swift; sourceTree = SOURCE_ROOT; };
 		F5AB31592978E86C00A82D82 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F5FB02E62979094A004BB1B0 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
+		F5FB02E8297909F7004BB1B0 /* jumbo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jumbo.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 		AFF534CE2702004F00EEE4AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F5FB02E8297909F7004BB1B0 /* jumbo.gif */,
 				AFF534CF2702007000EEE4AE /* products.json */,
 			);
 			path = Resources;
@@ -171,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				F50DD3682977E4A90027FBBF /* Components */,
+				F5FB02E429790916004BB1B0 /* CartScreen */,
+				F5FB02E529790925004BB1B0 /* StartScreen */,
 				AFF534D5270203A000EEE4AE /* ProductsScreen */,
 			);
 			path = Screens;
@@ -180,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				F50DD36D2977E8790027FBBF /* ProductsController.swift */,
-				F5AB3157297848C900A82D82 /* CartController.swift */,
 			);
 			path = ProductsScreen;
 			sourceTree = "<group>";
@@ -217,6 +223,22 @@
 				F5AB315329782DD500A82D82 /* CartManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		F5FB02E429790916004BB1B0 /* CartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F5AB3157297848C900A82D82 /* CartController.swift */,
+			);
+			path = CartScreen;
+			sourceTree = "<group>";
+		};
+		F5FB02E529790925004BB1B0 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB02E62979094A004BB1B0 /* StartController.swift */,
+			);
+			path = StartScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5FB02E9297909F7004BB1B0 /* jumbo.gif in Resources */,
 				AFF534A02701ECBF00EEE4AE /* LaunchScreen.storyboard in Resources */,
 				F50DD36C2977E4F10027FBBF /* ProductCell.xib in Resources */,
 				AFF534D02702007000EEE4AE /* products.json in Resources */,
@@ -324,6 +347,7 @@
 			files = (
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
 				F5AB315429782DD500A82D82 /* CartManager.swift in Sources */,
+				F5FB02E72979094A004BB1B0 /* StartController.swift in Sources */,
 				F50DD3702977F1110027FBBF /* ProductCell.swift in Sources */,
 				AFF534982701ECBC00EEE4AE /* ViewController.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */,
