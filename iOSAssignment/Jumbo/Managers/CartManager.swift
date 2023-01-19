@@ -41,10 +41,24 @@ class CartManager {
     }
     
     func save() {
-        
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(cart)
+            UserDefaults.standard.set(data, forKey: "cart")
+
+        } catch {
+            print("Unable to Encode Cart (\(error))")
+        }
     }
     
     func load() {
-        
+        if let data = UserDefaults.standard.data(forKey: "cart") {
+            do {
+                let decoder = JSONDecoder()
+                cart = try decoder.decode([String: CartItem].self, from: data)
+            } catch {
+                print("Unable to Decode Cart (\(error))")
+            }
+        }
     }
 }

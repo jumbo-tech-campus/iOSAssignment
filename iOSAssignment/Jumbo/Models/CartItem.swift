@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CartItem {
+struct CartItem: Codable {
     let product: ProductRaw
     var quantity: Int = 1
 }
