@@ -1,7 +1,7 @@
 # Technical Assignment
 
 ## Demo
-![demo]([https://user-images.githubusercontent.com/1901338/213397362-6b8a1006-c6b0-414b-bc64-5da981f438ad.gif](https://raw.githubusercontent.com/ebcabaybay/iOSAssignment/main/demo.gif))
+![demo](https://raw.githubusercontent.com/ebcabaybay/iOSAssignment/main/demo.gif)
 
 ## Features
 - Start screen that navigate to list of products
