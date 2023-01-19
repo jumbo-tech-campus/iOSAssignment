@@ -26,6 +26,7 @@ class CartManager {
             cart[product.id] = CartItem(product: product)
             delegate?.didUpdateCart()
         }
+        save()
     }
     
     func remove(_ product: ProductRaw) {
@@ -38,6 +39,7 @@ class CartManager {
                 cart[product.id] = cartItem
             }
         }
+        save()
     }
     
     func save() {
