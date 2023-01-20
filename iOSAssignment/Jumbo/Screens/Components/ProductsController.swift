@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProductsController: UITableViewController {
     
@@ -38,13 +39,8 @@ class ProductsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductCell
         if let product = products?[indexPath.row] {
-            DispatchQueue.global().async {
-                let url = URL(string: product.imageInfo?.primaryView?.smallestImage?.url ?? "")
-                let data = try? Data(contentsOf: url!)
-                DispatchQueue.main.async {
-                    cell.productImageview.image =  UIImage(data: data!)
-                }
-            }
+            let url = URL(string: product.imageInfo?.primaryView?.smallestImage?.url ?? "")
+            cell.productImageview.kf.setImage(with: url, placeholder: UIImage(named: "logo"))
             
             cell.nameLabel.text = product.title
             cell.descriptionLabel.text = product.quantity

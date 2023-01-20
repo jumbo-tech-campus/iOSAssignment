@@ -1,0 +1,6 @@
+module Pods_iOSAssignment {
+  umbrella header "Pods-iOSAssignment-umbrella.h"
+
+  export *
+  module * { export * }
+}
