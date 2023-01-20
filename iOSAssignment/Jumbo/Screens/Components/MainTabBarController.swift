@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController, CartManagerDelegate {
+class MainTabBarController: UITabBarController, CartManagerDelegate {
     
     var cartTabBarItem: UITabBarItem? {
         return tabBar.items?.first(where: { $0.title == "Cart" })

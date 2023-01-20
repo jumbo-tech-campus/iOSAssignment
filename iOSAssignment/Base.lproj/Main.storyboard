@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrV-RK-08Y">
-                                <rect key="frame" x="164" y="568.66666666666663" width="62" height="40"/>
+                                <rect key="frame" x="161.66666666666666" y="568.66666666666663" width="66.666666666666657" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="miZ-cc-MXE"/>
@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="48" y="-2"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="JAo-59-g81">
             <objects>
-                <tabBarController id="ChM-aV-Wnu" customClass="TabBarController" customModule="iOSAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="ChM-aV-Wnu" customClass="MainTabBarController" customModule="iOSAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="SUp-4d-Dfv"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WvR-9k-4dF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>

@@ -29,7 +29,7 @@
 		F5AB315429782DD500A82D82 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB315329782DD500A82D82 /* CartManager.swift */; };
 		F5AB3156297830EF00A82D82 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3155297830EF00A82D82 /* CartItem.swift */; };
 		F5AB3158297848C900A82D82 /* CartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3157297848C900A82D82 /* CartController.swift */; };
-		F5AB315A2978E86C00A82D82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB31592978E86C00A82D82 /* TabBarController.swift */; };
+		F5AB315A2978E86C00A82D82 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB31592978E86C00A82D82 /* MainTabBarController.swift */; };
 		F5FB02E72979094A004BB1B0 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB02E62979094A004BB1B0 /* StartController.swift */; };
 		F5FB02E9297909F7004BB1B0 /* jumbo.gif in Resources */ = {isa = PBXBuildFile; fileRef = F5FB02E8297909F7004BB1B0 /* jumbo.gif */; };
 /* End PBXBuildFile section */
@@ -74,7 +74,7 @@
 		F5AB315329782DD500A82D82 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		F5AB3155297830EF00A82D82 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		F5AB3157297848C900A82D82 /* CartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartController.swift; path = iOSAssignment/Jumbo/Screens/CartScreen/CartController.swift; sourceTree = SOURCE_ROOT; };
-		F5AB31592978E86C00A82D82 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F5AB31592978E86C00A82D82 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F5FB02E62979094A004BB1B0 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		F5FB02E8297909F7004BB1B0 /* jumbo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jumbo.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,7 +236,6 @@
 				BE0231A2ACD9A5F0C7FBF69B /* Pods-iOSAssignmentTests.debug.xcconfig */,
 				A66C1139B665CB51B6AC4871 /* Pods-iOSAssignmentTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,7 +244,7 @@
 			children = (
 				F50DD36B2977E4F10027FBBF /* ProductCell.xib */,
 				F50DD36F2977F1110027FBBF /* ProductCell.swift */,
-				F5AB31592978E86C00A82D82 /* TabBarController.swift */,
+				F5AB31592978E86C00A82D82 /* MainTabBarController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -438,7 +437,7 @@
 				F50DD36E2977E8790027FBBF /* ProductsController.swift in Sources */,
 				AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */,
 				F5AB3158297848C900A82D82 /* CartController.swift in Sources */,
-				F5AB315A2978E86C00A82D82 /* TabBarController.swift in Sources */,
+				F5AB315A2978E86C00A82D82 /* MainTabBarController.swift in Sources */,
 				AFF534CA2701F98300EEE4AE /* ProductImagesInfoRaw.swift in Sources */,
 				AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */,
 				F5AB3156297830EF00A82D82 /* CartItem.swift in Sources */,
