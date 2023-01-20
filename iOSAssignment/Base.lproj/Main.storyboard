@@ -43,30 +43,25 @@
                                     <segue destination="ChM-aV-Wnu" kind="show" id="ce5-sZ-KGO"/>
                                 </connections>
                             </button>
-                            <wkWebView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2l-VD-KKq">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mu3-Pp-h5W">
                                 <rect key="frame" x="45" y="248.66666666666663" width="300" height="300"/>
-                                <color key="backgroundColor" red="0.95686274509803915" green="0.76470588235294112" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="o2l-VD-KKq" secondAttribute="height" multiplier="1:1" id="Ocw-30-S3W"/>
-                                    <constraint firstAttribute="height" constant="300" id="ov8-OF-gu9"/>
+                                    <constraint firstAttribute="height" constant="300" id="I2p-sX-2R2"/>
+                                    <constraint firstAttribute="width" secondItem="Mu3-Pp-h5W" secondAttribute="height" multiplier="1:1" id="J4i-Do-pHo"/>
                                 </constraints>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.76470588235294112" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="yrV-RK-08Y" firstAttribute="top" secondItem="o2l-VD-KKq" secondAttribute="bottom" constant="20" id="Enx-rh-hnY"/>
-                            <constraint firstItem="o2l-VD-KKq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YYk-kq-fv3"/>
-                            <constraint firstItem="o2l-VD-KKq" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-30" id="lvM-wb-7ec"/>
+                            <constraint firstItem="Mu3-Pp-h5W" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9Eo-wr-S0F"/>
+                            <constraint firstItem="Mu3-Pp-h5W" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-30" id="Iry-Mo-zLe"/>
+                            <constraint firstItem="yrV-RK-08Y" firstAttribute="top" secondItem="Mu3-Pp-h5W" secondAttribute="bottom" constant="20" id="kS9-L4-5nU"/>
                             <constraint firstItem="yrV-RK-08Y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tUk-Uu-X87"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="o2l-VD-KKq" id="32O-V4-Bf8"/>
+                        <outlet property="startImageView" destination="Mu3-Pp-h5W" id="t3s-ZW-M4t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
