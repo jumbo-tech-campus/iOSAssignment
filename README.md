@@ -11,7 +11,8 @@
 - Cart is saved and loaded locally on device
 - Cart list is accessible on the application level
 - Works on both landscape and portrait orientations
-- No external dependencies needed
+- UI implemented via storyboard and XIB files
+- Use of Cocoapods
 
 ## Description   
 
