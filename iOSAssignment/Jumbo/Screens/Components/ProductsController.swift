@@ -8,7 +8,11 @@
 import UIKit
 import Kingfisher
 
-class ProductsController: UITableViewController {
+protocol Loadable {
+    func loadData()
+}
+
+class ProductsController: UITableViewController, Loadable {
     
     var products: [ProductRaw]?
     
@@ -28,6 +32,10 @@ class ProductsController: UITableViewController {
         tableView.reloadData()
     }
     
+}
+
+// Table View Delegates
+extension ProductsController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products?.count ?? 0
     }

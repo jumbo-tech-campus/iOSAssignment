@@ -7,14 +7,19 @@
 
 import Foundation
 
-protocol CartManagerDelegate {
+protocol CartManagerDelegate: AnyObject {
     func didUpdateCart()
+}
+
+protocol LocalCacheable {
+    func save()
+    func load()
 }
 
 class CartManager {
     
     static let shared = CartManager()
-    var delegate: CartManagerDelegate?
+    weak var delegate: CartManagerDelegate?
     
     var cart: [String: CartItem] = [:]
     
@@ -41,7 +46,9 @@ class CartManager {
         }
         save()
     }
-    
+}
+
+extension CartManager: LocalCacheable {
     func save() {
         do {
             let encoder = JSONEncoder()
