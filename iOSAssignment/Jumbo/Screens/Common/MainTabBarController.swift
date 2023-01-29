@@ -28,6 +28,7 @@ class MainTabBarController: UITabBarController {
         cartManager = appDelegate.cartManager
         cartManager.cart.addObserver { [weak self] cart in
             self?.cartTabBarItem?.badgeValue = cart.count > 0 ? "\(cart.count)" : nil
+            self?.cartManager.save()
         }
         cartManager.load()
     }

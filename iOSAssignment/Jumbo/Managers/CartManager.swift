@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol LocalCacheable {
+protocol LocalStorable {
     func save()
     func load()
 }
@@ -23,7 +23,6 @@ class CartManager {
         } else {
             cart.value[product.id] = CartItem(product: product)
         }
-        save()
     }
     
     func remove(_ product: ProductRaw) {
@@ -35,7 +34,6 @@ class CartManager {
                 cart.value[product.id] = cartItem
             }
         }
-        save()
     }
     
     func getProducts() -> [ProductRaw] {
@@ -47,7 +45,7 @@ class CartManager {
     }
 }
 
-extension CartManager: LocalCacheable {
+extension CartManager: LocalStorable {
     func save() {
         do {
             let encoder = JSONEncoder()
