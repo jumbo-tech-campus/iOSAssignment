@@ -31,6 +31,9 @@
 		F5AB3158297848C900A82D82 /* CartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3157297848C900A82D82 /* CartController.swift */; };
 		F5AB315A2978E86C00A82D82 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB31592978E86C00A82D82 /* MainTabBarController.swift */; };
 		F5E2D11629864214001D264E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2D11529864214001D264E /* Observable.swift */; };
+		F5E2D11929867615001D264E /* ProductsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2D11829867615001D264E /* ProductsControllerViewModel.swift */; };
+		F5E2D11B2986781E001D264E /* ProductCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2D11A2986781D001D264E /* ProductCellViewModel.swift */; };
+		F5E2D11D29867DCC001D264E /* CartControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2D11C29867DCC001D264E /* CartControllerViewModel.swift */; };
 		F5FB02E72979094A004BB1B0 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB02E62979094A004BB1B0 /* StartController.swift */; };
 		F5FB02E9297909F7004BB1B0 /* jumbo.gif in Resources */ = {isa = PBXBuildFile; fileRef = F5FB02E8297909F7004BB1B0 /* jumbo.gif */; };
 /* End PBXBuildFile section */
@@ -77,6 +80,9 @@
 		F5AB3157297848C900A82D82 /* CartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartController.swift; path = iOSAssignment/Jumbo/Screens/CartScreen/CartController.swift; sourceTree = SOURCE_ROOT; };
 		F5AB31592978E86C00A82D82 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F5E2D11529864214001D264E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		F5E2D11829867615001D264E /* ProductsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsControllerViewModel.swift; sourceTree = "<group>"; };
+		F5E2D11A2986781D001D264E /* ProductCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellViewModel.swift; sourceTree = "<group>"; };
+		F5E2D11C29867DCC001D264E /* CartControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartControllerViewModel.swift; sourceTree = "<group>"; };
 		F5FB02E62979094A004BB1B0 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		F5FB02E8297909F7004BB1B0 /* jumbo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jumbo.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				F50DD36D2977E8790027FBBF /* ProductsController.swift */,
+				F5E2D11829867615001D264E /* ProductsControllerViewModel.swift */,
 			);
 			path = ProductsScreen;
 			sourceTree = "<group>";
@@ -248,6 +255,7 @@
 			children = (
 				F50DD36B2977E4F10027FBBF /* ProductCell.xib */,
 				F50DD36F2977F1110027FBBF /* ProductCell.swift */,
+				F5E2D11A2986781D001D264E /* ProductCellViewModel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -280,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				F5AB3157297848C900A82D82 /* CartController.swift */,
+				F5E2D11C29867DCC001D264E /* CartControllerViewModel.swift */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -445,10 +454,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E2D11929867615001D264E /* ProductsControllerViewModel.swift in Sources */,
 				AFF534DB27020CB800EEE4AE /* ProductsRepository.swift in Sources */,
 				F5AB315429782DD500A82D82 /* CartManager.swift in Sources */,
 				F5FB02E72979094A004BB1B0 /* StartController.swift in Sources */,
 				F50DD3702977F1110027FBBF /* ProductCell.swift in Sources */,
+				F5E2D11B2986781E001D264E /* ProductCellViewModel.swift in Sources */,
 				AFF534982701ECBC00EEE4AE /* ViewController.swift in Sources */,
 				AFF534D3270202AA00EEE4AE /* Data+Json.swift in Sources */,
 				AFF534942701ECBC00EEE4AE /* AppDelegate.swift in Sources */,
@@ -459,6 +470,7 @@
 				F5AB315A2978E86C00A82D82 /* MainTabBarController.swift in Sources */,
 				F5E2D11629864214001D264E /* Observable.swift in Sources */,
 				AFF534CA2701F98300EEE4AE /* ProductImagesInfoRaw.swift in Sources */,
+				F5E2D11D29867DCC001D264E /* CartControllerViewModel.swift in Sources */,
 				AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */,
 				F5AB3156297830EF00A82D82 /* CartItem.swift in Sources */,
 				AFF534D72702088800EEE4AE /* ImageDetailRaw.swift in Sources */,

@@ -8,10 +8,8 @@
 import UIKit
 
 class CartController: ProductsController {
-    
-    override func loadData() {
-        products = cartManager.getProducts()
-        tableView.reloadData()
+    override func viewDidLoad() {
+        self.viewModel = CartControllerViewModel()
+        super.viewDidLoad()
     }
-    
 }

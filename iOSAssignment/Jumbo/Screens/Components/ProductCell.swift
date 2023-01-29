@@ -8,6 +8,8 @@
 import UIKit
 
 class ProductCell: UITableViewCell {
+    var viewModel: ProductCellViewModel!
+    
     @IBOutlet weak var productImageview: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -27,6 +29,25 @@ class ProductCell: UITableViewCell {
     
     @IBAction func didTapRemove(_ sender: Any) {
         didTapRemove?()
+    }
+    
+    func setup() {
+        productImageview.kf.setImage(with: viewModel.imageUrl, placeholder: UIImage(named: "logo"))
+        nameLabel.text = viewModel.name
+        descriptionLabel.text = viewModel.description
+        priceLabel.text = viewModel.price
+        priceDetailsLabel.text = viewModel.priceDetails
+        setQuantity(viewModel.getProductQuantity())
+        didTapAdd = { [weak self] in
+            if let self = self {
+                self.setQuantity(self.viewModel.didTapAdd())
+            }
+        }
+        didTapRemove = { [weak self] in
+            if let self = self {
+                self.setQuantity(self.viewModel.didTapRemove())
+            }
+        }
     }
     
     func setQuantity(_ quantity: Int) {
