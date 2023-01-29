@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol CartManagerDelegate: AnyObject {
-    func didUpdateCart()
-}
-
 protocol LocalCacheable {
     func save()
     func load()
@@ -19,7 +15,6 @@ protocol LocalCacheable {
 class CartManager {
     
     static let shared = CartManager()
-    weak var delegate: CartManagerDelegate?
     
     var cart = Observable<[String: CartItem]>(value: [:])
     
@@ -29,7 +24,6 @@ class CartManager {
             cart.value[product.id] = cartItem
         } else {
             cart.value[product.id] = CartItem(product: product)
-            delegate?.didUpdateCart()
         }
         save()
     }
@@ -39,7 +33,6 @@ class CartManager {
             cartItem.quantity -= 1
             if cartItem.quantity == 0 {
                 cart.value.removeValue(forKey: product.id)
-                delegate?.didUpdateCart()
             } else {
                 cart.value[product.id] = cartItem
             }
@@ -73,7 +66,6 @@ extension CartManager: LocalCacheable {
             do {
                 let decoder = JSONDecoder()
                 cart.value = try decoder.decode([String: CartItem].self, from: data)
-                delegate?.didUpdateCart()
             } catch {
                 print("Unable to Decode Cart (\(error))")
             }

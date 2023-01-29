@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController, CartManagerDelegate {
+class MainTabBarController: UITabBarController {
     
     var cartTabBarItem: UITabBarItem? {
         return tabBar.items?.first(where: { $0.title == "Cart" })
@@ -15,12 +15,9 @@ class MainTabBarController: UITabBarController, CartManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CartManager.shared.delegate = self
+        CartManager.shared.cart.addObserver { [weak self] cart in
+            self?.cartTabBarItem?.badgeValue = cart.count > 0 ? "\(cart.count)" : nil
+        }
         CartManager.shared.load()
-    }
-    
-    func didUpdateCart() {
-        let cartItemCount = CartManager.shared.cart.value.count
-        cartTabBarItem?.badgeValue = cartItemCount > 0 ? "\(cartItemCount)" : nil
     }
 }
