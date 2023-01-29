@@ -20,15 +20,12 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var addToCartButton: UIButton!
     @IBOutlet weak var stepperView: UIStackView!
     
-    var didTapAdd: (() -> Void)?
-    var didTapRemove: (() -> Void)?
-    
     @IBAction func didTapAdd(_ sender: Any) {
-        didTapAdd?()
+        viewModel.didTapAdd()
     }
     
     @IBAction func didTapRemove(_ sender: Any) {
-        didTapRemove?()
+        viewModel.didTapRemove()
     }
     
     func setup() {
@@ -37,28 +34,15 @@ class ProductCell: UITableViewCell {
         descriptionLabel.text = viewModel.description
         priceLabel.text = viewModel.price
         priceDetailsLabel.text = viewModel.priceDetails
-        setQuantity(viewModel.getProductQuantity())
-        didTapAdd = { [weak self] in
-            if let self = self {
-                self.setQuantity(self.viewModel.didTapAdd())
+        viewModel.quantity.addObserver(fireNow: true) { [weak self] quantity in
+            if quantity == 0 {
+                self?.addToCartButton.isHidden = false
+                self?.stepperView.isHidden = true
+            } else {
+                self?.addToCartButton.isHidden = true
+                self?.stepperView.isHidden = false
             }
+            self?.quantityLabel.text = "\(quantity)"
         }
-        didTapRemove = { [weak self] in
-            if let self = self {
-                self.setQuantity(self.viewModel.didTapRemove())
-            }
-        }
-    }
-    
-    func setQuantity(_ quantity: Int) {
-        if quantity == 0 {
-            addToCartButton.isHidden = false
-            stepperView.isHidden = true
-        } else {
-            addToCartButton.isHidden = true
-            stepperView.isHidden = false
-        }
-        
-        quantityLabel.text = "\(quantity)"
     }
 }

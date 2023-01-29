@@ -20,17 +20,15 @@ class ProductCellViewModel {
     var priceDetails: String { "\(product.prices?.unitPrice?.price?.amount ?? 0)/\(product.prices?.unitPrice?.unit ?? "")" }
     var imageUrl: URL? { URL(string: product.imageInfo?.primaryView?.smallestImage?.url ?? "") }
     
-    func getProductQuantity() -> Int {
-        return cartManager.getProductQuantity(product.id)
-    }
+    var quantity: Observable<Int> { Observable<Int>(value: cartManager.getProductQuantity(product.id)) }
     
-    func didTapAdd() -> Int {
+    func didTapAdd() {
         cartManager.add(product)
-        return cartManager.getProductQuantity(product.id)
+        quantity.value = cartManager.getProductQuantity(product.id)
     }
     
-    func didTapRemove() -> Int {
+    func didTapRemove() {
         cartManager.remove(product)
-        return cartManager.getProductQuantity(product.id)
+        quantity.value = cartManager.getProductQuantity(product.id)
     }
 }
