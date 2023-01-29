@@ -26,6 +26,7 @@ final class CartControllerViewModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         cartManager = nil
         products = nil
+        viewModel = nil
     }
     
     func testLoadData() throws {
