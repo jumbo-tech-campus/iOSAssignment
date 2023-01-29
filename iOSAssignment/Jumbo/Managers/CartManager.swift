@@ -14,8 +14,6 @@ protocol LocalCacheable {
 
 class CartManager {
     
-    static let shared = CartManager()
-    
     var cart = Observable<[String: CartItem]>(value: [:])
     
     func add(_ product: ProductRaw) {

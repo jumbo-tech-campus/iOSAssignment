@@ -199,6 +199,7 @@
 		AFF534D42702038700EEE4AE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F5E2D1172986609F001D264E /* Common */,
 				F50DD3682977E4A90027FBBF /* Components */,
 				F5FB02E429790916004BB1B0 /* CartScreen */,
 				F5FB02E529790925004BB1B0 /* StartScreen */,
@@ -247,7 +248,6 @@
 			children = (
 				F50DD36B2977E4F10027FBBF /* ProductCell.xib */,
 				F50DD36F2977F1110027FBBF /* ProductCell.swift */,
-				F5AB31592978E86C00A82D82 /* MainTabBarController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -264,6 +264,14 @@
 			isa = PBXGroup;
 			children = (
 				F5E2D11529864214001D264E /* Observable.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F5E2D1172986609F001D264E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F5AB31592978E86C00A82D82 /* MainTabBarController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";

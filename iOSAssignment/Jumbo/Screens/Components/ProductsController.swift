@@ -15,6 +15,7 @@ protocol Loadable {
 class ProductsController: UITableViewController, Loadable {
     
     var products: [ProductRaw]?
+    var cartManager: CartManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,17 +55,20 @@ extension ProductsController {
             cell.descriptionLabel.text = product.quantity
             cell.priceLabel.text = "\(product.prices?.price?.amount ?? 0)"
             cell.priceDetailsLabel.text = "\(product.prices?.unitPrice?.price?.amount ?? 0)/\(product.prices?.unitPrice?.unit ?? "")"
-            cell.setQuantity(CartManager.shared.getProductQuantity(product.id))
-            cell.didTapAdd = {
-                CartManager.shared.add(product)
-                cell.setQuantity(CartManager.shared.getProductQuantity(product.id))
+            cell.setQuantity(cartManager.getProductQuantity(product.id))
+            cell.didTapAdd = { [weak self] in
+                self?.cartManager.add(product)
+                if let quantity = self?.cartManager.getProductQuantity(product.id) {
+                    cell.setQuantity(quantity)
+                }
             }
-            cell.didTapRemove = {
-                CartManager.shared.remove(product)
-                let quantity = CartManager.shared.getProductQuantity(product.id)
-                cell.setQuantity(quantity)
-                if quantity == 0 {
-                    self.loadData()
+            cell.didTapRemove = { [weak self] in
+                self?.cartManager.remove(product)
+                if let quantity = self?.cartManager.getProductQuantity(product.id) {
+                    cell.setQuantity(quantity)
+                    if quantity == 0 {
+                        self?.loadData()
+                    }
                 }
             }
         }
