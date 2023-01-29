@@ -30,6 +30,7 @@
 		F5AB3156297830EF00A82D82 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3155297830EF00A82D82 /* CartItem.swift */; };
 		F5AB3158297848C900A82D82 /* CartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3157297848C900A82D82 /* CartController.swift */; };
 		F5AB315A2978E86C00A82D82 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB31592978E86C00A82D82 /* MainTabBarController.swift */; };
+		F5E2D11629864214001D264E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2D11529864214001D264E /* Observable.swift */; };
 		F5FB02E72979094A004BB1B0 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB02E62979094A004BB1B0 /* StartController.swift */; };
 		F5FB02E9297909F7004BB1B0 /* jumbo.gif in Resources */ = {isa = PBXBuildFile; fileRef = F5FB02E8297909F7004BB1B0 /* jumbo.gif */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		F5AB3155297830EF00A82D82 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		F5AB3157297848C900A82D82 /* CartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartController.swift; path = iOSAssignment/Jumbo/Screens/CartScreen/CartController.swift; sourceTree = SOURCE_ROOT; };
 		F5AB31592978E86C00A82D82 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F5E2D11529864214001D264E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		F5FB02E62979094A004BB1B0 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		F5FB02E8297909F7004BB1B0 /* jumbo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jumbo.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +156,7 @@
 		AFF534C32701EE5400EEE4AE /* Jumbo */ = {
 			isa = PBXGroup;
 			children = (
+				F5E2D114298641FA001D264E /* Common */,
 				F5AB315229782DC400A82D82 /* Managers */,
 				AFF534D827020CA000EEE4AE /* Repositories */,
 				AFF534D42702038700EEE4AE /* Screens */,
@@ -255,6 +258,14 @@
 				F5AB315329782DD500A82D82 /* CartManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		F5E2D114298641FA001D264E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F5E2D11529864214001D264E /* Observable.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		F5FB02E429790916004BB1B0 /* CartScreen */ = {
@@ -438,6 +449,7 @@
 				AFF534962701ECBC00EEE4AE /* SceneDelegate.swift in Sources */,
 				F5AB3158297848C900A82D82 /* CartController.swift in Sources */,
 				F5AB315A2978E86C00A82D82 /* MainTabBarController.swift in Sources */,
+				F5E2D11629864214001D264E /* Observable.swift in Sources */,
 				AFF534CA2701F98300EEE4AE /* ProductImagesInfoRaw.swift in Sources */,
 				AFF534C82701F93100EEE4AE /* ProductPriceDataRaw.swift in Sources */,
 				F5AB3156297830EF00A82D82 /* CartItem.swift in Sources */,
