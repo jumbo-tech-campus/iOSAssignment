@@ -21,30 +21,38 @@ class CartManager {
     static let shared = CartManager()
     weak var delegate: CartManagerDelegate?
     
-    var cart: [String: CartItem] = [:]
+    var cart = Observable<[String: CartItem]>(value: [:])
     
     func add(_ product: ProductRaw) {
-        if var cartItem = cart[product.id] {
+        if var cartItem = cart.value[product.id] {
             cartItem.quantity += 1
-            cart[product.id] = cartItem
+            cart.value[product.id] = cartItem
         } else {
-            cart[product.id] = CartItem(product: product)
+            cart.value[product.id] = CartItem(product: product)
             delegate?.didUpdateCart()
         }
         save()
     }
     
     func remove(_ product: ProductRaw) {
-        if var cartItem = cart[product.id] {
+        if var cartItem = cart.value[product.id] {
             cartItem.quantity -= 1
             if cartItem.quantity == 0 {
-                cart.removeValue(forKey: product.id)
+                cart.value.removeValue(forKey: product.id)
                 delegate?.didUpdateCart()
             } else {
-                cart[product.id] = cartItem
+                cart.value[product.id] = cartItem
             }
         }
         save()
+    }
+    
+    func getProducts() -> [ProductRaw] {
+        return cart.value.map({$1.product})
+    }
+    
+    func getProductQuantity(_ productId: String) -> Int {
+        return cart.value[productId]?.quantity ?? 0
     }
 }
 
@@ -52,7 +60,7 @@ extension CartManager: LocalCacheable {
     func save() {
         do {
             let encoder = JSONEncoder()
-            let data = try encoder.encode(cart)
+            let data = try encoder.encode(cart.value)
             UserDefaults.standard.set(data, forKey: "cart")
 
         } catch {
@@ -64,7 +72,7 @@ extension CartManager: LocalCacheable {
         if let data = UserDefaults.standard.data(forKey: "cart") {
             do {
                 let decoder = JSONDecoder()
-                cart = try decoder.decode([String: CartItem].self, from: data)
+                cart.value = try decoder.decode([String: CartItem].self, from: data)
                 delegate?.didUpdateCart()
             } catch {
                 print("Unable to Decode Cart (\(error))")

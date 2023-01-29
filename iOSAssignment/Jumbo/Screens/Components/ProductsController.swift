@@ -54,14 +54,14 @@ extension ProductsController {
             cell.descriptionLabel.text = product.quantity
             cell.priceLabel.text = "\(product.prices?.price?.amount ?? 0)"
             cell.priceDetailsLabel.text = "\(product.prices?.unitPrice?.price?.amount ?? 0)/\(product.prices?.unitPrice?.unit ?? "")"
-            cell.setQuantity(CartManager.shared.cart[product.id]?.quantity ?? 0)
+            cell.setQuantity(CartManager.shared.getProductQuantity(product.id))
             cell.didTapAdd = {
                 CartManager.shared.add(product)
-                cell.setQuantity(CartManager.shared.cart[product.id]?.quantity ?? 0)
+                cell.setQuantity(CartManager.shared.getProductQuantity(product.id))
             }
             cell.didTapRemove = {
                 CartManager.shared.remove(product)
-                let quantity = CartManager.shared.cart[product.id]?.quantity ?? 0
+                let quantity = CartManager.shared.getProductQuantity(product.id)
                 cell.setQuantity(quantity)
                 if quantity == 0 {
                     self.loadData()

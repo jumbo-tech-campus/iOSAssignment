@@ -10,7 +10,7 @@ import UIKit
 class CartController: ProductsController {
     
     override func loadData() {
-        products = CartManager.shared.cart.map({$1.product})
+        products = CartManager.shared.getProducts()
         tableView.reloadData()
     }
     
