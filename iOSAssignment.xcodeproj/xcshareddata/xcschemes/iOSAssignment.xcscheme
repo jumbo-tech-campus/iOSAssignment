@@ -39,6 +39,17 @@
                ReferencedContainer = "container:iOSAssignment.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F5E2D12E2987541B001D264E"
+               BuildableName = "iOSAssignmentUITests.xctest"
+               BlueprintName = "iOSAssignmentUITests"
+               ReferencedContainer = "container:iOSAssignment.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
