@@ -20,8 +20,9 @@ class ProductsControllerViewModel: ProductsViewModel {
     
     func loadData() {
         let productRepository = ProductsRepository()
-        cartManager.cart.addObserver(fireNow: true) { [weak self] _ in
-            self?.data.value = productRepository.fetchRawProducts()?.products ?? []
+        let products = productRepository.fetchRawProducts()?.products ?? []
+        let removeObserver = cartManager.cart.addObserver(fireNow: true) { [weak self] _ in
+            self?.data.value = products
         }
     }
 }
