@@ -32,7 +32,7 @@ class Observable<T> {
         }
     }
 
-    func removeObserver() {
+    func removeAllObserver() {
         observers = []
     }
 }
